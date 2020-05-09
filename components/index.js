@@ -9,7 +9,12 @@ Vue.component('Header', Header)
 Vue.component('Footer', Footer)
 Vue.component('Logo', Logo)
 
-// Content
+// Pages
+import pages from './pages'
+
+Vue.component('ArticleHeader', pages.ArticleHeader)
+
+// Contents
 import contents from './contents'
 
 Vue.component('Video', contents.Video)
