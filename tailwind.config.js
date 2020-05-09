@@ -8,9 +8,9 @@ module.exports = {
 			colors: {
 				black: '#0D0D0C',
 				white: '#DDDDDD',
-				first: '#F6F5F1',
-				second: '#E9E8E3',
-				text: '#5C4B51',
+				darkwhite: '#F6F5F1',
+				lightgrey: '#E9E8E3',
+				lightblack: '#5C4B51',
 				important: '#4A9690',
 			},
 			spacing: {
@@ -18,7 +18,8 @@ module.exports = {
 				'50vh': '50vh',
 				'25vh': '25vh',
 				'20vh': '20vh',
-				'100px': '100px'
+				'100px': '100px',
+				'300px': '300px'
 			}
 		 }
 	},

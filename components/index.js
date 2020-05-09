@@ -9,16 +9,13 @@ Vue.component('Header', Header)
 Vue.component('Footer', Footer)
 Vue.component('Logo', Logo)
 
-// // Cards
-// import cards from './cards'
+// Content
+import contents from './contents'
 
-// Vue.component('Card', cards.Card)
-// Vue.component('HiddenCard', cards.HiddenCard)
-// Vue.component('Rank', cards.Rank)
-// Vue.component('Suit', cards.Suit)
+Vue.component('Video', contents.Video)
 
-// // Lobby
-// import lobby from './lobby'
+// Content - Images
 
-// Vue.component('List', lobby.List)
-// Vue.component('Team', lobby.Team)
+// Content - Polaroids
+
+// Content - Texts

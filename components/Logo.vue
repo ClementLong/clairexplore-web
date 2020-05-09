@@ -1,15 +1,3 @@
 <template>
-	<div>
-
-	</div>
+	<img class="h-full" src="/images/logo.svg" alt="Claire explore">
 </template>
-
-<script lang="ts">
-export default {
-
-}
-</script>
-
-<style>
-
-</style>
