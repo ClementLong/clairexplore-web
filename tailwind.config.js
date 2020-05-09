@@ -1,17 +1,17 @@
 module.exports = {
 	theme: {
 		fontFamily: {
-			'open-sans': ['Open Sans', 'sans-serif']
+			'heading': ['CL', 'sans-serif'],
+			'body': ['Raleway', 'sans-serif']
 		},
 		extend: {
 			colors: {
 				black: '#0D0D0C',
 				white: '#DDDDDD',
-				first: '#C23113',
-				second: '#C85E3E',
-				third: '#C78B72',
-				fourth: '#CBB3A3',
-				fifth: '#DCD0C4',
+				first: '#F6F5F1',
+				second: '#E9E8E3',
+				text: '#5C4B51',
+				important: '#4A9690',
 			},
 			spacing: {
 				'75vh': '75vh',
