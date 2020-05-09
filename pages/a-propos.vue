@@ -1,6 +1,6 @@
 <template>
 	<div>
-		Homepage
+		A propos
 	</div>
 </template>
 

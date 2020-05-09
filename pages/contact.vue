@@ -1,6 +1,6 @@
 <template>
 	<div>
-		Homepage
+		Contact
 	</div>
 </template>
 

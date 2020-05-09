@@ -1,6 +1,6 @@
 <template>
 	<div>
-		Homepage
+		Destinations
 	</div>
 </template>
 

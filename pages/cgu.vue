@@ -1,6 +1,6 @@
 <template>
 	<div>
-		Homepage
+		CGU
 	</div>
 </template>
 
