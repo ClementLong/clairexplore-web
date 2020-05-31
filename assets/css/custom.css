@@ -5,3 +5,7 @@
 		width: 700px;
 	}
 }
+
+.sm\:small-container {
+	width: 95%;
+}
