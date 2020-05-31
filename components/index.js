@@ -4,10 +4,14 @@ import Vue from 'vue'
 import Header from './Header'
 import Footer from './Footer'
 import Logo from './Logo'
+import Search from './Search'
+import Social from './Social'
 
 Vue.component('Header', Header)
 Vue.component('Footer', Footer)
 Vue.component('Logo', Logo)
+Vue.component('Search', Search)
+Vue.component('Social', Social)
 
 // Pages
 import pages from './pages'
