@@ -6,12 +6,14 @@ import Footer from './Footer'
 import Logo from './Logo'
 import Search from './Search'
 import Social from './Social'
+import WorldMap from './WorldMap'
 
 Vue.component('Header', Header)
 Vue.component('Footer', Footer)
 Vue.component('Logo', Logo)
 Vue.component('Search', Search)
 Vue.component('Social', Social)
+Vue.component('WorldMap', WorldMap)
 
 // Pages
 import pages from './pages'

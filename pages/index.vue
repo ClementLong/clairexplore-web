@@ -1,6 +1,7 @@
 <template>
 	<div>
 		Homepage
+		<WorldMap />
 	</div>
 </template>
 
