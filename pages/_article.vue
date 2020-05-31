@@ -19,21 +19,57 @@
 
 		<Divider />
 
-		<Single image="/test.jpg" />
-		<Duo left="/test.jpg" right="/test.jpg" />
-		<Double left="/test.jpg" right="/test.jpg" />
-		<Cover image="/test.jpg" />
-		<Scotch image="/test.jpg" />
+		<Single image="/images/test.jpg" alt="nom de l'image" />
+		<Single image="/images/test2.jpg" alt="nom de l'image" title="Titre de l'image" />
+
+		<Duo
+			left="/images/test.jpg" left-alt="nom de l'image"
+			right="/images/test.jpg" right-alt="nom de l'image"
+		/>
+		<Duo
+			left="/images/test.jpg" left-alt="nom de l'image" left-title="nom de l'image"
+			right="/images/test2.jpg" right-alt="nom de l'image" right-title="nom de l'image 2"
+		/>
+
+		<Double
+			left="/images/test.jpg" left-alt="nom de l'image"
+			right="/images/test2.jpg" right-alt="nom de l'image"
+		/>
+
+		<Double
+			left="/images/test.jpg" left-alt="nom de l'image" left-title="nom de l'image"
+			right="/images/test2.jpg" right-alt="nom de l'image" right-title="nom de l'image 2"
+		/>
+
 		<MixedTextImage
-			image="/test.jpg"
+			:reverse="true"
+			image="/images/test.jpg" alt="nom de l'image"
 			text="La crique est le bras de mer qui séparent deux quartiers historiques de Dubaï : Bur Dubaï et Deira. Pour se rendre d’un quartier à l’autre, je vous conseille de monter à bord d’un abra. C’est une embarcation traditionnelle en bois accessible depuis l’une des stations situées le long de la crique."
 		/>
 
-		<PolaSingle image="/test.jpg" />
-		<PolaDuo left="/test.jpg" right="/test.jpg" />
-		<PolaTrio left="/test.jpg" center="/test.jpg" right="/test.jpg" />
+		<MixedTextImage
+			:reverse="false"
+			image="/images/test.jpg" alt="nom de l'image" title="test"
+			text="La crique est le bras de mer qui séparent deux quartiers historiques de Dubaï : Bur Dubaï et Deira. Pour se rendre d’un quartier à l’autre, je vous conseille de monter à bord d’un abra. C’est une embarcation traditionnelle en bois accessible depuis l’une des stations situées le long de la crique."
+		/>
+
+		<MixedTextImage
+			:reverse="true"
+			image="/images/test.jpg" alt="nom de l'image"
+			text="La crique est le bras de mer qui séparent deux quartiers historiques de Dubaï : Bur Dubaï et Deira. Pour se rendre d’un quartier à l’autre, je vous conseille de monter à bord d’un abra. C’est une embarcation traditionnelle en bois accessible depuis l’une des stations situées le long de la crique."
+		/>
+
+
+		<Cover image="/images/test.jpg" alt="nom de l'image" title="test" />
+
+		<Scotch image="/images/test.jpg" />
+
+		<PolaSingle image="/images/test.jpg" />
+		<PolaDuo left="/images/test.jpg" right="/images/test.jpg" />
+		<PolaTrio left="/images/test.jpg" center="/images/test.jpg" right="/images/test.jpg" />
+
 		<MixedTextPolaroid
-			image="/test.jpg"
+			image="/images/test.jpg" alt="nom de l'image"
 			text="La crique est le bras de mer qui séparent deux quartiers historiques de Dubaï : Bur Dubaï et Deira. Pour se rendre d’un quartier à l’autre, je vous conseille de monter à bord d’un abra. C’est une embarcation traditionnelle en bois accessible depuis l’une des stations situées le long de la crique."
 		/>
 

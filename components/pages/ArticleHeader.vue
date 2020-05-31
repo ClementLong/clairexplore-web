@@ -48,7 +48,6 @@ export default {
 		},
 		bgStyle() {
 			return `transform: translate3d(0, ${this.bgPosition / 2 }px, 0) scale(1.0, 1.0);`
-			// return `background: url('${this.cover}') center center / cover no-repeat; transform: translate3d(0, ${this.bgPosition / 2 }px, 0);`
 		}
 	},
 	created () {
@@ -61,7 +60,9 @@ export default {
 	},
 	methods: {
 		scroll (event) {
-			this.bgPosition = event.target.scrollingElement.scrollTop
+			if(event.target.scrollingElement.scrollTop < 500) {
+				this.bgPosition = event.target.scrollingElement.scrollTop
+			}
 		}
 	}
 }
