@@ -1,6 +1,6 @@
 <template>
 	<div>
-		Homepage
+		<Presentation />
 		<WorldMap />
 	</div>
 </template>

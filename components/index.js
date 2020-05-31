@@ -19,6 +19,7 @@ Vue.component('WorldMap', WorldMap)
 import pages from './pages'
 
 Vue.component('ArticleHeader', pages.ArticleHeader)
+Vue.component('Presentation', pages.Presentation)
 
 // Contents
 import contents from './contents'
