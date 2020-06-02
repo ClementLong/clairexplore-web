@@ -20,6 +20,12 @@ import pages from './pages'
 
 Vue.component('ArticleHeader', pages.ArticleHeader)
 Vue.component('Presentation', pages.Presentation)
+Vue.component('LastArticle', pages.LastArticle)
+
+// UI Kit
+import uiKit from './ui-kit'
+
+Vue.component('Button', uiKit.Button)
 
 // Contents
 import contents from './contents'
@@ -31,6 +37,7 @@ Vue.component('Divider', contents.Divider)
 
 // Content - Images
 Vue.component('Single', contents.images.Single)
+Vue.component('BigPicture', contents.images.BigPicture)
 Vue.component('Duo', contents.images.Duo)
 Vue.component('Double', contents.images.Double)
 Vue.component('Cover', contents.images.Cover)
