@@ -22,6 +22,8 @@
 		<Single image="/images/test.jpg" alt="nom de l'image" />
 		<Single image="/images/test2.jpg" alt="nom de l'image" title="Titre de l'image" />
 
+		<BigPicture image="/images/test2.jpg" alt="nom de l'image" title="Titre de l'image" />
+
 		<Duo
 			left="/images/test.jpg" left-alt="nom de l'image"
 			right="/images/test.jpg" right-alt="nom de l'image"
@@ -64,18 +66,37 @@
 
 		<Scotch image="/images/test.jpg" />
 
-		<PolaSingle image="/images/test.jpg" />
-		<PolaDuo left="/images/test.jpg" right="/images/test.jpg" />
-		<PolaTrio left="/images/test.jpg" center="/images/test.jpg" right="/images/test.jpg" />
+		<PolaSingle image="/images/test.jpg" alt="nom de l'image" title="test" />
+		<PolaSingle image="/images/test2.jpg" alt="nom de l'image" />
+
+		<PolaDuo
+			left="/images/test.jpg" left-alt="nom de l'image"
+			right="/images/test2.jpg" right-alt="nom de l'image" right-title="nom de l'image 2"
+		/>
+
+		<PolaTrio
+			left="/images/test.jpg" left-alt="nom de l'image"
+			right="/images/test2.jpg" right-alt="nom de l'image" right-title="nom de l'image 2"
+			center="/images/test.jpg" center-alt="nom de l'image"
+		/>
 
 		<MixedTextPolaroid
+			:reverse="true"
 			image="/images/test.jpg" alt="nom de l'image"
 			text="La crique est le bras de mer qui séparent deux quartiers historiques de Dubaï : Bur Dubaï et Deira. Pour se rendre d’un quartier à l’autre, je vous conseille de monter à bord d’un abra. C’est une embarcation traditionnelle en bois accessible depuis l’une des stations situées le long de la crique."
 		/>
 
+		<MixedTextPolaroid
+			:reverse="false"
+			image="/images/test2.jpg" alt="nom de l'image"
+			text="La crique est le bras de mer qui séparent deux quartiers historiques de Dubaï : Bur Dubaï et Deira. Pour se rendre d’un quartier à l’autre, je vous conseille de monter à bord d’un abra. C’est une embarcation traditionnelle en bois accessible depuis l’une des stations situées le long de la crique."
+		/>
+
 		<Video />
-		<Map />
-		<Slider />
+		<Map url="https://www.google.com/maps/d/embed?mid=18WmJKsjMiMmpWQjosrVfnhD9owQQPK5R" />
+		<Slider
+			:images="[{ url: '/images/test2.jpg'},{ url:'/images/test.jpg'}]"
+		/>
 
 	</div>
 </template>
