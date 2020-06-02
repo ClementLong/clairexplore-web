@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<Presentation />
+		<LastArticle />
 		<WorldMap />
 	</div>
 </template>
