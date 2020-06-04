@@ -1,0 +1,23 @@
+<template>
+	<picture class="w-full">
+		<source media="(min-width:650px)" :srcset="MEDIA_URL + image.url">
+		<source media="(min-width:465px)" :srcset="MEDIA_URL + image.formats.medium.url">
+		<img :src="MEDIA_URL + image.formats.small.url" :alt="image.alternativeText" class="w-full">
+	</picture>
+</template>
+
+<script>
+export default {
+	props: {
+		image: {
+			type: Object,
+			required: true
+		}
+	},
+	data() {
+		return {
+			MEDIA_URL: process.env.MEDIA_URL,
+		}
+	}
+}
+</script>

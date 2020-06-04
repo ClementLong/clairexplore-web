@@ -2,7 +2,7 @@
 	<div class="text-lightblack">
 		<div class="h-35vw md:h-25vw w-full overflow-hidden">
 			<div ref="background" class="w-full h-35vw md:h-25vw flex items-center" :style="bgStyle">
-				<img class="w-full" :src="cover" alt="">
+				<Photo :image="cover" />
 			</div>
 		</div>
 		<h1 class="mt-4 md:mt-12 mb-4 text-3xl font-heading font-bold uppercase text-center px-4">{{ title }}</h1>
@@ -33,7 +33,7 @@ export default {
 			required: true
 		},
 		cover: {
-			type: String,
+			type: Object,
 			required: true
 		},
 	},

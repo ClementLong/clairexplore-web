@@ -28,6 +28,7 @@ Vue.component('LastArticle', pages.LastArticle)
 import uiKit from './ui-kit'
 
 Vue.component('Button', uiKit.Button)
+Vue.component('Photo', uiKit.Photo)
 
 // Contents
 import contents from './contents'
@@ -39,10 +40,8 @@ Vue.component('Divider', contents.Divider)
 
 // Content - Images
 Vue.component('Single', contents.images.Single)
-Vue.component('BigPicture', contents.images.BigPicture)
 Vue.component('Duo', contents.images.Duo)
 Vue.component('Double', contents.images.Double)
-Vue.component('Cover', contents.images.Cover)
 Vue.component('Scotch', contents.images.Scotch)
 Vue.component('MixedTextImage', contents.images.MixedTextImage)
 
@@ -55,6 +54,5 @@ Vue.component('MixedTextPolaroid', contents.polaroids.MixedTextPolaroid)
 // Content - Texts
 Vue.component('Paragraph', contents.texts.Paragraph)
 Vue.component('Collapsible', contents.texts.Collapsible)
-Vue.component('Subtitle', contents.texts.Subtitle)
 Vue.component('Title', contents.texts.Title)
 Vue.component('Tips', contents.texts.Tips)
