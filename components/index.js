@@ -7,6 +7,7 @@ import Logo from './Logo'
 import Search from './Search'
 import Social from './Social'
 import WorldMap from './WorldMap'
+import ArticlePreview from './ArticlePreview'
 
 Vue.component('Header', Header)
 Vue.component('Footer', Footer)
@@ -14,6 +15,7 @@ Vue.component('Logo', Logo)
 Vue.component('Search', Search)
 Vue.component('Social', Social)
 Vue.component('WorldMap', WorldMap)
+Vue.component('ArticlePreview', ArticlePreview)
 
 // Pages
 import pages from './pages'

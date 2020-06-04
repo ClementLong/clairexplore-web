@@ -44,7 +44,7 @@ export default {
 	},
 	computed: {
 		formatedDate() {
-			return moment(this.date).lang("fr").format('Do MMMM YYYY')
+			return moment(this.date).locale('fr').format('Do MMMM YYYY')
 		},
 		bgStyle() {
 			return `transform: translate3d(0, ${this.bgPosition / 2 }px, 0) scale(1.0, 1.0);`

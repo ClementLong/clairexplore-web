@@ -102,7 +102,12 @@
 </template>
 
 <script lang="ts">
-export default {
+// import axios from 'axios'
 
+export default {
+	// async asyncData({ params }: any) {
+	// 	const { data } = await axios.get(`https://my-api/posts/${params.article}`)
+	// 	return { content: data }
+	// }
 }
 </script>

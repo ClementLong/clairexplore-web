@@ -7,7 +7,11 @@
 			Articles
 		</h3>
 		<div>
-			List
+			<ArticlePreview
+				v-for="article in articles"
+				:key="article.id"
+				:article="article"
+			/>
 		</div>
 		<Button to="/" text="test" />
 	</div>
@@ -15,7 +19,12 @@
 
 <script>
 export default {
-
+	props: {
+		articles: {
+			type: Array,
+			required: true
+		}
+	}
 }
 </script>
 
