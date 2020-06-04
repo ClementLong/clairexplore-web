@@ -54,5 +54,9 @@ module.exports = {
 		*/
 		extend (config, ctx) {
 		}
+	},
+	env: {
+		MEDIA_URL: process.env.MEDIA_URL || 'http://localhost:1337',
+		API_URL: process.env.API_URL || 'http://localhost:1337'
 	}
 }
