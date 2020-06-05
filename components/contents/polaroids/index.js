@@ -1,11 +1,7 @@
-import Single from './Single'
-import Duo from './Duo'
-import Trio from './Trio'
+import Pola from './Pola'
 import MixedTextPolaroid from './MixedTextPolaroid'
 
 export default {
-	Single,
-	Duo,
-	Trio,
+	Pola,
 	MixedTextPolaroid,
 }

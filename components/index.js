@@ -46,9 +46,7 @@ Vue.component('Scotch', contents.images.Scotch)
 Vue.component('MixedTextImage', contents.images.MixedTextImage)
 
 // Content - Polaroids
-Vue.component('PolaSingle', contents.polaroids.Single)
-Vue.component('PolaDuo', contents.polaroids.Duo)
-Vue.component('PolaTrio', contents.polaroids.Trio)
+Vue.component('Pola', contents.polaroids.Pola)
 Vue.component('MixedTextPolaroid', contents.polaroids.MixedTextPolaroid)
 
 // Content - Texts

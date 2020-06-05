@@ -2,7 +2,7 @@
 	<swiper class="swiper container h-50vh bg-white py-5" :options="swiperOption">
 		<swiper-slide v-for="(image, index) in images" :key="index">
 			<div class="flex items-center justify-center w-full bg-white max-h-full max-w-full">
-				<img :src="image.url" :alt="image.alt" class="max-h-full max-w-full">
+				<Photo :image="image" />
 			</div>
 		</swiper-slide>
 		<div class="swiper-pagination" slot="pagination"></div>

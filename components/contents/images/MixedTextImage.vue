@@ -2,22 +2,40 @@
 	<div
 		:class="[
 			'container m-auto pb-5 flex items-center',
-			reverse ? 'flex-col lg:flex-row' : 'flex-col-reverse lg:flex-row-reverse'
+			reverse ? 'lg:flex-row' : 'lg:flex-row-reverse',
+			mobileReverse ? 'flex-col' : 'flex-col-reverse'
 		]"
 	>
-		<div :class="['flex-1', reverse ? 'lg:pr-5 pb-5 lg:pb-0' : 'lg:pl-5']">
-			<img :src="image" :alt="alt" class="w-full">
-			<h5 v-if="title" class="text-lightblack font-heading font-bold pt-2 text-center">{{ title }}</h5>
+		<div
+			:class="[
+				'flex-1',
+				reverse ? 'lg:pr-5 lg:pb-0' : 'lg:pl-5',
+				mobileReverse ? 'pb-5' : 'pb-0'
+			]"
+		>
+			<Photo :image="image" />
+			<h5 v-if="image.caption" class="text-lightblack font-heading font-bold pt-2 text-center">{{ image.caption }}</h5>
 		</div>
-		<div :class="['flex-1 text-lightblack font-body sm:small-container', reverse ? 'lg:pl-5' : 'lg:pr-5 pb-5 lg:pb-0']">
-			{{ text }}
-		</div>
+		<div
+			:class="[
+				'paragraph flex-1 text-lightblack font-body sm:small-container',
+				reverse ? 'lg:pl-5' : 'lg:pr-5 lg:pb-0',
+				mobileReverse ? 'pb-0' : 'pb-5'
+			]"
+			v-html="htmlText"
+		></div>
 	</div>
 </template>
 
-<script lang="ts">
+<script>
+import marked from 'marked'
+
 export default {
 	props: {
+		mobileReverse: {
+			type: Boolean,
+			required: true
+		},
 		reverse: {
 			type: Boolean,
 			required: true
@@ -27,16 +45,13 @@ export default {
 			required: true
 		},
 		image: {
-			type: String,
+			type: Object,
 			required: true
 		},
-		alt: {
-			type: String,
-			required: true
-		},
-		title: {
-			type: String,
-			default: null
+	},
+	computed: {
+		htmlText() {
+			return marked(this.text, { breaks: true })
 		}
 	}
 }

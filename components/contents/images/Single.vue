@@ -4,7 +4,7 @@
 		:class="[size == 'big' ? 'container' : '', size == 'small' ? 'small-container' : '']"
 	>
 		<Photo :image="image" />
-		<h5 v-if="title" class="text-lightblack font-heading font-bold pt-2 text-center">{{ title }}</h5>
+		<h5 v-if="image.caption" class="text-lightblack font-heading font-bold pt-2 text-center">{{ image.caption }}</h5>
 	</div>
 </template>
 
@@ -19,14 +19,6 @@ export default {
 			type: Object,
 			required: true
 		},
-		alt: {
-			type: String,
-			required: true
-		},
-		title: {
-			type: String,
-			default: null
-		}
 	}
 }
 </script>

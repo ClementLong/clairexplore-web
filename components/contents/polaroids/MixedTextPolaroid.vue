@@ -2,22 +2,40 @@
 	<div
 		:class="[
 			'container m-auto pb-5 flex items-center',
-			reverse ? 'flex-col lg:flex-row' : 'flex-col-reverse lg:flex-row-reverse'
+			reverse ? 'lg:flex-row' : 'lg:flex-row-reverse',
+			mobileReverse ? 'flex-col' : 'flex-col-reverse'
 		]"
 	>
-		<div :class="['flex-1 bg-darkwhite p-6 pb-16 shadow relative', reverse ? 'lg:pr-5' : 'lg:pl-5']">
-			<img :src="image" :alt="alt" class="w-full">
-			<h5 v-if="title" class="absolute left-0 text-lightblack font-heading font-bold pt-4 text-xl text-center w-full">{{ title }}</h5>
+		<div
+			:class="[
+				'flex-1 bg-darkwhite p-6 pb-16 shadow relative',
+				reverse ? 'lg:mr-5 lg:mb-0' : 'lg:ml-5',
+				mobileReverse ? 'mb-5' : 'mb-0'
+			]"
+		>
+			<Photo :image="image" />
+			<h5 v-if="image.caption" class="absolute left-0 text-lightblack font-heading font-bold pt-4 text-xl text-center w-full">{{ image.caption }}</h5>
 		</div>
-		<div :class="['flex-1 text-lightblack font-body sm:small-container', reverse ? 'lg:pl-5' : 'lg:pr-5']">
-			{{ text }}
-		</div>
+		<div
+			:class="[
+				'paragraph flex-1 text-lightblack font-body sm:small-container',
+				reverse ? 'lg:ml-5' : 'lg:mr-5 lg:mb-0',
+				mobileReverse ? 'mb-0' : 'mb-5'
+			]"
+			v-html="htmlText"
+		></div>
 	</div>
 </template>
 
-<script lang="ts">
+<script>
+import marked from 'marked'
+
 export default {
 	props: {
+		mobileReverse: {
+			type: Boolean,
+			required: true
+		},
 		reverse: {
 			type: Boolean,
 			required: true
@@ -27,16 +45,13 @@ export default {
 			required: true
 		},
 		image: {
-			type: String,
+			type: Object,
 			required: true
 		},
-		alt: {
-			type: String,
-			required: true
-		},
-		title: {
-			type: String,
-			default: null
+	},
+	computed: {
+		htmlText() {
+			return marked(this.text, { breaks: true })
 		}
 	}
 }
