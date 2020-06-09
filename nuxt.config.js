@@ -7,12 +7,13 @@ module.exports = {
 	head: {
 		title: process.env.npm_package_name || '',
 		meta: [
-		{ charset: 'utf-8' },
-		{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-		{ hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+			{ charset: 'utf-8' },
+			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+			{ hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
 		],
 		link: [
-		{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,400;1,600;1,700&display=swap' }
 		]
 	},
 	/*
@@ -38,7 +39,8 @@ module.exports = {
 		// Doc: https://github.com/nuxt-community/stylelint-module
 		'@nuxtjs/stylelint-module',
 		// Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-		'@nuxtjs/tailwindcss'
+		'@nuxtjs/tailwindcss',
+		// '@nuxtjs/pwa',
 	],
 	/*
 	** Nuxt.js modules
@@ -58,5 +60,12 @@ module.exports = {
 	env: {
 		MEDIA_URL: process.env.MEDIA_URL || 'http://localhost:1337',
 		API_URL: process.env.API_URL || 'http://localhost:1337'
-	}
+	},
+	pwa: {
+		manifest: {
+			name: 'Clairexplore',
+			lang: 'fr',
+			display: 'fullscreen'
+		}
+	 }
 }

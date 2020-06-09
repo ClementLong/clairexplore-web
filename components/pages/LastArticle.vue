@@ -6,14 +6,15 @@
 		<h3 class="font-heading font-bold text-2xl text-lightdark">
 			Articles
 		</h3>
-		<div>
+		<div class="container m-auto flex flex-wrap">
 			<ArticlePreview
 				v-for="article in articles"
 				:key="article.id"
 				:article="article"
+				class="lg:w-1/3 lg:p-6 p-4"
 			/>
 		</div>
-		<Button to="/" text="test" />
+		<Button to="/blog" text="Voir plus d'articles" />
 	</div>
 </template>
 
@@ -27,7 +28,3 @@ export default {
 	}
 }
 </script>
-
-<style>
-
-</style>

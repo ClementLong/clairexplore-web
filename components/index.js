@@ -23,6 +23,11 @@ import pages from './pages'
 Vue.component('ArticleHeader', pages.ArticleHeader)
 Vue.component('Presentation', pages.Presentation)
 Vue.component('LastArticle', pages.LastArticle)
+Vue.component('ArticleByCountry', pages.ArticleByCountry)
+Vue.component('ArticleByContinent', pages.ArticleByContinent)
+Vue.component('AboutInfo', pages.AboutInfo)
+Vue.component('SearchResult', pages.SearchResult)
+Vue.component('Instagram', pages.Instagram)
 
 // UI Kit
 import uiKit from './ui-kit'

@@ -103,7 +103,7 @@ import axios from 'axios'
 
 export default {
 	async asyncData({ params }: any) {
-		const article = await axios.get(`http://localhost:1337/articles?slug=${params.article}`)
+		const article = await axios.get(`${process.env.API_URL}/articles?slug=${params.article}`)
 		return { article: article.data[0] }
 	}
 }

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		A propos
+		<!-- <Tips  /> -->
 	</div>
 </template>
 

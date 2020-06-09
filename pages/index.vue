@@ -9,7 +9,6 @@
 			:articles="articles"
 		/>
 		<WorldMap />
-		{{ articles }}
 	</div>
 </template>
 
@@ -18,8 +17,8 @@ import axios from 'axios'
 
 export default {
 	async asyncData() {
-		const homepage = await axios.get(`http://localhost:1337/homepage`)
-		const articles = await axios.get(`http://localhost:1337/articles?published=true`)
+		const homepage = await axios.get(`${process.env.API_URL}/homepage`)
+		const articles = await axios.get(`${process.env.API_URL}/articles?published=true`)
 		return {
 			articles: articles.data,
 			homepage: homepage.data,

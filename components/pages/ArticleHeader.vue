@@ -1,7 +1,7 @@
 <template>
 	<div class="text-lightblack">
-		<div class="h-35vw md:h-25vw w-full overflow-hidden">
-			<div ref="background" class="w-full h-35vw md:h-25vw flex items-center" :style="bgStyle">
+		<div class="h-35vw md:h-50vh w-full overflow-hidden relative">
+			<div ref="background" class="w-full h-35vw md:h-50vh flex items-center" :style="bgStyle">
 				<Photo :image="cover" />
 			</div>
 		</div>
@@ -60,10 +60,11 @@ export default {
 	},
 	methods: {
 		scroll (event) {
-			if(event.target.scrollingElement.scrollTop < 500) {
+			if(event.target.scrollingElement.scrollTop < 1000) {
 				this.bgPosition = event.target.scrollingElement.scrollTop
 			}
 		}
 	}
 }
 </script>
+

@@ -9,12 +9,15 @@
 			type="text"
 			id="search"
 			name="search"
+			v-model="query"
 			@focusin="isFocus = true"
 			@focusout="isFocus = false"
+			@keypress.enter="search"
 		>
 		<label
 			role="button"
 			for="search"
+			@click="search"
 			:class="[
 				isFocus ? 'border-pink' : 'border-darkwhite',
 				'outline-none cursor-pointer flex items-center justify-center border-r-2 border-t-2 border-b-2 rounded-r-lg w-6 pr-2'
@@ -31,7 +34,15 @@
 export default {
 	data() {
 		return {
-			isFocus: false
+			isFocus: false,
+			query: ''
+		}
+	},
+	methods: {
+		search() {
+			if(!this.query.length) return
+			this.$router.push(`/recherche/${this.query}`)
+			this.query = ''
 		}
 	}
 }
