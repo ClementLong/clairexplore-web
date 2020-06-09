@@ -22,11 +22,18 @@ import axios from 'axios'
 
 export default {
 	async asyncData() {
-		const listing = await axios.get(`${process.env.API_URL}/listing`)
-		const articles = await axios.get(`${process.env.API_URL}/articles?published=true`)
-		return {
-			articles: articles.data,
-			listing: listing.data,
+		try {
+			const listing = await axios.get(`${process.env.API_URL}/listing`)
+			const articles = await axios.get(`${process.env.API_URL}/articles?published=true`)
+			return {
+				articles: articles.data,
+				listing: listing.data,
+			}
+		} catch {
+			return {
+				articles: null,
+				listing: null,
+			}
 		}
 	}
 }

@@ -103,8 +103,12 @@ import axios from 'axios'
 
 export default {
 	async asyncData({ params }: any) {
-		const article = await axios.get(`${process.env.API_URL}/articles?slug=${params.article}`)
-		return { article: article.data[0] }
+		try {
+			const article = await axios.get(`${process.env.API_URL}/articles?slug=${params.article}`)
+			return { article: article.data[0] }
+		} catch {
+			return {}
+		}
 	}
 }
 </script>

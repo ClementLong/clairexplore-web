@@ -1,7 +1,7 @@
 <template>
-	<div class="fixed w-full z-10 bg-white border-b-2 border-darkwhite">
+	<div class="md:fixed w-full z-10 border-b-2 border-darkwhite md:bg-white">
 		<header class="hidden md:flex justify-between h-12 items-center container m-auto">
-			<nuxt-link class="flex justify-center" to="/">
+			<nuxt-link class="flex justify-center mt-1" to="/">
 				<h2 class="h-10">
 					<Logo />
 				</h2>
@@ -20,8 +20,37 @@
 			<Social />
 			<Search />
 		</header>
-		<div class="flex md:hidden">
-			Mobile
+		<div class="flex md:hidden justify-between h-12 items-center container m-auto">
+			<nuxt-link class="flex justify-center" :class="{ 'fixed z-30': isOpen }" to="/">
+				<h2 class="h-10 mt-1">
+					<Logo />
+				</h2>
+			</nuxt-link>
+			<div class="mr-2 fixed right-0 z-30" @click="isOpen = !isOpen">
+				<div class="bar-1"></div>
+				<div class="bar-2"></div>
+				<div class="bar-3"></div>
+			</div>
+			<nav class="fixed top-0 w-full bg-white h-screen p-8 z-20" v-if="isOpen">
+				<div class="flex flex-col items-center">
+					<div class="flex flex-col items-center mt-8">
+						<nuxt-link class="hover:text-important py-4" to="/blog">
+							Homepage
+						</nuxt-link>
+						<nuxt-link class="hover:text-important py-4" to="/blog">
+							Articles
+						</nuxt-link>
+						<nuxt-link class="hover:text-important py-4" to="/destinations">
+							Destinations
+						</nuxt-link>
+						<nuxt-link class="hover:text-important py-4" to="/a-propos">
+							A propos
+						</nuxt-link>
+					</div>
+					<Social class="mt-8" />
+					<Search class="mr-4 mt-8" />
+				</div>
+			</nav>
 		</div>
 	</div>
 </template>
@@ -43,5 +72,17 @@ export default {
 
 	.fill-default {
 		fill: #E9E8E3;
+	}
+
+	.bar-1 {
+		@apply h-1 w-8 mb-2 bg-lightblack rounded;
+	}
+
+	.bar-2 {
+		@apply h-1 w-8 mb-2 bg-lightblack rounded;
+	}
+
+	.bar-3 {
+		@apply h-1 w-8 bg-lightblack rounded;
 	}
 </style>

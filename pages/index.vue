@@ -18,7 +18,7 @@ import axios from 'axios'
 export default {
 	async asyncData() {
 		const homepage = await axios.get(`${process.env.API_URL}/homepage`)
-		const articles = await axios.get(`${process.env.API_URL}/articles?published=true`)
+		const articles = await axios.get(`${process.env.API_URL}/articles${process.env.API_URL ? '' : '?published=true'}`)
 		return {
 			articles: articles.data,
 			homepage: homepage.data,
