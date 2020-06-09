@@ -40,7 +40,7 @@ module.exports = {
 		'@nuxtjs/stylelint-module',
 		// Doc: https://github.com/nuxt-community/nuxt-tailwindcss
 		'@nuxtjs/tailwindcss',
-		// '@nuxtjs/pwa',
+		'@nuxtjs/pwa',
 	],
 	/*
 	** Nuxt.js modules
