@@ -58,7 +58,7 @@ module.exports = {
 		}
 	},
 	env: {
-		MEDIA_URL: process.env.MEDIA_URL || 'http://localhost:1337',
+		MEDIA_URL: '',
 		API_URL: process.env.API_URL || 'http://localhost:1337'
 	},
 	pwa: {
