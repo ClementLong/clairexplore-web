@@ -8,9 +8,15 @@
 		<LastArticle
 			:articles="lastArticle"
 		/>
-		<WorldMap />
-
-		<ArticleByCountry :articles="articles" />
+		<WorldMap
+			:countryFilter="countryFilter"
+			@changeCountry="countryFilter = $event"
+		/>
+		<ArticleByCountry
+			:countryFilter="countryFilter"
+			:articles="articles"
+			:countries="options.country"
+			class="-mt-16" />
 	</div>
 </template>
 
@@ -20,10 +26,17 @@ import axios from 'axios'
 export default {
 	async asyncData() {
 		const homepage = await axios.get(`${process.env.API_URL}/homepage`)
+		const options = await axios.get(`${process.env.API_URL}/options`)
 		const articles = await axios.get(`${process.env.API_URL}/articles${process.env.STAGING ? '' : '?published=true'}`)
 		return {
+			options: options.data,
 			articles: articles.data,
 			homepage: homepage.data,
+		}
+	},
+	data() {
+		return {
+			countryFilter: 'FR'
 		}
 	},
 	computed: {

@@ -1,5 +1,5 @@
 <template>
-	<div class="md:fixed w-full z-30 border-b-2 border-darkwhite md:bg-white">
+	<div class="md:fixed w-full z-30 border-b-2 border-transparent md:border-darkwhite md:bg-white">
 		<header class="hidden md:flex justify-between h-12 items-center container m-auto">
 			<nuxt-link class="flex justify-center mt-1" to="/">
 				<h2 class="h-10">

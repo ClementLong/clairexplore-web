@@ -95,6 +95,10 @@
 
 		</div>
 
+		<ArticleFooter
+			class="mt-8"
+			:articles="article.linked_articles"
+		/>
 	</div>
 </template>
 
