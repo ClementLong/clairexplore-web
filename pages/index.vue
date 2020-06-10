@@ -6,13 +6,15 @@
 			:introduction="homepage.introduction"
 		/>
 		<LastArticle
-			:articles="articles"
+			:articles="lastArticle"
 		/>
 		<WorldMap />
+
+		<ArticleByCountry :articles="articles" />
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import axios from 'axios'
 
 export default {
@@ -22,6 +24,11 @@ export default {
 		return {
 			articles: articles.data,
 			homepage: homepage.data,
+		}
+	},
+	computed: {
+		lastArticle() {
+			return this.articles.slice(0, 3)
 		}
 	}
 }
