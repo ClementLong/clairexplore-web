@@ -3289,7 +3289,28 @@ configstore@^3.0.0:
     write-file-atomic "^2.0.0"
     xdg-basedir "^3.0.0"
 
-connect@^3.7.0:
+connect-injector@0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/connect-injector/-/connect-injector-0.4.4.tgz#a81959c31ecf5caa0f3dcc325c28ed90b830aa90"
+  integrity sha1-qBlZwx7PXKoPPcwyXCjtkLgwqpA=
+  dependencies:
+    debug "^2.0.0"
+    q "^1.0.1"
+    stream-buffers "^0.2.3"
+    uberproto "^1.1.0"
+
+connect-wwwhisper@*:
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/connect-wwwhisper/-/connect-wwwhisper-0.1.21.tgz#018429ec237ec6fd33436e38aecbcdefa6e0c6b5"
+  integrity sha512-BA1wl0ZMthUk1mPfk4ZnUBDVL/haRINTdwgP9rckRMS4BE4SCs4VVukC9GC1IKArkgQ9PLjTSlkHrOXJs5OYGA==
+  dependencies:
+    "@types/connect" "*"
+    connect ">= 2.7.2"
+    connect-injector "0.4.4"
+    urijs ">= 1.10.2"
+    url "*"
+
+"connect@>= 2.7.2", connect@^3.7.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/connect/-/connect-3.7.0.tgz#5d49348910caa5e07a01800b030d0c35f20484f8"
   integrity sha512-ZqRXc+tZukToSNmh5C2iWMSoV3X1YUcPbqEM4DkEG5tNQXrQUZCNVGGv3IuicnkMtPfGf3Xtp8WCXs295iQ1pQ==
@@ -3771,7 +3792,7 @@ de-indent@^1.0.2:
   resolved "https://registry.yarnpkg.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
   integrity sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=
 
-debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.9:
+debug@2.6.9, debug@^2.0.0, debug@^2.2.0, debug@^2.3.3, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   integrity sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==
@@ -9066,7 +9087,7 @@ purgecss@^1.1.0, purgecss@^1.4.0:
     postcss-selector-parser "^6.0.0"
     yargs "^14.0.0"
 
-q@^1.1.2:
+q@^1.0.1, q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
   integrity sha1-fjL3W0E4EpHQRhHxvxQQmsAGUdc=
@@ -10111,6 +10132,11 @@ stream-browserify@^2.0.1:
     inherits "~2.0.1"
     readable-stream "^2.0.2"
 
+stream-buffers@^0.2.3:
+  version "0.2.6"
+  resolved "https://registry.yarnpkg.com/stream-buffers/-/stream-buffers-0.2.6.tgz#181c08d5bb3690045f69401b9ae6a7a0cf3313fc"
+  integrity sha1-GBwI1bs2kARfaUAbmuanoM8zE/w=
+
 stream-each@^1.1.0:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/stream-each/-/stream-each-1.2.3.tgz#ebe27a0c389b04fbcc233642952e10731afa9bae"
@@ -10827,6 +10853,11 @@ ua-parser-js@^0.7.21:
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
   integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
 
+uberproto@^1.1.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/uberproto/-/uberproto-1.2.0.tgz#61d4eab024f909c4e6ea52be867c4894a4beeb76"
+  integrity sha1-YdTqsCT5CcTm6lK+hnxIlKS+63Y=
+
 uglify-js@3.4.x:
   version "3.4.10"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.4.10.tgz#9ad9563d8eb3acdfb8d38597d2af1d815f6a755f"
@@ -11046,6 +11077,11 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
+"urijs@>= 1.10.2":
+  version "1.19.2"
+  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.19.2.tgz#f9be09f00c4c5134b7cb3cf475c1dd394526265a"
+  integrity sha512-s/UIq9ap4JPZ7H1EB5ULo/aOUbWqfDi7FKzMC2Nz+0Si8GiT1rIEaprt8hy3Vy2Ex2aJPpOQv4P4DuOZ+K1c6w==
+
 urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
@@ -11067,7 +11103,7 @@ url-parse-lax@^1.0.0:
   dependencies:
     prepend-http "^1.0.1"
 
-url@^0.11.0:
+url@*, url@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/url/-/url-0.11.0.tgz#3838e97cfc60521eb73c525a8e55bfdd9e2e28f1"
   integrity sha1-ODjpfPxgUh63PFJajlW/3Z4uKPE=
