@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div ref="bg" :style="bgStyle" class="relative h-75vh md:h-auto overflow-hidden">
+		<div ref="bg" :style="bgStyle" class="relative h-75vh md:h-auto overflow-hidden will-change">
 			<img class="md:w-full h-75vh md:h-auto md:static absolute absolute-center transform -translate-x-1/2 md:translate-x-0 w-auto max-w-none" :src="cover" alt="Blog de voyage">
 		</div>
 		<div class="relative">
@@ -65,7 +65,7 @@ export default {
 		scroll (event) {
 			console.log(event.target.scrollingElement.scrollTop)
 			if(event.target.scrollingElement.scrollTop < 1000) {
-				this.bgPosition = event.target.scrollingElement.scrollTop
+				window.requestAnimationFrame(this.bgPosition = event.target.scrollingElement.scrollTop)
 			}
 		}
 	}
@@ -83,5 +83,9 @@ h3, p {
 
 .absolute-center {
 	left: 50%;
+}
+
+.will-change {
+	will-change: transform;
 }
 </style>
