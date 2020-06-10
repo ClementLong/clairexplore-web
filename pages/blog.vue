@@ -24,7 +24,7 @@ export default {
 	async asyncData() {
 		try {
 			const listing = await axios.get(`${process.env.API_URL}/listing`)
-			const articles = await axios.get(`${process.env.API_URL}/articles?published=true`)
+			const articles = await axios.get(`${process.env.API_URL}/articles${process.env.STAGING ? '' : '?published=true'}`)
 			return {
 				articles: articles.data,
 				listing: listing.data,

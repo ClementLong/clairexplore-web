@@ -11,9 +11,11 @@ import axios from 'axios'
 
 export default {
 	async asyncData() {
-		const articles = await axios.get(`${process.env.API_URL}/articles?published=true`)
+		const destination = await axios.get(`${process.env.API_URL}/destination`)
+		const articles = await axios.get(`${process.env.API_URL}/articles${process.env.STAGING ? '' : '?published=true'}`)
 		return {
 			articles: articles.data,
+			destination: destination.data,
 		}
 	}
 }
