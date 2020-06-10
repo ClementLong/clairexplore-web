@@ -4,7 +4,7 @@ const { Nuxt, Builder } = require('nuxt')
 const app = express()
 const basicAuth = require('express-basic-auth')
 
-if(process.env.STAGING) {
+if(process.env.STAGING == 'TRUE') {
 	app.use(basicAuth({
 		users: { 'admin': 'Evreux' },
 		challenge: true
