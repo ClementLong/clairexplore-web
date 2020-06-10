@@ -8,10 +8,7 @@ const basicAuth = require('express-basic-auth')
 const config = require('../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
-console.log(process.env)
-console.log(process.env.STAGING)
-
-if(process.env.STAGING == 'TRUE') {
+if(true) {
 	app.use(basicAuth({
 		users: { 'admin': 'Evreux' },
 		challenge: true
