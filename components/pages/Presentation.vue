@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<div ref="bg" :style="bgStyle" class="relative z-20 h-75vh md:h-auto overflow-hidden">
+		<div ref="bg" :style="bgStyle" class="relative h-75vh md:h-auto overflow-hidden">
 			<img class="md:w-full h-75vh md:h-auto md:static absolute absolute-center transform -translate-x-1/2 md:translate-x-0 w-auto max-w-none" :src="cover" alt="Blog de voyage">
 		</div>
-		<div :style="textStyle" class="relative z-10">
+		<div class="relative">
 			<h1 class="font-heading font-bold text-lightblack text-2xl md:text-3xl text-center px-3">Bienvenue dans mon blog de voyage</h1>
 		</div>
-		<div class="container m-auto flex flex-col md:flex-row items-center pt-5 md:pt-0 pb-12">
+		<div class="relative z-10 container m-auto flex flex-col md:flex-row items-center pt-5 md:pt-12 pb-12">
 			<div class="text-center text-lightblack flex-1 px-8" v-html="introduction">
 			</div>
 			<div class="flex-1 px-8">
@@ -46,11 +46,8 @@ export default {
 			return this.bgPosition / (this.bgHeight - 50)
 		},
 		bgStyle() {
-			return `transition: 0.1s; transform: translate3d(0, -${ this.imageScrolled * 22 }%, 0) scale(1.0, 1.0); opacity: ${ 1.2 - this.imageScrolled * 2};`
+			return `transform: translate3d(0, ${ this.imageScrolled * 35 }%, 0) scale(1.0, 1.0) scale(${ this.imageScrolled * 0.1 + 1}); opacity: ${ 1.5 - this.imageScrolled * 1.5};`
 		},
-		textStyle() {
-			return `transition: 0.1s; transform: translate3d(0, ${ this.imageScrolled * 150 - this.bgHeight * 0.4 }px, 0) scale(1.0, 1.0); opacity: ${ this.imageScrolled * 10};`
-		}
 	},
 	created () {
 		if (process.browser){

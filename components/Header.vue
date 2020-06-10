@@ -26,7 +26,7 @@
 					<Logo />
 				</h2>
 			</nuxt-link>
-			<div class="mr-2 fixed right-0 z-50" @click="isOpen = !isOpen">
+			<div class="p-2 top-0 fixed right-0 z-50 bg-white rounded-bl-lg border-b-2 border-l-2 border-darkwhite" @click="isOpen = !isOpen">
 				<div class="bar-1"></div>
 				<div class="bar-2"></div>
 				<div class="bar-3"></div>
