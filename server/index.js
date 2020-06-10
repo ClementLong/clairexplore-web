@@ -4,16 +4,19 @@ const { Nuxt, Builder } = require('nuxt')
 const app = express()
 const basicAuth = require('express-basic-auth')
 
+// Import and Set Nuxt.js options
+const config = require('../nuxt.config.js')
+config.dev = process.env.NODE_ENV !== 'production'
+
+console.log(process.env)
+console.log(process.env.STAGING)
+
 if(process.env.STAGING == 'TRUE') {
 	app.use(basicAuth({
 		users: { 'admin': 'Evreux' },
 		challenge: true
 	}))
 }
-
-// Import and Set Nuxt.js options
-const config = require('../nuxt.config.js')
-config.dev = process.env.NODE_ENV !== 'production'
 
 async function start () {
   // Init Nuxt.js
