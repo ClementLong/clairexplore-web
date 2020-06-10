@@ -1,1 +1,1 @@
-web: nuxt staging
+web: nuxt start
