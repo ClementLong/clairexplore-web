@@ -29,7 +29,7 @@ module.exports = {
 		 }
 	},
 	variants: {
-		borderWidth: ['odd'],
+		borderWidth: ['responsive', 'odd'],
 		opacity: ['responsive', 'hover', 'focus', 'active', 'group-hover'],
 	},
 	plugins: []
