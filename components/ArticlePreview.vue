@@ -2,7 +2,7 @@
 	<article>
 		<div class="bg-white rounded h-full shadow-sm">
 			<nuxt-link class="relative flex group" :to="{ name: 'article', params: { article: article.slug }}">
-				<Photo :image="article.preview" class="h-56 overflow-hidden flex justify-center items-center rounded" />
+				<Photo v-if="article.preview" :image="article.preview" class="h-56 overflow-hidden flex justify-center items-center rounded" />
 				<div class="absolute bg left-0 right-0 top-0 bottom-0 rounded flex justify-center align-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
 					<div class="flex justify-center align-center flex-col text-center">
 						<img class="w-8 mx-auto mb-4" src="/images/article.svg" alt="Article de blog">
@@ -46,7 +46,8 @@ export default {
 				return this.article.country == country.slug
 			})
 
-			return currentCountry.name
+			if(currentCountry) return currentCountry.name
+			return ''
 		}
 	},
 	filters: {

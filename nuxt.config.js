@@ -41,13 +41,14 @@ module.exports = {
 		'@nuxtjs/stylelint-module',
 		// Doc: https://github.com/nuxt-community/nuxt-tailwindcss
 		'@nuxtjs/tailwindcss',
-		'@nuxtjs/pwa'
+		'@nuxtjs/pwa',
+		'@nuxtjs/svg'
 	],
 	/*
 	** Nuxt.js modules
 	*/
 	modules: [
-		'@nuxtjs/sitemap'
+		'@nuxtjs/sitemap',
 	],
 	sitemap: {
 		routes: async () => {
