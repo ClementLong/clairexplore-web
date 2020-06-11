@@ -1,5 +1,5 @@
 <template>
-	<div class="w-7/12 m-auto">
+	<div class="container m-auto">
 		<svg class="m20_svgMap" viewBox="0 170 1178 591" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<g id="V1.0" fill="none" fill-rule="evenodd">
 				<g id="MAP" stroke-width="0.5" stroke="#E9E8E3" fill="#F6F5F1" @click="changeActive($event)">
@@ -197,14 +197,27 @@ export default {
 		}
 	},
 	mounted() {
+		this.$nextTick(() => {
+			this.visited.forEach((element) => {
+				this.$el.querySelector('#' + element.slug).classList.add('visited')
+			})
+		})
+
 		this.active()
+	},
+	watch: {
+		countryFilter() {
+			this.active()
+		}
 	},
 	methods: {
 		changeActive(e) {
-			this.$emit('changeCountry', e.target.id)
-			this.$nextTick(() => {
-				this.active()
-			})
+			if(e.target.classList.contains('visited')) {
+				this.$emit('changeCountry', e.target.id)
+				this.$nextTick(() => {
+					this.active()
+				})
+			}
 		},
 		active() {
 			this.$el.querySelectorAll('path').forEach((el) => {

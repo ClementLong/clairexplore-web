@@ -10,13 +10,15 @@
 		/>
 		<WorldMap
 			:countryFilter="countryFilter"
+			:visited="options.country"
 			@changeCountry="countryFilter = $event"
 		/>
 		<ArticleByCountry
+			@changeCountry="countryFilter = $event"
 			:countryFilter="countryFilter"
 			:articles="articles"
 			:countries="options.country"
-			class="-mt-16" />
+			class="-mt-16 md:-mt-32" />
 	</div>
 </template>
 
@@ -37,6 +39,11 @@ export default {
 	data() {
 		return {
 			countryFilter: 'FR'
+		}
+	},
+	watch: {
+		countryFilter() {
+			console.log('Index ' + this.countryFilter)
 		}
 	},
 	computed: {
