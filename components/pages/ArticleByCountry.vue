@@ -15,7 +15,7 @@
 			</swiper>
 		</h3>
 		<div>
-			<div class="container m-auto flex flex-wrap pt-4 pb-8">
+			<div class="container m-auto flex justify-center flex-wrap pt-4 pb-8">
 				<SmallArticlePreview v-for="article in articlesByCountry" :key="article.id" :article="article" :countries="countries" />
 			</div>
 		</div>
