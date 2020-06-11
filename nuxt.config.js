@@ -52,7 +52,7 @@ module.exports = {
 	],
 	sitemap: {
 		routes: async () => {
-			const { data } = await axios.get(`${process.env.API_URL || 'https://api.clairexplore.com' }/articles${process.env.STAGING ? '' : '?published=true'}`)
+			const { data } = await axios.get(`${process.env.API_URL || 'https://api.clairexplore.com' }/articles?published=true`)
 			return data.map((article) => `/${article.slug}`)
 		}
 	},
@@ -68,7 +68,8 @@ module.exports = {
 	},
 	env: {
 		MEDIA_URL: '',
-		API_URL: process.env.API_URL || 'https://api.clairexplore.com'
+		API_URL: process.env.API_URL || 'https://api.clairexplore.com',
+		STAGING: process.env.STAGING || false
 	},
 	pwa: {
 		manifest: {
