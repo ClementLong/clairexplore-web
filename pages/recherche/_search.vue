@@ -12,16 +12,21 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import axios from 'axios'
 
 export default {
-	async asyncData({ params }: any) {
+	async asyncData({ params }) {
 		try {
 			const articles = await axios.get(`${process.env.API_URL}/articles?title_contains=${params.search}`)
 			return { articles: articles.data, search: params.search }
 		} catch {
 			return {}
+		}
+	},
+	head () {
+		return {
+			title: `Résultat : ${ this.search }`
 		}
 	}
 }

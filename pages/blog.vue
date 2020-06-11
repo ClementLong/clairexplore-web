@@ -9,6 +9,7 @@
 				v-for="article in articlesFiltered"
 				:key="article.id"
 				:article="article"
+				:countries="options.country"
 				class="lg:w-1/3 md:w-1/2 lg:p-6 p-4"
 			/>
 		</div>
@@ -35,6 +36,14 @@ export default {
 				listing: null,
 				options: null,
 			}
+		}
+	},
+	head () {
+		return {
+			title: this.listing.SEO.meta_title,
+			meta: [
+				{ hid: 'description', name: 'description', content: this.listing.SEO.meta_description }
+			]
 		}
 	},
 	data() {

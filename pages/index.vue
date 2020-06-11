@@ -5,8 +5,12 @@
 			:introduction-image="homepage.image.url"
 			:introduction="homepage.introduction"
 		/>
-		<LastArticle
-			:articles="lastArticle"
+		<ArticleLast
+			:articles="articles"
+			:countries="options.country"
+		/>
+		<ArticleByCategory
+			:categories="options.categories"
 		/>
 		<WorldMap
 			:countryFilter="countryFilter"
@@ -36,14 +40,17 @@ export default {
 			homepage: homepage.data,
 		}
 	},
+	head () {
+		return {
+			title: this.homepage.SEO.meta_title,
+			meta: [
+				{ hid: 'description', name: 'description', content: this.homepage.SEO.meta_description }
+			]
+		}
+	},
 	data() {
 		return {
 			countryFilter: 'FR'
-		}
-	},
-	computed: {
-		lastArticle() {
-			return this.articles.slice(0, 3)
 		}
 	}
 }
