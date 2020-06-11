@@ -107,10 +107,15 @@
 import axios from 'axios'
 
 export default {
-	async asyncData({ params }) {
+	async asyncData({ params, redirect }) {
 		try {
 			const options = await axios.get(`${process.env.API_URL}/options`)
 			const article = await axios.get(`${process.env.API_URL}/articles?slug=${params.article}`)
+
+			if(!article.data.length) {
+				redirect('/404')
+			}
+
 			return {
 				article: article.data[0],
 				options: options.data
