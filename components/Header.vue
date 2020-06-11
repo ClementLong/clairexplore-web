@@ -1,9 +1,9 @@
 <template>
-	<div class="md:fixed w-full z-30 border-b-2 border-transparent md:border-darkwhite md:bg-white">
+	<div class="md:fixed w-full z-30 md:border-b-2 md:border-darkwhite md:bg-white">
 		<header class="hidden md:flex justify-between h-12 items-center container m-auto">
 			<nuxt-link class="flex justify-center mt-1" to="/">
 				<h2 class="h-10">
-					<Logo />
+					<Logo color="black" />
 				</h2>
 			</nuxt-link>
 			<nav class="flex items-center justify-around font-body text-lightblack flex-1">
@@ -20,10 +20,10 @@
 			<Social />
 			<Search />
 		</header>
-		<div class="flex md:hidden justify-between h-12 items-center container m-auto">
-			<nuxt-link class="flex justify-center" :class="{ 'fixed z-50': isOpen }" to="/">
+		<div class="flex md:hidden absolute justify-between h-12 items-center container m-auto">
+			<nuxt-link class="flex justify-center z-50" :class="{ 'fixed': isOpen }" to="/">
 				<h2 class="h-10 mt-1">
-					<Logo />
+					<Logo :color="isOpen ? 'black': 'white'" />
 				</h2>
 			</nuxt-link>
 			<div class="p-2 top-0 fixed right-0 z-50 bg-white rounded-bl-lg border-b-2 border-l-2 border-darkwhite" @click="isOpen = !isOpen">

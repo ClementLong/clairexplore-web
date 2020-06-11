@@ -43,6 +43,9 @@ export default {
 	mounted() {
 		this.bgHeight = this.$refs.bg.offsetHeight
 	},
+	beforeUpdate() {
+		this.bgHeight = this.$refs.bg.offsetHeight
+	},
 	computed: {
 		imageScrolled() {
 			return this.bgPosition / (this.bgHeight - 50)

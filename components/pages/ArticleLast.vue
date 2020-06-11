@@ -8,9 +8,10 @@
 		</h3>
 		<div class="container m-auto flex flex-wrap py-5 items-stretch">
 			<ArticlePreview
-				v-for="article in articles"
+				v-for="article in lastArticle"
 				:key="article.id"
 				:article="article"
+				:countries="countries"
 				class="lg:w-1/3 md:w-1/2 lg:p-6 p-4"
 			/>
 		</div>
@@ -24,6 +25,15 @@ export default {
 		articles: {
 			type: Array,
 			required: true
+		},
+		countries: {
+			type: Array,
+			required: true
+		}
+	},
+	computed: {
+		lastArticle() {
+			return this.articles.slice(0, 3)
 		}
 	}
 }

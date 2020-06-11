@@ -1,6 +1,6 @@
 <template>
 	<div class="lg:w-1/3 p-2">
-		<article class="flex bg-white rounded">
+		<article class="flex bg-white rounded shadow-sm">
 			<nuxt-link class="relative w-1/2 flex group" :to="{ name: 'article', params: { article: article.slug }}">
 				<Photo :image="article.preview" class="h-48 overflow-hidden flex justify-center items-center rounded" />
 				<div class="absolute bg left-0 right-0 top-0 bottom-0 rounded flex justify-center align-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">

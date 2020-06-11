@@ -8,6 +8,7 @@
 				v-for="article in articles"
 				:key="article.id"
 				:article="article"
+				:countries="countries"
 				class="lg:w-1/3 md:w-1/2 lg:p-6 p-4"
 			/>
 		</div>
@@ -19,6 +20,10 @@
 export default {
 	props: {
 		articles: {
+			type: Array,
+			required: true
+		},
+		countries: {
 			type: Array,
 			required: true
 		}
