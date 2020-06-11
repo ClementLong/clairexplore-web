@@ -40,6 +40,10 @@ export default {
 		countries: {
 			type: Array,
 			required: true
+		},
+		max: {
+			type: Boolean,
+			default: false
 		}
 	},
 	components: {
@@ -63,9 +67,12 @@ export default {
 	},
 	computed: {
 		articlesByCountry() {
-			return this.articles.filter((article) => {
+			const articleList = this.articles.filter((article) => {
 				return this.countryFilter == article.country
 			})
+
+			if(this.max) return articleList.slice(0, 3)
+			else return articleList
 		},
 		categoriesBySlug() {
 			const currentCountry = this.countries.find((country) => {

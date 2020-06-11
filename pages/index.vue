@@ -22,6 +22,7 @@
 			:countryFilter="countryFilter"
 			:articles="articles"
 			:countries="options.country"
+			:max="true"
 			class="-mt-16 md:-mt-32"
 		/>
 		<Instagram

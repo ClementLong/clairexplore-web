@@ -15,14 +15,15 @@
 						Catégories
 					</h3>
 				</div>
-				<div class="flex justify-between mt-12">
+				<div class="flex flex-wrap justify-between mt-6">
 					<div
 						v-for="category in categories"
 						:key="category.id"
+						class="flex justify-center w-1/2 md:w-1/3 lg:w-1/6"
 					>
 						<n-link class="flex justify-between items-stretch icons" :to="{ path: `/blog/${category.slug}` }">
 							<div class="flex flex-col items-center justify-center">
-								<div class="w-16 mb-4" v-html="icon['_' + category.slug]"></div>
+								<div class="w-16 mt-6 mb-4" v-html="icon['_' + category.slug]"></div>
 								<div class="font-heading px-3 py-1 text-lg text-center hover:text-important">
 									{{ category.name }}
 								</div>
