@@ -3,7 +3,7 @@
 		<p class="font-heading text-lightblack">
 			Article par pays
 		</p>
-		<h3 class="font-heading font-bold text-2xl text-lightblack w-64 m-auto">
+		<h3 class="font-heading font-bold text-2xl text-lightblack relative w-64 m-auto">
 			<swiper @slideChangeTransitionEnd="changeCountry" ref="countrySwiper" class="swiper container relative py-5" :options="swiperOption">
 				<swiper-slide v-for="(c, index) in countries" :key="index" :data-ref="c.slug" ref="slides">
 					<div class="flex items-center justify-center w-full">
@@ -103,5 +103,15 @@ export default {
 
 .text-lightblack-important:after {
 	font-size: 20px !important;
+}
+
+.swipper-wrapper {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	display: flex;
+	transition-property: transform;
+	box-sizing: content-box;
 }
 </style>

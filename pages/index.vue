@@ -41,11 +41,6 @@ export default {
 			countryFilter: 'FR'
 		}
 	},
-	watch: {
-		countryFilter() {
-			console.log('Index ' + this.countryFilter)
-		}
-	},
 	computed: {
 		lastArticle() {
 			return this.articles.slice(0, 3)
