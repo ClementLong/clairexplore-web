@@ -48,7 +48,7 @@ export default {
 		bgStyle() {
 			console.log(this.start - this.bgPosition - this.bgHeight)
 			const scroll = this.start - this.bgPosition - this.bgHeight
-			const bgSize = 200 + (scroll / 9)
+			const bgSize = 150 + (scroll / 20)
 			if(scroll < 0 && bgSize > 100) {
 				return `
 					background: url('/images/photo.jpg');
