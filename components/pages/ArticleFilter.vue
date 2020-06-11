@@ -1,6 +1,6 @@
 <template>
-	<div class="container m-auto flex items-center mt-6 mb-4">
-		<div class="font-thin font-xl font-body ml-32">
+	<div class="container m-auto flex flex-raw flex-wrap items-center mt-6">
+		<div class="font-thin font-xl font-body ml-4 lg:ml-16 mb-2">
 			Filtre :
 		</div>
 		<ArticleFilterButton
@@ -9,7 +9,7 @@
 			@click.native="changeFilter(category)"
 			:text="category.name"
 			:active="category.id == active"
-			class="ml-4"
+			class="ml-2 lg:ml-4 mb-2"
 		/>
 	</div>
 </template>
@@ -25,6 +25,11 @@ export default {
 	data() {
 		return {
 			active: null
+		}
+	},
+	mounted() {
+		if(this.$route.params.filter) {
+			this.active = this.categories.find((category) => this.$route.params.filter == category.slug).id
 		}
 	},
 	methods: {

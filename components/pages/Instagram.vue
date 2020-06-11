@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="h-50vh bg-darkwhite flex justify-center items-center">
 		Instagram
 	</div>
 </template>

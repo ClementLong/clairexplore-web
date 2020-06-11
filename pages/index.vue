@@ -22,7 +22,10 @@
 			:countryFilter="countryFilter"
 			:articles="articles"
 			:countries="options.country"
-			class="-mt-16 md:-mt-32" />
+			class="-mt-16 md:-mt-32"
+		/>
+		<Instagram
+		/>
 	</div>
 </template>
 
