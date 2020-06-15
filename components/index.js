@@ -8,6 +8,7 @@ import Search from './Search'
 import Social from './Social'
 import WorldMap from './WorldMap'
 import ArticlePreview from './ArticlePreview'
+import SmallArticlePreview from './SmallArticlePreview'
 
 Vue.component('Header', Header)
 Vue.component('Footer', Footer)
@@ -16,18 +17,22 @@ Vue.component('Search', Search)
 Vue.component('Social', Social)
 Vue.component('WorldMap', WorldMap)
 Vue.component('ArticlePreview', ArticlePreview)
+Vue.component('SmallArticlePreview', SmallArticlePreview)
 
 // Pages
 import pages from './pages'
 
 Vue.component('ArticleHeader', pages.ArticleHeader)
+Vue.component('ArticleFooter', pages.ArticleFooter)
 Vue.component('Presentation', pages.Presentation)
-Vue.component('LastArticle', pages.LastArticle)
+Vue.component('ArticleLast', pages.ArticleLast)
 Vue.component('ArticleByCountry', pages.ArticleByCountry)
-Vue.component('ArticleByContinent', pages.ArticleByContinent)
 Vue.component('AboutInfo', pages.AboutInfo)
 Vue.component('SearchResult', pages.SearchResult)
 Vue.component('Instagram', pages.Instagram)
+Vue.component('ArticleFilter', pages.ArticleFilter)
+Vue.component('ArticleFilterButton', pages.ArticleFilterButton)
+Vue.component('ArticleByCategory', pages.ArticleByCategory)
 
 // UI Kit
 import uiKit from './ui-kit'

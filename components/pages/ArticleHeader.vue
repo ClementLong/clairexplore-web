@@ -1,7 +1,7 @@
 <template>
 	<div class="text-lightblack">
-		<div class="h-35vw md:h-50vh w-full overflow-hidden relative">
-			<div ref="background" class="w-full h-35vw md:h-50vh flex items-center" :style="bgStyle">
+		<div class="h-50vh md:h-50vh w-full overflow-hidden relative">
+			<div ref="background" class="w-full h-50vh md:h-50vh flex items-center" :style="bgStyle">
 				<Photo :image="cover" />
 			</div>
 		</div>

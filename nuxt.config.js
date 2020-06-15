@@ -1,3 +1,4 @@
+const axios = require('axios')
 
 module.exports = {
 	mode: 'universal',
@@ -13,7 +14,7 @@ module.exports = {
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,400;1,600;1,700&display=swap' }
+			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,400;1,600;1,700&display=swap' },
 		]
 	},
 	/*
@@ -40,13 +41,21 @@ module.exports = {
 		'@nuxtjs/stylelint-module',
 		// Doc: https://github.com/nuxt-community/nuxt-tailwindcss
 		'@nuxtjs/tailwindcss',
-		// ['@nuxtjs/pwa', { workbox: false }]
+		'@nuxtjs/pwa',
+		'@nuxtjs/svg'
 	],
 	/*
 	** Nuxt.js modules
 	*/
 	modules: [
+		'@nuxtjs/sitemap',
 	],
+	sitemap: {
+		routes: async () => {
+			const { data } = await axios.get(`${process.env.API_URL || 'https://api.clairexplore.com' }/articles?published=true`)
+			return data.map((article) => `/${article.slug}`)
+		}
+	},
 	/*
 	** Build configuration
 	*/
@@ -59,7 +68,8 @@ module.exports = {
 	},
 	env: {
 		MEDIA_URL: '',
-		API_URL: process.env.API_URL || 'http://localhost:1337'
+		API_URL: process.env.API_URL || 'https://api.clairexplore.com',
+		STAGING: process.env.STAGING || false
 	},
 	pwa: {
 		manifest: {

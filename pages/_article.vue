@@ -95,19 +95,41 @@
 
 		</div>
 
+		<ArticleFooter
+			class="mt-8"
+			:articles="article.linked_articles"
+			:countries="options.country"
+		/>
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import axios from 'axios'
 
 export default {
-	async asyncData({ params }: any) {
+	async asyncData({ params, redirect }) {
 		try {
+			const options = await axios.get(`${process.env.API_URL}/options`)
 			const article = await axios.get(`${process.env.API_URL}/articles?slug=${params.article}`)
-			return { article: article.data[0] }
+
+			if(!article.data.length) {
+				redirect('/404')
+			}
+
+			return {
+				article: article.data[0],
+				options: options.data
+			}
 		} catch {
 			return {}
+		}
+	},
+	head () {
+		return {
+			title: this.article.SEO.meta_title,
+			meta: [
+				{ hid: 'description', name: 'description', content: this.article.SEO.meta_description }
+			]
 		}
 	}
 }

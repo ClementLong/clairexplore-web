@@ -23,7 +23,7 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import axios from 'axios'
 
 export default {
@@ -38,6 +38,14 @@ export default {
 				about: null,
 			}
 		}
-	}
+	},
+	head () {
+		return {
+			title: this.about.SEO.meta_title,
+			meta: [
+				{ hid: 'description', name: 'description', content: this.about.SEO.meta_description }
+			]
+		}
+	},
 }
 </script>
