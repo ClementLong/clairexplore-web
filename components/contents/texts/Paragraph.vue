@@ -32,7 +32,7 @@ export default {
 }
 
 .paragraph h3 {
-	@apply text-2xl font-heading;
+	@apply text-2xl font-bold font-heading;
 }
 
 .paragraph h4 {
@@ -47,7 +47,7 @@ export default {
 	@apply font-bold;
 }
 
-.paragraph strong {
+.paragraph em {
 	@apply italic;
 }
 
