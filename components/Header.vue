@@ -23,10 +23,10 @@
 		<div class="flex md:hidden absolute justify-between h-12 items-center container m-auto">
 			<nuxt-link class="flex justify-center z-50" :class="{ 'fixed': isOpen }" to="/">
 				<h2 class="h-10 mt-1">
-					<Logo :color="isOpen ? 'black': 'white'" />
+					<Logo :color="logoColor" />
 				</h2>
 			</nuxt-link>
-			<div class="p-2 top-0 fixed right-0 z-50 bg-white rounded-bl-lg border-b-2 border-l-2 border-darkwhite" @click="isOpen = !isOpen">
+			<div class="p-2 top-0 fixed right-0 z-50 bg-white rounded-bl-lg" @click="isOpen = !isOpen">
 				<div class="bar-1"></div>
 				<div class="bar-2"></div>
 				<div class="bar-3"></div>
@@ -34,7 +34,7 @@
 			<nav class="fixed top-0 w-full bg-white h-screen p-8 z-40" v-if="isOpen">
 				<div class="flex flex-col items-center">
 					<div class="flex flex-col items-center mt-8">
-						<nuxt-link class="hover:text-important py-4" to="/blog">
+						<nuxt-link class="hover:text-important py-4" to="/">
 							Homepage
 						</nuxt-link>
 						<nuxt-link class="hover:text-important py-4" to="/blog">
@@ -55,11 +55,18 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
 	data() {
 		return {
 			isOpen: false
+		}
+	},
+	computed: {
+		logoColor() {
+			if(this.isOpen) return 'black'
+			else if(this.$route.name == 'index' || this.$route.name == 'article') return 'white'
+			return 'black'
 		}
 	}
 }

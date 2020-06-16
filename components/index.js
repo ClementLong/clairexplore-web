@@ -8,7 +8,7 @@ import Search from './Search'
 import Social from './Social'
 import WorldMap from './WorldMap'
 import ArticlePreview from './ArticlePreview'
-import SmallArticlePreview from './SmallArticlePreview'
+import Share from './Share'
 
 Vue.component('Header', Header)
 Vue.component('Footer', Footer)
@@ -17,7 +17,7 @@ Vue.component('Search', Search)
 Vue.component('Social', Social)
 Vue.component('WorldMap', WorldMap)
 Vue.component('ArticlePreview', ArticlePreview)
-Vue.component('SmallArticlePreview', SmallArticlePreview)
+Vue.component('Share', Share)
 
 // Pages
 import pages from './pages'
@@ -27,7 +27,6 @@ Vue.component('ArticleFooter', pages.ArticleFooter)
 Vue.component('Presentation', pages.Presentation)
 Vue.component('ArticleLast', pages.ArticleLast)
 Vue.component('ArticleByCountry', pages.ArticleByCountry)
-Vue.component('AboutInfo', pages.AboutInfo)
 Vue.component('SearchResult', pages.SearchResult)
 Vue.component('Instagram', pages.Instagram)
 Vue.component('ArticleFilter', pages.ArticleFilter)
