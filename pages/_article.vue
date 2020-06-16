@@ -1,10 +1,11 @@
 <template>
-	<div>
+	<div class="text-lg">
 		<ArticleHeader
 			:title="article.title"
 			:date="article.date"
 			:location="article.country"
 			:cover="article.cover"
+			:options="options"
 		/>
 
 		<div v-for="(component, index) in article.content" :key="index">
@@ -95,10 +96,12 @@
 
 		</div>
 
+		<Share />
+
 		<ArticleFooter
 			class="mt-8"
 			:articles="article.linked_articles"
-			:countries="options.country"
+			:options="options"
 		/>
 	</div>
 </template>
@@ -128,7 +131,17 @@ export default {
 		return {
 			title: this.article.SEO.meta_title,
 			meta: [
-				{ hid: 'description', name: 'description', content: this.article.SEO.meta_description }
+				{ hid: 'description', name: 'description', content: this.article.SEO.meta_description },
+				{ name: "author", content: 'Clairexplore' },
+				{ name: "publisher", content: 'Clairexplore' },
+
+				// Facebook & LinkedIn
+				{ name: "og:title", content: this.article.Social.title },
+				{ name: "og:description", content: this.article.Social.description },
+				{ name: "og:type", content: "website" },
+				{ name: "og:url", content: this.$route.path },
+				{ name: "og:image", content: this.article.cover.url },
+				{ name: "og:site_name", content: 'Clairexplore' },
 			]
 		}
 	}

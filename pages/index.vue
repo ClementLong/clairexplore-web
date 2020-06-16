@@ -7,7 +7,7 @@
 		/>
 		<ArticleLast
 			:articles="articles"
-			:countries="options.country"
+			:options="options"
 		/>
 		<ArticleByCategory
 			:categories="options.categories"
@@ -21,11 +21,9 @@
 			@changeCountry="countryFilter = $event"
 			:countryFilter="countryFilter"
 			:articles="articles"
-			:countries="options.country"
+			:options="options"
 			:max="true"
-			class="-mt-16 md:-mt-32"
-		/>
-		<Instagram
+			class="-mt-32"
 		/>
 	</div>
 </template>
@@ -48,7 +46,14 @@ export default {
 		return {
 			title: this.homepage.SEO.meta_title,
 			meta: [
-				{ hid: 'description', name: 'description', content: this.homepage.SEO.meta_description }
+				{ hid: 'description', name: 'description', content: this.homepage.SEO.meta_description },
+				// Facebook & LinkedIn
+				{ name: "og:title", content: this.homepage.SEO.meta_title },
+				{ name: "og:description", content: this.homepage.SEO.meta_description },
+				{ name: "og:type", content: "website" },
+				{ name: "og:url", content: this.$route.path },
+				{ name: "og:image", content: this.homepage.cover.url },
+				{ name: "og:site_name", content: 'Clairexplore' },
 			]
 		}
 	},

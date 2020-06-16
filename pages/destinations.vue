@@ -9,7 +9,7 @@
 			@changeCountry="countryFilter = $event"
 			:countryFilter="countryFilter"
 			:articles="articles"
-			:countries="options.country"
+			:options="options"
 			class="-mt-16 md:-mt-16" />
 	</div>
 	</div>
