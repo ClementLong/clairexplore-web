@@ -1,9 +1,9 @@
 <template>
 	<div class="bg-darkwhite text-center py-12">
-		<p class="font-heading text-lightdark">
+		<p class="font-heading text-lightblack">
 			Mes derniers
 		</p>
-		<h3 class="font-heading font-bold text-2xl text-lightdark">
+		<h3 class="font-heading font-bold text-2xl text-lightblack">
 			Articles
 		</h3>
 		<div class="container m-auto flex flex-wrap py-5 items-stretch">
@@ -11,7 +11,7 @@
 				v-for="article in lastArticle"
 				:key="article.id"
 				:article="article"
-				:countries="countries"
+				:options="options"
 				class="lg:w-1/3 md:w-1/2 lg:p-6 p-4"
 			/>
 		</div>
@@ -26,8 +26,8 @@ export default {
 			type: Array,
 			required: true
 		},
-		countries: {
-			type: Array,
+		options: {
+			type: Object,
 			required: true
 		}
 	},

@@ -24,7 +24,7 @@
 						<n-link class="flex justify-between items-stretch icons" :to="{ path: `/blog/${category.slug}` }">
 							<div class="flex flex-col items-center justify-center">
 								<div class="w-16 mt-6 mb-4" v-html="icon['_' + category.slug]"></div>
-								<div class="font-heading px-3 py-1 text-lg text-center hover:text-important">
+								<div class="font-heading font-bold px-3 py-1 text-lg text-center hover:text-important">
 									{{ category.name }}
 								</div>
 							</div>

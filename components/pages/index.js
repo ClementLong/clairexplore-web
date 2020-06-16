@@ -3,7 +3,6 @@ import ArticleFooter from './ArticleFooter'
 import Presentation from './Presentation'
 import ArticleLast from './ArticleLast'
 import ArticleByCountry from './ArticleByCountry'
-import AboutInfo from './AboutInfo'
 import SearchResult from './SearchResult'
 import Instagram from './Instagram'
 import ArticleFilter from './ArticleFilter'
@@ -16,7 +15,6 @@ export default {
 	Presentation,
 	ArticleLast,
 	ArticleByCountry,
-	AboutInfo,
 	SearchResult,
 	Instagram,
 	ArticleFilter,

@@ -10,7 +10,7 @@
 		<div class="font-body font-light flex justify-center mt-3">
 			<time class="px-2">{{ formatedDate }}</time>
 			-
-			<h3 class="px-2">{{ location }}</h3>
+			<h3 class="px-2">{{ countryBySlug }}</h3>
 		</div>
 	</div>
 </template>
@@ -36,6 +36,10 @@ export default {
 			type: Object,
 			required: true
 		},
+		options: {
+			type: Object,
+			required: true
+		}
 	},
 	data() {
 		return {
@@ -48,6 +52,14 @@ export default {
 		},
 		bgStyle() {
 			return `transform: translate3d(0, ${this.bgPosition / 2 }px, 0) scale(1.0, 1.0);`
+		},
+		countryBySlug() {
+			const currentCountry = this.options.country.find((country) => {
+				return this.location == country.slug
+			})
+
+			if(currentCountry) return currentCountry.name
+			return ''
 		}
 	},
 	created () {

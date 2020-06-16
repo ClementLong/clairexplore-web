@@ -5,7 +5,7 @@
 		</p>
 		<h3 class="font-heading font-bold text-2xl text-lightblack relative w-64 m-auto">
 			<swiper @slideChangeTransitionEnd="changeCountry" ref="countrySwiper" class="swiper container relative py-5" :options="swiperOption">
-				<swiper-slide v-for="(c, index) in countries" :key="index" :data-ref="c.slug" ref="slides">
+				<swiper-slide v-for="(c, index) in options.country" :key="index" :data-ref="c.slug" ref="slides">
 					<div class="flex items-center justify-center w-full">
 						{{ c.name }}
 					</div>
@@ -15,11 +15,12 @@
 			</swiper>
 		</h3>
 		<div>
-			<div class="container m-auto flex justify-center flex-wrap pt-4 pb-8">
-				<SmallArticlePreview v-for="article in articlesByCountry" :key="article.id" :article="article" :countries="countries" />
+			<div class="container m-auto flex flex-wrap pt-4 pb-8"
+			:class="[this.max ? 'justify-center' : 'justify-left']">
+				<ArticlePreview v-for="article in articlesByCountry" :key="article.id" :article="article" :options="options" :small="true" class="lg:w-1/3" />
 			</div>
 		</div>
-		<Button to="/blog" text="Voir plus d'articles" />
+		<Button to="/destinations" text="Voir plus d'articles" />
 	</div>
 </template>
 
@@ -37,8 +38,8 @@ export default {
 			type: String,
 			required: true
 		},
-		countries: {
-			type: Array,
+		options: {
+			type: Object,
 			required: true
 		},
 		max: {
@@ -75,7 +76,7 @@ export default {
 			else return articleList
 		},
 		categoriesBySlug() {
-			const currentCountry = this.countries.find((country) => {
+			const currentCountry = this.options.country.find((country) => {
 				return this.countryFilter == country.slug
 			})
 
