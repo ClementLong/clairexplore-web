@@ -2,7 +2,7 @@
 	<article>
 		<div v-if="!small" class="bg-white rounded h-full">
 			<nuxt-link class="relative flex group" :to="{ name: 'article', params: { article: article.slug }}">
-				<Photo v-if="article.preview" :image="article.preview" class="h-56 overflow-hidden flex justify-center items-center rounded" />
+				<img v-if="article.preview" :src="MEDIA_URL + article.preview.formats.medium.url" :alt="article.preview.alternativeText" class="h-56 overflow-hidden flex justify-center items-center rounded w-full object-cover">
 				<div class="absolute bg left-0 right-0 top-0 bottom-0 rounded flex justify-center align-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
 					<div class="flex justify-center align-center flex-col text-center">
 						<div class="w-16 mx-auto mb-4 icon" v-html="icon['_' + article.categorie]"></div>
@@ -23,7 +23,7 @@
 		<div v-else class="p-2">
 			<article class="flex bg-white rounded shadow-sm">
 				<nuxt-link class="relative w-1/2 flex group" :to="{ name: 'article', params: { article: article.slug }}">
-					<Photo :image="article.preview" class="h-48 overflow-hidden flex justify-center items-center rounded" />
+					<img v-if="article.preview" :src="MEDIA_URL + article.preview.formats.small.url" :alt="article.preview.alternativeText" class="h-48 overflow-hidden flex justify-center items-center rounded w-full object-cover">
 					<div class="absolute bg left-0 right-0 top-0 bottom-0 rounded flex justify-center align-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
 						<div class="flex justify-center align-center flex-col text-center">
 							<div class="w-12 mx-auto mb-4 icon" v-html="icon['_' + article.categorie]"></div>
@@ -77,7 +77,8 @@ export default {
 				_conseils_de_voyage,
 				_20photos,
 				_food_and_drink,
-			}
+			},
+			MEDIA_URL: process.env.MEDIA_URL,
 		}
 	},
 	computed: {
