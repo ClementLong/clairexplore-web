@@ -96,7 +96,7 @@
 
 		</div>
 
-		<Share />
+		<Share :mediaUrl="article.preview.url" />
 
 		<ArticleFooter
 			class="mt-8"
