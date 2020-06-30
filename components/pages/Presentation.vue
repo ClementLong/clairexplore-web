@@ -4,7 +4,7 @@
 			<img class="md:w-full h-75vh md:h-auto md:static absolute absolute-center transform -translate-x-1/2 md:translate-x-0 w-auto max-w-none" :src="cover" alt="Blog de voyage">
 		</div>
 		<div class="relative">
-			<h1 class="font-heading font-bold text-lightblack text-2xl md:text-3xl text-center px-3">Bienvenue sur blog de voyage !</h1>
+			<h1 class="font-heading font-bold text-lightblack text-2xl md:text-3xl text-center px-3">Bienvenue sur mon blog de voyage&nbsp;!</h1>
 		</div>
 		<div class="relative z-10 container m-auto flex flex-col md:flex-row items-center pt-5 md:pt-12 pb-12">
 			<div class="text-center text-lightblack flex-1 px-8" v-html="htmlText">
