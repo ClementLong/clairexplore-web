@@ -1,7 +1,7 @@
 <template>
 	<div class="bg-darkwhite text-center py-12">
 		<h3 class="font-heading font-bold text-2xl text-lightblack">
-			Articles similaire
+			Articles similaires
 		</h3>
 		<div class="container m-auto flex flex-wrap py-5">
 			<ArticlePreview

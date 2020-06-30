@@ -1,6 +1,6 @@
 <template>
 	<div class="container m-auto flex flex-raw flex-wrap items-center mt-6">
-		<div class="font-thin font-xl font-body ml-4 lg:ml-16 mb-2">
+		<div class="font-thin font-xl font-body ml-4 lg:ml-4 xl:ml-16 mb-2">
 			Filtre :
 		</div>
 		<ArticleFilterButton
