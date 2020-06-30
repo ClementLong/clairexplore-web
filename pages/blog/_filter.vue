@@ -53,9 +53,13 @@ export default {
 	},
 	computed: {
 		articlesFiltered() {
-			if(!this.filter) return this.articles
+			const articlesSortByDate = this.articles.sort((a, b) => {
+				return new Date(b.date) - new Date(a.date)
+			})
 
-			return this.articles.filter((article) => {
+			if(!this.filter) return articlesSortByDate
+
+			return articlesSortByDate.filter((article) => {
 				return article.categorie == this.filter
 			})
 		}

@@ -70,6 +70,7 @@ module.exports = {
 	env: {
 		MEDIA_URL: '',
 		API_URL: process.env.API_URL || 'https://api.clairexplore.com',
+		SITE_URL: process.env.SITE_URL || 'https://clairexplore.com',
 		STAGING: process.env.STAGING || false
 	},
 	pwa: {

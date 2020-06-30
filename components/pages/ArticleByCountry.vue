@@ -68,7 +68,11 @@ export default {
 	},
 	computed: {
 		articlesByCountry() {
-			const articleList = this.articles.filter((article) => {
+			const articlesSortByDate = this.articles.sort((a, b) => {
+				return new Date(b.date) - new Date(a.date)
+			})
+
+			const articleList = articlesSortByDate.filter((article) => {
 				return this.countryFilter == article.country
 			})
 
