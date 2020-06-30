@@ -14,7 +14,7 @@ export default {
 	},
 	computed: {
 		htmlText() {
-			return marked(this.text)
+			return marked(this.text || '')
 		}
 	}
 }
