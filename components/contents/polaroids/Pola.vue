@@ -1,5 +1,5 @@
 <template>
-	<div class="m-auto pb-5 flex" :class="containerStyle">
+	<div class="m-auto py-5 flex" :class="containerStyle">
 		<div
 			v-for="(image, index) in images"
 			:key="index"
@@ -51,9 +51,9 @@ export default {
 				}
 			} else if(this.images.length > 1) {
 				if(index === 0) {
-					return 'transform: rotate(-4deg) translate(15px, 10px); height:70vh;'
+					return 'transform: rotate(-4deg) translate(15px, 0px);'
 				} else {
-					return 'transform: rotate(2deg) translate(-15px, 10px); height:70vh;'
+					return 'transform: rotate(2deg) translate(-15px, 0px);'
 				}
 			} else {
 				return ''
