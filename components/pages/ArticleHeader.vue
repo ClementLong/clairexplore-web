@@ -7,7 +7,7 @@
 		</div>
 		<h1 class="mt-4 md:mt-12 mb-4 text-3xl font-heading font-bold uppercase text-center px-4">{{ title }}</h1>
 		<div class="w-50px h-px bg-lightblack m-auto opacity-50"></div>
-		<div class="font-body font-light flex justify-center mt-3">
+		<div class="font-body font-light flex justify-center mt-3 italic">
 			<time class="px-2">{{ formatedDate }}</time>
 			-
 			<h3 class="px-2">{{ countryBySlug }}</h3>
