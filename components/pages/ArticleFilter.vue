@@ -9,7 +9,7 @@
 			@click.native="changeFilter(category)"
 			:text="category.name"
 			:active="category.id == active"
-			class="ml-2 lg:ml-4 mb-2"
+			class="ml-2 xl:ml-4 mb-2"
 		/>
 	</div>
 </template>

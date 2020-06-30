@@ -1,7 +1,7 @@
 <template>
 	<div class="text-center py-5" style="background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(246,245,241,1) 20%);">
 		<p class="font-heading text-lightblack">
-			Article par pays
+			Articles par pays
 		</p>
 		<h3 class="font-heading font-bold text-2xl text-lightblack relative w-64 m-auto">
 			<swiper @slideChangeTransitionEnd="changeCountry" ref="countrySwiper" class="swiper container relative py-5" :options="swiperOption">
