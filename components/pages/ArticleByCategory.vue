@@ -12,7 +12,7 @@
 			<div class="container m-auto py-8">
 				<div class="flex flex-col items-center">
 					<p class="font-heading text-lightblack">
-						Trié par
+						Trier par
 					</p>
 					<h3 class="font-heading font-bold text-2xl text-lightblack">
 						Catégories

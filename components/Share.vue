@@ -1,7 +1,7 @@
 <template>
 	<div class="fixed bottom-0 right-0 z-10 bg-white rounded-tl-lg border-l-2 border-t-2 border-darkwhite flex items-center p-2">
 		<p class="text-lightblack text-sm whitespace-no-wrap">
-			Partage sur
+			Partager sur
 		</p>
 		<a target="_blank" class="share w-6 ml-2" :href="`https://pinterest.com/pin/create/button/?url=${ shareUrl }&media=${ mediaUrl }`">
 			<div class="w-full" v-html="icon.pinterest"></div>
