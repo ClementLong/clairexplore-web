@@ -1,7 +1,10 @@
 <template>
 	<div>
 		<div class="flex flex-col h-50vh will-change-background" ref="bg" :style="bgStyle">
-			<div class="h-50vh flex justify-center items-center font-heading text-darkwhite font-bold text-3xl" style="background: linear-gradient(180deg, rgb(246, 245, 241) 0%, rgba(246, 245, 241, 0) 30%);">
+			<div
+				class="h-50vh flex justify-center items-center font-heading text-darkwhite font-bold text-3xl"
+				style="background: linear-gradient(180deg, rgb(246, 245, 241) 0%, rgba(246, 245, 241, 0) 30%); text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);"
+			>
 				La vie ce n'est pas seulement respirer, c'est avoir le souffle coupé
 			</div>
 		</div>

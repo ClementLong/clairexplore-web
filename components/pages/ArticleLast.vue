@@ -33,7 +33,7 @@ export default {
 	},
 	computed: {
 		lastArticle() {
-			const articlesSortByDate = this.articles.sort((a, b) => {
+			const articlesSortByDate = this.articles.slice().sort((a, b) => {
 				return new Date(b.date) - new Date(a.date)
 			})
 			return articlesSortByDate.slice(0, 3)
