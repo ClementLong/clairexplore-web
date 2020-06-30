@@ -6,7 +6,7 @@
 			class="bg-darkwhite lg:p-6 p-2 lg:pb-16 pb-10 shadow relative flex-1"
 			:style="polaStyle(index)"
 		>
-			<img v-if="image.formats.large" :src="MEDIA_URL + image.formats.large.url" :alt="image.alternativeText" class="h-full w-full object-cover">
+			<img :src="polaSrc(image)" :alt="image.alternativeText" class="h-full w-full object-cover">
 			<h5
 				v-if="image.caption"
 				class="absolute left-0 text-lightblack font-heading font-light italic lg:pt-5 px-1 pt-1 lg:text-lg text-xs text-center w-full"
@@ -40,6 +40,15 @@ export default {
 		}
 	},
 	methods: {
+		polaSrc(image) {
+			if(image.formats.large) {
+				return this.MEDIA_URL + image.formats.large.url
+			} else if(image.formats.medium) {
+				return this.MEDIA_URL + image.formats.medium.url
+			} else {
+				return ''
+			}
+		},
 		polaStyle(index) {
 			if(this.images.length > 2) {
 				if(index === 0) {
