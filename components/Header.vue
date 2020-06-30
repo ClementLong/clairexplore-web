@@ -78,6 +78,10 @@ export default {
 </script>
 
 <style scoped>
+	.nuxt-link-exact-active {
+		@apply text-important;
+	}
+
 	.fill-focus {
 		fill: #5C4B51;
 	}
