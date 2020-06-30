@@ -62,6 +62,11 @@ export default {
 			isOpen: false
 		}
 	},
+	watch: {
+		$route () {
+			this.isOpen = false
+		}
+	},
 	computed: {
 		logoColor() {
 			if(this.isOpen) return 'black'
