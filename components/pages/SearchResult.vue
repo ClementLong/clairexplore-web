@@ -4,6 +4,7 @@
 			v-for="article in articles"
 			:key="article.id"
 			:article="article"
+			:options="options"
 			class="lg:w-1/3 lg:p-6 p-4"
 		/>
 	</div>
@@ -15,7 +16,11 @@ export default {
 		articles: {
 			type: Array,
 			required: true
-		}
-	}
+		},
+		options: {
+			type: Object,
+			required: true
+		},
+	},
 }
 </script>

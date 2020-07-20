@@ -2,15 +2,15 @@
 	<div class="text-lightblack">
 		<div class="h-50vh md:h-50vh w-full overflow-hidden relative">
 			<div ref="background" class="w-full h-50vh md:h-50vh flex items-center" :style="bgStyle">
-				<Photo :image="cover" />
+				<Photo v-if="cover" :image="cover" />
 			</div>
 		</div>
 		<h1 class="mt-4 md:mt-12 mb-4 text-3xl font-heading font-bold uppercase text-center px-4">{{ title }}</h1>
 		<div class="w-50px h-px bg-lightblack m-auto opacity-50"></div>
-		<div class="font-body font-light flex justify-center mt-3">
+		<div class="font-body font-light flex justify-center mt-3 italic">
 			<time class="px-2">{{ formatedDate }}</time>
 			-
-			<h3 class="px-2">{{ location }}</h3>
+			<h3 class="px-2">{{ countryBySlug }}</h3>
 		</div>
 	</div>
 </template>
@@ -36,6 +36,10 @@ export default {
 			type: Object,
 			required: true
 		},
+		options: {
+			type: Object,
+			required: true
+		}
 	},
 	data() {
 		return {
@@ -48,6 +52,14 @@ export default {
 		},
 		bgStyle() {
 			return `transform: translate3d(0, ${this.bgPosition / 2 }px, 0) scale(1.0, 1.0);`
+		},
+		countryBySlug() {
+			const currentCountry = this.options.country.find((country) => {
+				return this.location == country.slug
+			})
+
+			if(currentCountry) return currentCountry.name
+			return ''
 		}
 	},
 	created () {

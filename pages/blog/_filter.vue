@@ -1,6 +1,6 @@
 <template>
 	<div class="text-center py-5">
-		<h3 class="font-heading font-bold text-2xl text-lightdark">
+		<h3 class="font-heading font-bold text-2xl text-lightblack">
 			Mes articles
 		</h3>
 		<ArticleFilter @newFilter="changeFilter($event)" :categories="options.categories" />
@@ -9,8 +9,8 @@
 				v-for="article in articlesFiltered"
 				:key="article.id"
 				:article="article"
-				:countries="options.country"
-				class="lg:w-1/3 md:w-1/2 lg:p-6 p-4"
+				:options="options"
+				class="lg:w-1/3 md:w-1/2 lg:p-4 p-2 lg:pb-0 pb-0"
 			/>
 		</div>
 	</div>
@@ -31,11 +31,11 @@ export default {
 				options: options.data,
 			}
 		} catch {
-			return {
-				articles: null,
-				listing: null,
-				options: null,
-			}
+			// return {
+			// 	articles: null,
+			// 	listing: null,
+			// 	options: null,
+			// }
 		}
 	},
 	head () {
@@ -53,9 +53,13 @@ export default {
 	},
 	computed: {
 		articlesFiltered() {
-			if(!this.filter) return this.articles
+			const articlesSortByDate = this.articles.sort((a, b) => {
+				return new Date(b.date) - new Date(a.date)
+			})
 
-			return this.articles.filter((article) => {
+			if(!this.filter) return articlesSortByDate
+
+			return articlesSortByDate.filter((article) => {
 				return article.categorie == this.filter
 			})
 		}

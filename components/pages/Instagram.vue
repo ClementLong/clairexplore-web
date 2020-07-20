@@ -1,11 +1,11 @@
 <template>
 	<div class="bg-darkwhite flex justify-center items-center py-8">
-		<div class="container">
+		<div class="container flex flex-col items-center">
 			<h3 class="font-heading font-bold text-2xl text-lightblack">
-				Instagram
+				Abonne-toi !
 			</h3>
-			<div class="bg-white h-25vh">
-
+			<div class="mt-2">
+				<Social class="w-full" :big="true" />
 			</div>
 		</div>
 	</div>

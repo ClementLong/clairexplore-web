@@ -1,15 +1,18 @@
 <template>
 	<div>
 		<div class="flex flex-col h-50vh will-change-background" ref="bg" :style="bgStyle">
-			<div class="h-50vh flex justify-center items-center font-heading text-darkwhite font-bold text-3xl" style="background: linear-gradient(180deg, rgb(246, 245, 241) 0%, rgba(246, 245, 241, 0) 30%);">
-				La phrase qui tue !
+			<div
+				class="h-50vh flex justify-center items-center text-center font-heading text-darkwhite font-bold text-3xl"
+				style="background: linear-gradient(180deg, rgb(246, 245, 241) 0%, rgba(246, 245, 241, 0) 30%); text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);"
+			>
+				La vie ce n'est pas seulement respirer, c'est avoir le souffle coupé
 			</div>
 		</div>
 		<div>
 			<div class="container m-auto py-8">
 				<div class="flex flex-col items-center">
 					<p class="font-heading text-lightblack">
-						Trié par
+						Trier par
 					</p>
 					<h3 class="font-heading font-bold text-2xl text-lightblack">
 						Catégories
@@ -24,7 +27,7 @@
 						<n-link class="flex justify-between items-stretch icons" :to="{ path: `/blog/${category.slug}` }">
 							<div class="flex flex-col items-center justify-center">
 								<div class="w-16 mt-6 mb-4" v-html="icon['_' + category.slug]"></div>
-								<div class="font-heading px-3 py-1 text-lg text-center hover:text-important">
+								<div class="font-heading font-bold px-3 py-1 text-lg text-center hover:text-important">
 									{{ category.name }}
 								</div>
 							</div>

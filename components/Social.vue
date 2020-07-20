@@ -1,16 +1,52 @@
 <template>
 	<div class="flex">
-		<a href="https://www.instagram.com/clairexplore" class="flex mx-1 w-6">
-			<img src="/images/instagram.svg" alt="Instagram" class="w-full">
+		<a target="_blank" href="https://www.instagram.com/clairexplore" :class="`flex social mx-1 ${size}`">
+			<div class="w-full" v-html="icon.instagram"></div>
 		</a>
-		<a href="https://www.twitter.com/clairexplore" class="flex mx-1 w-6">
-			<img src="/images/twitter.svg" alt="Twitter" class="w-full">
+		<a target="_blank" href="https://www.facebook.com/clairexplore" :class="`flex social mx-1 ${size}`">
+			<div class="w-full" v-html="icon.facebook"></div>
 		</a>
-		<a href="https://www.facebook.com/clairexplore" class="flex mx-1 w-6">
-			<img src="/images/facebook.svg" alt="Facebook" class="w-full">
-		</a>
-		<a href="https://www.youtube.com/channel/UCFfVzez5jEKCZCVT73ogzMQ" class="flex mx-1 w-6">
-			<img src="/images/youtube.svg" alt="Youtube" class="w-full">
+		<a target="_blank" href="https://www.youtube.com/channel/UCFfVzez5jEKCZCVT73ogzMQ" :class="`flex social mx-1 ${size}`">
+			<div class="w-full" v-html="icon.youtube"></div>
 		</a>
 	</div>
 </template>
+
+<script>
+import instagram from '~/assets/icons/instagram.svg?raw'
+import facebook from '~/assets/icons/facebook.svg?raw'
+import youtube from '~/assets/icons/youtube.svg?raw'
+
+export default {
+	props: {
+		big: {
+			type: Boolean,
+			default: false
+		}
+	},
+	data() {
+		return {
+			icon: {
+				instagram,
+				facebook,
+				youtube
+			}
+		}
+	},
+	computed: {
+		size() {
+			return this.big ? 'w-12 my-4 mx-4' : 'w-6'
+		}
+	}
+}
+</script>
+
+<style>
+.social svg {
+	fill: #5C4B51;
+}
+
+.social:hover svg {
+	fill: #4A9690
+}
+</style>

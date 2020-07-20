@@ -16,7 +16,7 @@
 			:text="about.title"
 		/>
 		<Single
-			size="small"
+			size="big"
 			:image="about.presentation"
 		/>
 		<Tips :text="about.follow" />
