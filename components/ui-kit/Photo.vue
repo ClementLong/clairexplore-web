@@ -2,7 +2,7 @@
 	<picture class="w-full">
 		<source media="(min-width:650px)" :srcset="MEDIA_URL + image.url">
 		<source media="(min-width:465px)" :srcset="MEDIA_URL + image.formats.medium.url">
-		<img :src="MEDIA_URL + image.formats.small.url" :alt="image.alternativeText" class="w-full">
+		<img :src="MEDIA_URL + image.formats.small.url" :alt="image.alternativeText" loading="lazy" class="w-full">
 	</picture>
 </template>
 

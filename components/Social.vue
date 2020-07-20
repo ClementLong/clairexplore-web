@@ -1,12 +1,12 @@
 <template>
 	<div class="flex">
-		<a target="_blank" href="https://www.instagram.com/clairexplore" :class="`flex social mx-1 ${size}`">
+		<a rel="noopener" target="_blank" href="https://www.instagram.com/clairexplore" :class="`flex social mx-1 ${size}`">
 			<div class="w-full" v-html="icon.instagram"></div>
 		</a>
-		<a target="_blank" href="https://www.facebook.com/clairexplore" :class="`flex social mx-1 ${size}`">
+		<a rel="noopener" target="_blank" href="https://www.facebook.com/clairexplore" :class="`flex social mx-1 ${size}`">
 			<div class="w-full" v-html="icon.facebook"></div>
 		</a>
-		<a target="_blank" href="https://www.youtube.com/channel/UCFfVzez5jEKCZCVT73ogzMQ" :class="`flex social mx-1 ${size}`">
+		<a rel="noopener" target="_blank" href="https://www.youtube.com/channel/UCFfVzez5jEKCZCVT73ogzMQ" :class="`flex social mx-1 ${size}`">
 			<div class="w-full" v-html="icon.youtube"></div>
 		</a>
 	</div>
