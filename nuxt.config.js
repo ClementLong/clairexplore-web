@@ -50,7 +50,13 @@ module.exports = {
 	*/
 	modules: [
 		'@nuxtjs/sitemap',
+		'nuxt-basic-auth-module'
 	],
+	basic: {
+		name: 'admin',
+		pass: 'evreux',
+		enabled: Boolean(process.env.STAGING)
+	 },
 	sitemap: {
 		routes: async () => {
 			const { data } = await axios.get(`${process.env.API_URL || 'https://api.clairexplore.com' }/articles?published=true`)
