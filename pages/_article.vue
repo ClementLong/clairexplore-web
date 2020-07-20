@@ -129,15 +129,15 @@ export default {
 	},
 	head () {
 		return {
-			title: this.article.SEO.meta_title,
+			title: this.article.SEO ? this.article.SEO.meta_title : 'Clairexplore',
 			meta: [
-				{ hid: 'description', name: 'description', content: this.article.SEO.meta_description },
+				{ hid: 'description', name: 'description', content: this.article.SEO ? this.article.SEO.meta_description : 'Clairexplore' },
 				{ name: "author", content: 'Clairexplore' },
 				{ name: "publisher", content: 'Clairexplore' },
 
 				// Facebook & LinkedIn
-				{ name: "og:title", content: this.article.Social.title },
-				{ name: "og:description", content: this.article.Social.description },
+				{ name: "og:title", content: this.article.Social ? this.article.Social.title : 'Clairexplore' },
+				{ name: "og:description", content: this.article.Social ? this.article.Social.description : 'Clairexplore' },
 				{ name: "og:type", content: "website" },
 				{ name: "og:url", content: this.$route.path },
 				{ name: "og:image", content: this.article.cover.url },
