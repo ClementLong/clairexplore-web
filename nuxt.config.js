@@ -54,7 +54,7 @@ module.exports = {
 	],
 	basic: {
 		name: 'admin',
-		pass: 'admin',
+		pass: 'evreux',
 		enabled: Boolean(process.env.STAGING)
 	 },
 	sitemap: {
