@@ -5,7 +5,7 @@
 			<img v-if="!isOpen" src="/images/plus.svg" alt="+" class="w-4 mr-1" loading="lazy">
 			<img v-else src="/images/minus.svg" alt="-" class="w-4 mr-1" loading="lazy">
 		</div>
-		<div v-show="isOpen" class="small-container w-full font-body p-3 pb-1 paragraph" v-html="htmlText"></div>
+		<div v-show="isOpen" class="small-container w-full font-body p-3 pb-1 paragraph text-base md:text-lg" v-html="htmlText"></div>
 	</div>
 </template>
 
