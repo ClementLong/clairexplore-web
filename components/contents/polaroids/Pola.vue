@@ -1,9 +1,9 @@
 <template>
-	<div class="m-auto py-5 flex" :class="containerStyle">
+	<div class="m-auto lg:py-5 pb-8 flex" :class="containerStyle">
 		<div
 			v-for="(image, index) in images"
 			:key="index"
-			class="bg-darkwhite lg:p-6 p-2 lg:pb-16 pb-10 shadow relative flex-1"
+			class="bg-darkwhite lg:p-6 p-2 lg:pb-16 pb-10 shadow relative flex-1 max-h-500px"
 			:style="polaStyle(index)"
 		>
 			<img :src="polaSrc(image)" :alt="image.alternativeText" loading="lazy" class="h-full w-full object-cover">
@@ -71,3 +71,9 @@ export default {
 	}
 }
 </script>
+
+<style scoped>
+	.max-h-500px {
+		max-height: 500px;
+	}
+</style>
