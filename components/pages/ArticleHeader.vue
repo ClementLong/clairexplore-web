@@ -2,7 +2,7 @@
 	<div class="text-lightblack">
 		<div class="h-50vh md:h-50vh w-full overflow-hidden relative">
 			<div ref="background" class="w-full h-50vh md:h-50vh flex items-center" :style="bgStyle">
-				<Photo v-if="cover" :image="cover" />
+				<img :src="cover.url" :alt="cover.alternativeText" class="h-full w-full object-cover">
 			</div>
 		</div>
 		<h1 class="mt-4 md:mt-12 mb-4 text-3xl font-heading font-bold uppercase text-center px-4">{{ title }}</h1>
