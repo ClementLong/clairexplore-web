@@ -31,6 +31,7 @@ module.exports = {
 
 				'50px': '50px',
 				'100px': '100px',
+				'400px': '400px',
 			}
 		 }
 	},
