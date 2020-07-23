@@ -3,8 +3,9 @@
 		class="m-auto pb-5"
 		:class="[size == 'big' ? 'container' : '', size == 'small' ? 'small-container' : '']"
 	>
-		<Photo :image="image" />
-		<h5 v-if="image.caption" class="text-lightblack font-heading font-bold pt-2 text-center">{{ image.caption }}</h5>
+		<Photo v-if="image" :image="image" />
+		<div v-else>Single photo</div>
+		<h5 v-if="image && image.caption" class="text-lightblack font-heading font-bold pt-2 text-center">{{ image.caption }}</h5>
 	</div>
 </template>
 
