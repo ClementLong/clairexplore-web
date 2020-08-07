@@ -1,5 +1,5 @@
 <template>
-	<div class="text-lg">
+	<div class="text-lg lg:text-base xl:text-lg">
 		<ArticleHeader
 			:title="article.title"
 			:date="article.date"
