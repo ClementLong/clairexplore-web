@@ -48,7 +48,7 @@ export default {
 			} else if(image.formats.medium) {
 				return this.MEDIA_URL + image.formats.medium.url
 			} else {
-				return ''
+				return this.MEDIA_URL + image.url
 			}
 		},
 		polaStyle(index) {
