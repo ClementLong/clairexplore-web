@@ -1,7 +1,7 @@
 <template>
 	<picture class="w-full">
 		<source media="(min-width:650px)" :srcset="MEDIA_URL + image.url">
-		<img :src="MEDIA_URL + image.formats.medium.url" :alt="image.alternativeText" loading="lazy" class="w-full">
+		<img :src="imageUrl" :alt="image.alternativeText" loading="lazy" class="w-full">
 	</picture>
 </template>
 
@@ -16,6 +16,15 @@ export default {
 	data() {
 		return {
 			MEDIA_URL: process.env.MEDIA_URL,
+		}
+	},
+	computed: {
+		imageUrl() {
+			if(this.image.formats && this.image.formats.medium) {
+				return this.MEDIA_URL + this.image.formats.medium.url
+			} else {
+				return this.MEDIA_URL + this.image.url
+			}
 		}
 	}
 }
