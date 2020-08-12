@@ -51,6 +51,10 @@ export default {
 	@apply italic;
 }
 
+.paragraph hr {
+	@apply my-2 border-lightblack;
+}
+
 .paragraph ul {
 	@apply list-disc list-inside;
 }

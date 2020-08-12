@@ -11,7 +11,7 @@
 		<div>
 			<div class="container m-auto py-8">
 				<div class="flex flex-col items-center">
-					<p class="font-heading text-lightblack">
+					<p class="font-hand text-xl text-lightblack -mb-4">
 						Trier par
 					</p>
 					<h3 class="font-heading font-bold text-2xl text-lightblack">

@@ -3,13 +3,13 @@
 		<div
 			v-for="(image, index) in images"
 			:key="index"
-			class="bg-darkwhite lg:p-6 p-2 lg:pb-16 pb-10 shadow relative flex-1 max-h-500px"
-			:style="polaStyle(index)"
+			class="pola"
+			:class="polaStyle(index)"
 		>
 			<img :src="polaSrc(image)" :alt="image.alternativeText" loading="lazy" class="h-full w-full object-cover">
 			<h5
 				v-if="image.caption"
-				class="absolute left-0 text-lightblack font-heading font-light italic lg:pt-5 px-1 pt-1 lg:text-lg text-xs text-center w-full"
+				class="absolute left-0 text-lightblack font-heading font-light italic lg:pt-5 px-1 pt-2 lg:text-lg text-xs text-center w-full"
 			>
 				{{ image.caption }}
 			</h5>
@@ -34,6 +34,8 @@ export default {
 		containerStyle() {
 			if(this.images.length === 1) {
 				return 'small-container'
+			}else if(this.images.length === 3) {
+				return 'container flex-wrap lg:flex-no-wrap justify-center overflow-x-hidden lg:overflow-visible'
 			} else {
 				return 'container'
 			}
@@ -46,23 +48,23 @@ export default {
 			} else if(image.formats.medium) {
 				return this.MEDIA_URL + image.formats.medium.url
 			} else {
-				return ''
+				return this.MEDIA_URL + image.url
 			}
 		},
 		polaStyle(index) {
 			if(this.images.length > 2) {
 				if(index === 0) {
-					return 'transform: rotate(-5deg) translate(20px, 25px);'
+					return 'pola-3-first'
 				} else if (index === 1) {
-					return 'transform: rotate(0deg); z-index: 2;'
+					return 'pola-3-second'
 				} else {
-					return 'transform: rotate(5deg) translate(-25px, 20px);'
+					return 'pola-3-third'
 				}
 			} else if(this.images.length > 1) {
 				if(index === 0) {
-					return 'transform: rotate(-4deg) translate(15px, 0px);'
+					return 'pola-2-first'
 				} else {
-					return 'transform: rotate(2deg) translate(-15px, 0px);'
+					return 'pola-2-second'
 				}
 			} else {
 				return ''
@@ -73,7 +75,59 @@ export default {
 </script>
 
 <style scoped>
-	.max-h-500px {
+	.pola {
+		@apply bg-darkwhite p-2 pb-8 shadow relative;
 		max-height: 500px;
+
+		@screen lg {
+			@apply p-6 pb-16;
+		}
+	}
+
+	.pola-3-first {
+		transform: rotate(-5deg) translate(0, 10px);
+		z-index: 2;
+		width: 55%;
+
+		@screen lg {
+			transform: rotate(-5deg) translate(20px, 25px);
+		}
+	}
+
+	.pola-3-second {
+		transform: rotate(-5deg) translate(0, -10px);
+		width: 50%;
+
+		@screen lg {
+			transform: rotate(0deg);
+			z-index: 2;
+		}
+	}
+
+	.pola-3-third {
+		transform: rotate(5deg) translate(0, -15px);
+		width: 50%;
+
+		@screen lg {
+			transform: rotate(5deg) translate(-25px, 20px);
+		}
+	}
+
+	.pola-2-first {
+		@apply flex-1;
+		transform: rotate(-4deg) translate(15px, 0px);
+
+		@screen lg {
+
+		}
+	}
+
+	.pola-2-second {
+		@apply flex-1;
+		transform: rotate(2deg) translate(-15px, 0px);
+
+		@screen lg {
+
+		}
 	}
 </style>

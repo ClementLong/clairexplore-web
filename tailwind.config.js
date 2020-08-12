@@ -8,7 +8,8 @@ module.exports = {
 		},
 		fontFamily: {
 			'heading': ['CL', 'sans-serif'],
-			'body': ['Raleway', 'sans-serif']
+			'body': ['Raleway', 'sans-serif'],
+			'hand': ['League', 'sans-serif']
 		},
 		extend: {
 			colors: {

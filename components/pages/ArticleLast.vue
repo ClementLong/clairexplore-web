@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-darkwhite text-center py-12">
-		<p class="font-heading text-lightblack">
+		<p class="font-hand text-xl text-lightblack -mb-4">
 			Mes derniers
 		</p>
 		<h3 class="font-heading font-bold text-2xl text-lightblack">
