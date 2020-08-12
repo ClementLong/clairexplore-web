@@ -1,6 +1,5 @@
 <template>
 	<picture class="w-full">
-		<source media="(min-width:650px)" :srcset="MEDIA_URL + image.url">
 		<img :src="imageUrl" :alt="image.alternativeText" loading="lazy" class="w-full">
 	</picture>
 </template>
