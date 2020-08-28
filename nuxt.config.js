@@ -52,7 +52,10 @@ module.exports = {
 	*/
 	modules: [
 		'@nuxtjs/sitemap',
-		'nuxt-basic-auth-module'
+		'nuxt-basic-auth-module',
+		['@nuxtjs/google-analytics', {
+			id: 'UA-69627424-2'
+		}]
 	],
 	basic: {
 		name: 'admin',
@@ -90,7 +93,7 @@ module.exports = {
 	},
 	serverMiddleware: [
 		redirectSSL.create({
-			exclude: ['localhost']
+			enabled: process.env.NODE_ENV === 'production'
 		}),
 	]
 }
