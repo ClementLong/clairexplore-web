@@ -1,4 +1,5 @@
 const axios = require('axios')
+const redirectSSL = require('redirect-ssl')
 
 module.exports = {
 	mode: 'universal',
@@ -86,5 +87,10 @@ module.exports = {
 			lang: 'fr',
 			display: 'fullscreen'
 		}
-	 }
+	},
+	serverMiddleware: [
+		redirectSSL.create({
+			exclude: ['localhost']
+		}),
+	]
 }
