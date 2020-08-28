@@ -24,6 +24,7 @@
     "moment": "^2.25.3",
     "nuxt": "^2.0.0",
     "nuxt-basic-auth-module": "^1.3.2",
+    "redirect-ssl": "^2.0.0",
     "swiper": "^5.4.1",
     "vue-awesome-swiper": "^4.1.1"
   },
