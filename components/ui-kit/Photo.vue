@@ -19,8 +19,8 @@ export default {
 	},
 	computed: {
 		imageUrl() {
-			if(this.image.formats && this.image.formats.medium) {
-				return this.MEDIA_URL + this.image.formats.medium.url
+			if(this.image.formats && this.image.formats.large) {
+				return this.MEDIA_URL + this.image.formats.large.url
 			} else {
 				return this.MEDIA_URL + this.image.url
 			}

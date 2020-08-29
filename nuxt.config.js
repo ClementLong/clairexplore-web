@@ -1,7 +1,9 @@
 const axios = require('axios')
+const redirectSSL = require('redirect-ssl')
 
 module.exports = {
 	mode: 'universal',
+	telemetry: false,
 	/*
 	** Headers of the page
 	*/
@@ -50,7 +52,10 @@ module.exports = {
 	*/
 	modules: [
 		'@nuxtjs/sitemap',
-		'nuxt-basic-auth-module'
+		'nuxt-basic-auth-module',
+		['@nuxtjs/google-analytics', {
+			id: 'UA-69627424-2'
+		}]
 	],
 	basic: {
 		name: 'admin',
@@ -85,5 +90,10 @@ module.exports = {
 			lang: 'fr',
 			display: 'fullscreen'
 		}
-	 }
+	},
+	serverMiddleware: [
+		redirectSSL.create({
+			enabled: process.env.NODE_ENV === 'production'
+		}),
+	]
 }
