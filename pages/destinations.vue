@@ -12,7 +12,6 @@
 			:options="options"
 			class="-mt-16 md:-mt-16" />
 	</div>
-	</div>
 </template>
 
 <script lang="ts">

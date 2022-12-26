@@ -5,7 +5,7 @@
 				class="h-50vh flex justify-center items-center text-center font-heading text-darkwhite font-bold text-3xl"
 				style="background: linear-gradient(180deg, rgb(246, 245, 241) 0%, rgba(246, 245, 241, 0) 30%); text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);"
 			>
-				La vie ce n'est pas seulement respirer, c'est avoir le souffle coupé
+				La vie ce n'est pas seulement respirer, c'est aussi avoir le souffle coupé
 			</div>
 		</div>
 		<div>

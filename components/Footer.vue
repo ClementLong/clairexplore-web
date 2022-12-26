@@ -9,7 +9,7 @@
 				<nuxt-link class="px-4 my-2 font-semibold" to="/cgu">CGU</nuxt-link>
 				<nuxt-link class="px-4 my-2 font-semibold" to="/contact">Contact</nuxt-link>
 				<p class="px-4 my-2">Made with ♡️ by <a class="font-semibold" href="https://www.clementlong.com">C.L.</a></p>
-				<p class="px-4 my-2">Clairexplore © 2018 - 2021</p>
+				<p class="px-4 my-2">Clairexplore © 2018 - {{ new Date().getFullYear() }}</p>
 			</div>
 		</div>
 	</div>

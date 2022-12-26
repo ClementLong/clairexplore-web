@@ -19,7 +19,7 @@ import axios from 'axios'
 export default {
 	async asyncData({ params }) {
 		try {
-			const articles = await axios.get(`${process.env.API_URL}/articles?title_contains=${params.search}`)
+			const articles = await axios.get(`${process.env.API_URL}/articles?title_contains=${params.search}&published=true`)
 			const options = await axios.get(`${process.env.API_URL}/options`)
 			return {
 				articles: articles.data,
