@@ -6,8 +6,8 @@
 		<a rel="noopener" target="_blank" href="https://www.facebook.com/clairexplore" :class="`flex social mx-1 ${size}`">
 			<div class="w-full" v-html="icon.facebook"></div>
 		</a>
-		<a rel="noopener" target="_blank" href="https://www.youtube.com/channel/UCFfVzez5jEKCZCVT73ogzMQ" :class="`flex social mx-1 ${size}`">
-			<div class="w-full" v-html="icon.youtube"></div>
+		<a rel="noopener" target="_blank" href="https://www.tiktok.com/@clairexplore" :class="`flex social mx-1 ${size}`">
+			<div class="w-full" v-html="icon.tiktok"></div>
 		</a>
 	</div>
 </template>
@@ -15,7 +15,7 @@
 <script>
 import instagram from '~/assets/icons/instagram.svg?raw'
 import facebook from '~/assets/icons/facebook.svg?raw'
-import youtube from '~/assets/icons/youtube.svg?raw'
+import tiktok from '~/assets/icons/tiktok.svg?raw'
 
 export default {
 	props: {
@@ -29,7 +29,7 @@ export default {
 			icon: {
 				instagram,
 				facebook,
-				youtube
+				tiktok
 			}
 		}
 	},
