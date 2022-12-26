@@ -18,7 +18,7 @@
 						Catégories
 					</h3>
 				</div>
-				<div class="flex flex-wrap justify-between mt-6">
+				<div class="flex flex-wrap justify-center md:justify-between mt-6">
 					<div
 						v-for="category in categories"
 						:key="category.id"

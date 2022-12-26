@@ -17,7 +17,7 @@
 		<div>
 			<div class="container m-auto flex flex-wrap pt-4 pb-8"
 			:class="[this.max ? 'justify-center' : 'justify-left']">
-				<ArticlePreview v-for="article in articlesByCountry" :key="article.id" :article="article" :options="options" :small="true" class="lg:w-1/3" />
+				<ArticlePreview v-for="article in articlesByCountry" :key="article.id" :article="article" :options="options" :small="true" class="w-full lg:w-1/3" />
 			</div>
 		</div>
 		<Button v-if="this.max" to="/destinations" text="Voir plus d'articles" />

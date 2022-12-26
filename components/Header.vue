@@ -35,7 +35,7 @@
 				<div class="flex flex-col items-center">
 					<div class="flex flex-col items-center mt-8">
 						<nuxt-link class="hover:text-important py-4" to="/">
-							Homepage
+							Accueil
 						</nuxt-link>
 						<nuxt-link class="hover:text-important py-4" to="/blog">
 							Articles

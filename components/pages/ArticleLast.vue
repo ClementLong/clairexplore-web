@@ -12,7 +12,7 @@
 				:key="article.id"
 				:article="article"
 				:options="options"
-				class="lg:w-1/3 md:w-1/2 lg:p-6 p-4"
+				class="w-full lg:w-1/3 md:w-1/2 lg:p-6 p-4"
 			/>
 		</div>
 		<Button to="/blog" text="Voir plus d'articles" />
