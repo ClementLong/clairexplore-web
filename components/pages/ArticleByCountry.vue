@@ -20,7 +20,7 @@
 				<ArticlePreview v-for="article in articlesByCountry" :key="article.id" :article="article" :options="options" :small="true" class="w-full lg:w-1/3" />
 			</div>
 		</div>
-		<Button v-if="this.max" to="/destinations" text="Voir plus d'articles" />
+		<Button v-if="this.max" :to="`/destinations/${ countryFilter }`" text="Voir plus d'articles" />
 	</div>
 </template>
 

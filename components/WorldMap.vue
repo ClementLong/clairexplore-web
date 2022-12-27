@@ -1,5 +1,5 @@
 <template>
-	<div class="container m-auto">
+	<div class="container m-auto pt-12 md:pt-0">
 		<svg class="m20_svgMap" viewBox="0 170 1178 591" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<g id="V1.0" fill="none" fill-rule="evenodd">
 				<g id="MAP" stroke-width="0.5" stroke="#E9E8E3" fill="#F6F5F1" @click="changeActive($event)">
