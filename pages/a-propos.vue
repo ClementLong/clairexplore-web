@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="pt-12">
 		<Tips :text="about.intro" />
 		<Title
 			size="Big"

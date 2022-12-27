@@ -35,7 +35,8 @@
 				<div class="bar-1" style="position: absolute; right: 10px; top: 25px; transform: rotate(45deg)"></div>
 				<div class="bar-3" style="position: absolute; right: 10px; top: 25px; transform: rotate(-45deg)"></div>
 			</div>
-			<nav class="fixed top-0 w-full bg-white h-screen p-8 z-40 flex flex-col justify-between" v-if="isOpen">
+			<nav class="fixed top-0 w-full bg-white h-screen overflow-scroll p-8 z-40 flex flex-col justify-between" v-if="isOpen">
+				<div class="fixed top-0 w-full bg-white h-12"></div>
 				<div class="flex flex-col">
 					<div class="flex flex-col mt-8 font-body uppercase text-lg">
 						<nuxt-link class="p-4 border-b border-t" to="/">
