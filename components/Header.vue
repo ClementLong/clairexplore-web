@@ -39,11 +39,11 @@
 				<div class="fixed top-0 w-full bg-white h-12"></div>
 				<div class="flex flex-col">
 					<div class="flex flex-col mt-8 font-body uppercase text-lg">
-						<nuxt-link class="p-4 border-b border-t" to="/">
+						<nuxt-link class="p-4 border-b border-t hover:text-important" to="/">
 							Accueil
 						</nuxt-link>
 						<div class="flex justify-between border-b">
-							<nuxt-link class="p-4" to="/destinations">
+							<nuxt-link class="p-4 hover:text-important" to="/destinations">
 								Destinations
 							</nuxt-link>
 							<div class="border-l w-16 p-3" @click="openDestination()">
@@ -51,12 +51,12 @@
 							</div>
 						</div>
 						<div v-if="isOpenDestinations" class="w-full flex flex-col normal-case">
-							<nuxt-link class="p-4 py-2 border-b bg-fakewhite" :to="`/destinations/${ country.slug }`" v-for="country in countries" :key="country.id">
+							<nuxt-link class="p-4 py-2 border-b bg-fakewhite hover:text-important" :to="`/destinations/${ country.slug }`" v-for="country in countries" :key="country.id">
 								{{ country.name }}
 							</nuxt-link>
 						</div>
 						<div class="flex justify-between border-b">
-							<nuxt-link class="p-4" to="/blog">
+							<nuxt-link class="p-4 hover:text-important" to="/blog">
 								Catégories
 							</nuxt-link>
 							<div class="border-l w-16 p-3" @click="isOpenCategories = !isOpenCategories">
@@ -64,26 +64,26 @@
 							</div>
 						</div>
 						<div v-if="isOpenCategories" class="w-full flex flex-col normal-case">
-							<nuxt-link class="p-4 py-2 border-b bg-fakewhite" to="/blog/aventure_nature">
+							<nuxt-link class="p-4 py-2 border-b bg-fakewhite hover:text-important" to="/blog/aventure_nature">
 								Aventure & Nature
 							</nuxt-link>
-							<nuxt-link class="p-4 py-2 border-b bg-fakewhite" to="/blog/food_and_drink">
+							<nuxt-link class="p-4 py-2 border-b bg-fakewhite hover:text-important" to="/blog/food_and_drink">
 								Bars & Restaurants
 							</nuxt-link>
-							<nuxt-link class="p-4 py-2 border-b bg-fakewhite" to="/blog/itineraires_de_voyage">
+							<nuxt-link class="p-4 py-2 border-b bg-fakewhite hover:text-important" to="/blog/itineraires_de_voyage">
 								Itinéraires de voyage
 							</nuxt-link>
-							<nuxt-link class="p-4 py-2 border-b bg-fakewhite" to="/blog/conseils_de_voyage">
+							<nuxt-link class="p-4 py-2 border-b bg-fakewhite hover:text-important" to="/blog/conseils_de_voyage">
 								Conseils de voyage
 							</nuxt-link>
-							<nuxt-link class="p-4 py-2 border-b bg-fakewhite" to="/blog/a_la_decouverte_de">
+							<nuxt-link class="p-4 py-2 border-b bg-fakewhite hover:text-important" to="/blog/a_la_decouverte_de">
 								A la découverte de...
 							</nuxt-link>
 						</div>
-						<nuxt-link class="p-4 border-b" to="/a-propos">
+						<nuxt-link class="p-4 border-b hover:text-important" to="/a-propos">
 							A propos
 						</nuxt-link>
-						<nuxt-link class="p-4 border-b" to="/contact">
+						<nuxt-link class="p-4 border-b hover:text-important" to="/contact">
 							Contact
 						</nuxt-link>
 					</div>
@@ -140,10 +140,6 @@ export default {
 </script>
 
 <style scoped>
-	.nuxt-link-exact-active {
-		@apply text-important;
-	}
-
 	.fill-focus {
 		fill: #5C4B51;
 	}

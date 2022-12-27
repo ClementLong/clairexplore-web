@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<Header />
-		<div class="md:pt-50px min-h-screen">
+		<Header ref="header" />
+		<div class="md:pt-50px min-h-screen" :class="{ 'fixed': $refs.header.isOpen }">
 			<nuxt />
 		</div>
 		<Footer />
