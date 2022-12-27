@@ -88,7 +88,7 @@
 						</nuxt-link>
 					</div>
 				</div>
-				<div class="flex flex-col items-center">
+				<div class="flex flex-col items-center pb-24">
 					<Social class="mt-8" />
 					<Search class="mr-4 mt-8" />
 				</div>
