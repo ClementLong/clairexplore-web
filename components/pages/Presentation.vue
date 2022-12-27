@@ -1,6 +1,6 @@
 <template>
 	<div class="w-full overflow-hidden">
-		<div ref="bg" :style="bgStyle" class="relative h-75vh md:h-auto overflow-hidden will-change">
+		<div ref="bg" :style="bgStyle" class="transition duration-75 relative h-75vh md:h-auto overflow-hidden will-change">
 			<img class="md:w-full h-75vh md:h-auto md:static absolute absolute-center transform -translate-x-1/2 md:translate-x-0 w-auto max-w-none" :src="cover" alt="Blog de voyage">
 		</div>
 		<div class="relative">
