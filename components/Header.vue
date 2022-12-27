@@ -26,12 +26,12 @@
 					<Logo :color="logoColor" />
 				</h2>
 			</nuxt-link>
-			<div class="p-2 top-0 fixed right-0 z-50 bg-white rounded-bl-lg" v-if="!isOpen" @click="isOpen = !isOpen">
+			<div class="p-2 top-0 fixed right-0 z-50 bg-white rounded-bl-lg" v-if="!isOpen" @click="toggleScroll()">
 				<div class="bar-1"></div>
 				<div class="bar-2"></div>
 				<div class="bar-3"></div>
 			</div>
-			<div class="p-2 top-0 fixed right-0 z-50 bg-white rounded-bl-lg" v-else @click="isOpen = !isOpen">
+			<div class="p-2 top-0 fixed right-0 z-50 bg-white rounded-bl-lg" v-else @click="toggleScroll()">
 				<div class="bar-1" style="position: absolute; right: 10px; top: 25px; transform: rotate(45deg)"></div>
 				<div class="bar-3" style="position: absolute; right: 10px; top: 25px; transform: rotate(-45deg)"></div>
 			</div>
@@ -116,6 +116,7 @@ export default {
 	watch: {
 		$route () {
 			this.isOpen = false
+			this.$emit('toggleStop', false)
 		}
 	},
 	computed: {
@@ -134,6 +135,10 @@ export default {
 				this.countries = options.data.country
 				this.isOpenDestinations = true
 			}
+		},
+		toggleScroll() {
+			this.isOpen = !this.isOpen
+			this.$emit('toggleStop', this.isOpen)
 		}
 	}
 }
