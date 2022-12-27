@@ -15,7 +15,7 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
 import axios from 'axios'
 
 export default {
