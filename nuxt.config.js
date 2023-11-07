@@ -1,102 +1,108 @@
-const axios = require('axios')
-const redirectSSL = require('redirect-ssl')
+const axios = require("axios");
+const redirectSSL = require("redirect-ssl");
 
 module.exports = {
-	mode: 'universal',
+	mode: "universal",
 	telemetry: false,
 	/*
-	** Headers of the page
-	*/
+	 ** Headers of the page
+	 */
 	head: {
-		title: 'Clairexplore',
+		title: "Clairexplore",
 		meta: [
-			{ charset: 'utf-8' },
-			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+			{ charset: "utf-8" },
+			{ name: "viewport", content: "width=device-width, initial-scale=1" },
+			{
+				hid: "description",
+				name: "description",
+				content: process.env.npm_package_description || ""
+			}
 		],
 		link: [
-			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-			{ rel: 'icon', type: 'image/png', sizes:"32x32", href: '/favicon-32x32.png' },
-			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,400;1,600;1,700&display=swap' },
+			{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+			{
+				rel: "icon",
+				type: "image/png",
+				sizes: "32x32",
+				href: "/favicon-32x32.png"
+			},
+			{
+				rel: "stylesheet",
+				href:
+					"https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,400;1,600;1,700&display=swap"
+			}
 		]
 	},
 	/*
-	** Customize the progress-bar color
-	*/
+	 ** Customize the progress-bar color
+	 */
 	loading: {
-		color: '#4A9690',
-		height: '5px'
+		color: "#4A9690",
+		height: "5px"
 	},
 	/*
-	** Global CSS
-	*/
-	css: [
-	],
+	 ** Global CSS
+	 */
+	css: [],
 	/*
-	** Plugins to load before mounting the App
-	*/
-	plugins: [
-		'~/components',
-	],
+	 ** Plugins to load before mounting the App
+	 */
+	plugins: ["~/components"],
 	/*
-	** Nuxt.js dev-modules
-	*/
+	 ** Nuxt.js dev-modules
+	 */
 	buildModules: [
-		'@nuxt/typescript-build',
+		"@nuxt/typescript-build",
 		// Doc: https://github.com/nuxt-community/stylelint-module
-		'@nuxtjs/stylelint-module',
+		"@nuxtjs/stylelint-module",
 		// Doc: https://github.com/nuxt-community/nuxt-tailwindcss
-		'@nuxtjs/tailwindcss',
-		'@nuxtjs/pwa',
-		'@nuxtjs/svg'
+		"@nuxtjs/tailwindcss",
+		"@nuxtjs/pwa",
+		"@nuxtjs/svg"
 	],
 	/*
-	** Nuxt.js modules
-	*/
-	modules: [
-		'@nuxtjs/sitemap',
-		'nuxt-basic-auth-module',
-		['@nuxtjs/google-analytics', {
-			id: 'UA-69627424-2'
-		}]
-	],
+	 ** Nuxt.js modules
+	 */
+	modules: ["@nuxtjs/sitemap", "nuxt-basic-auth-module"],
 	basic: {
-		name: 'admin',
-		pass: 'evreux',
+		name: "admin",
+		pass: "evreux",
 		enabled: Boolean(process.env.STAGING)
-	 },
+	},
 	sitemap: {
 		routes: async () => {
-			const { data } = await axios.get(`${process.env.API_URL || 'https://api.clairexplore.com' }/articles?published=true`)
-			return data.map((article) => `/${article.slug}`)
+			const { data } = await axios.get(
+				`${process.env.API_URL ||
+					"https://api.clairexplore.com"}/articles?published=true`
+			);
+			return data.map(article => `/${article.slug}`);
 		}
 	},
 	/*
-	** Build configuration
-	*/
+	 ** Build configuration
+	 */
 	build: {
 		/*
-		** You can extend webpack config here
-		*/
-		extend (config, ctx) {
-		}
+		 ** You can extend webpack config here
+		 */
+		extend(config, ctx) {}
 	},
 	env: {
-		MEDIA_URL: '',
-		API_URL: process.env.API_URL || 'https://api.clairexplore.com',
-		SITE_URL: process.env.SITE_URL || 'https://clairexplore.com',
+		MEDIA_URL: "",
+		API_URL: process.env.API_URL || "https://api.clairexplore.com",
+		SITE_URL: process.env.SITE_URL || "https://clairexplore.com",
 		STAGING: process.env.STAGING || false
 	},
 	pwa: {
 		manifest: {
-			name: 'Clairexplore',
-			lang: 'fr',
-			display: 'fullscreen'
+			name: "Clairexplore",
+			lang: "fr",
+			display: "fullscreen"
 		}
 	},
 	serverMiddleware: [
 		redirectSSL.create({
-			enabled: process.env.NODE_ENV === 'production'
-		}),
+			enabled: process.env.NODE_ENV === "production"
+		})
 	]
-}
+};
