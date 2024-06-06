@@ -1,14 +1,14 @@
 <template>
-	<div class="text-lg lg:text-base xl:text-lg">
+	<div class="text-lg lg:text-base xl:text-lg" v-if="data && data.article">
 		<ArticleHeader
-			:title="article.title"
-			:date="article.date"
-			:location="article.country"
-			:cover="article.cover"
-			:options="options"
+			:title="data.article.title"
+			:date="data.article.date"
+			:location="data.article.country"
+			:cover="data.article.cover"
+			:options="data.options"
 		/>
 
-		<div v-for="(component, index) in article.content" :key="index">
+		<div v-for="(component, index) in data.article.content" :key="index">
 			<Single
 				v-if="component.__component == 'article.single'"
 				:size="component.size"
@@ -96,54 +96,53 @@
 
 		</div>
 
-		<Share :mediaUrl="article.preview.url" />
+		<Share :mediaUrl="data.article.preview.url" />
 
 		<ArticleFooter
 			class="mt-8"
-			:articles="article.linked_articles"
-			:options="options"
+			:articles="data.article.linked_articles"
+			:options="data.options"
 		/>
 	</div>
 </template>
 
-<script>
-import axios from 'axios'
+<script setup lang="ts">
+import { articleService, optionsService } from '~/lib/service';
 
-export default {
-	async asyncData({ params, redirect }) {
-		try {
-			const options = await axios.get(`${process.env.API_URL}/options`)
-			const article = await axios.get(`${process.env.API_URL}/articles?slug=${params.article}`)
+const { article } = useRoute().params
 
-			if(!article.data.length) {
-				redirect('/404')
-			}
+const { data, error } = await useAsyncData(`user:${article}`, async() => {
+	console.log(useRoute().params.article)
 
-			return {
-				article: article.data[0],
-				options: options.data
-			}
-		} catch {
-			return {}
-		}
-	},
-	head () {
-		return {
-			title: this.article.SEO ? this.article.SEO.meta_title : 'Clairexplore',
-			meta: [
-				{ hid: 'description', name: 'description', content: this.article.SEO ? this.article.SEO.meta_description : 'Clairexplore' },
-				{ name: "author", content: 'Clairexplore' },
-				{ name: "publisher", content: 'Clairexplore' },
+	const options = await optionsService()
+	const articles = await articleService(article)
 
-				// Facebook & LinkedIn
-				{ name: "og:title", content: this.article.Social ? this.article.Social.title : 'Clairexplore' },
-				{ name: "og:description", content: this.article.Social ? this.article.Social.description : 'Clairexplore' },
-				{ name: "og:type", content: "website" },
-				{ name: "og:url", content: this.$route.path },
-				{ name: "og:image", content: this.article.cover.url },
-				{ name: "og:site_name", content: 'Clairexplore' },
-			]
-		}
+	if(!articles.data.length) {
+		navigateTo('/404')
 	}
-}
+
+	return {
+		article: articles.data[0],
+		options: options.data
+	}
+})
+
+// head () {
+// 		return {
+// 			title: this.article.SEO ? this.article.SEO.meta_title : 'Clairexplore',
+// 			meta: [
+// 				{ hid: 'description', name: 'description', content: this.article.SEO ? this.article.SEO.meta_description : 'Clairexplore' },
+// 				{ name: "author", content: 'Clairexplore' },
+// 				{ name: "publisher", content: 'Clairexplore' },
+
+// 				// Facebook & LinkedIn
+// 				{ name: "og:title", content: this.article.Social ? this.article.Social.title : 'Clairexplore' },
+// 				{ name: "og:description", content: this.article.Social ? this.article.Social.description : 'Clairexplore' },
+// 				{ name: "og:type", content: "website" },
+// 				{ name: "og:url", content: this.$route.path },
+// 				{ name: "og:image", content: this.article.cover.url },
+// 				{ name: "og:site_name", content: 'Clairexplore' },
+// 			]
+// 		}
+// 	}
 </script>

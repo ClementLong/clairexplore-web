@@ -1,26 +1,19 @@
 <template>
-	<div>
+	<div v-if="data">
 		<Paragraph
-			:text="cgu.CGU"
+			:text="data.cgu.CGU"
 		/>
 	</div>
 </template>
 
-<script lang="ts">
-import axios from 'axios'
+<script lang="ts" setup>
+import { cguService } from '~/lib/service';
 
-export default {
-	async asyncData() {
-		try {
-			const cgu = await axios.get(`${process.env.API_URL}/cgu`)
-			return {
-				cgu: cgu.data,
-			}
-		} catch {
-			return {
-				cgu: null,
-			}
-		}
+const { data, error } = await useAsyncData(async() => {
+	const cgu: any = await cguService()
+
+	return {
+		cgu: cgu.data
 	}
-}
+})
 </script>

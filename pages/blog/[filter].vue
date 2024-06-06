@@ -26,12 +26,12 @@ const { data, error } = await useAsyncData(async () => {
 	}
 })
 
-const filter = ref()
+const filter = ref(useRoute().params.filter)
 
 const articlesFiltered = computed(() => {
 	if(!data.value) return []
 	const articlesSortByDate = data.value.articles.sort((a: any, b: any) => {
-		return new Date(b.date) - new Date(a.date)
+		return new Date(b.date).getTime() - new Date(a.date).getTime()
 	})
 
 	if (!filter.value) return articlesSortByDate

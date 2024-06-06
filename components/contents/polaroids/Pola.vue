@@ -25,11 +25,6 @@ export default {
 			required: true
 		}
 	},
-	data() {
-		return {
-			MEDIA_URL: process.env.MEDIA_URL,
-		}
-	},
 	computed: {
 		containerStyle() {
 			if(this.images.length === 1) {
@@ -44,11 +39,11 @@ export default {
 	methods: {
 		polaSrc(image) {
 			if(image.formats.large) {
-				return this.MEDIA_URL + image.formats.large.url
+				return image.formats.large.url
 			} else if(image.formats.medium) {
-				return this.MEDIA_URL + image.formats.medium.url
+				return image.formats.medium.url
 			} else {
-				return this.MEDIA_URL + image.url
+				return image.url
 			}
 		},
 		polaStyle(index) {

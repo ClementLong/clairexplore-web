@@ -29,26 +29,26 @@
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
+import { articlesService, homepageService, optionsService } from '~/lib/service';
 
 const countryFilter = ref('FR')
 const route = useRoute()
 
 const { data, error } = await useAsyncData(async() => {
-	const homepage: any = await axios.get(`${process.env.API_URL}/homepage`)
-	const options = await axios.get(`${process.env.API_URL}/options`)
-	const articles = await axios.get(`${process.env.API_URL}/articles${process.env.STAGING ? '' : '?published=true'}`)
+	const homepage: any = await homepageService()
+	const options = await optionsService()
+	const articles = await articlesService()
 
 	// definePageMeta({
-	// 	title: homepage.SEO.meta_title,
+	// 	title: homepage.data.SEO.meta_title,
 	// 	meta: [
-	// 		{ hid: 'description', name: 'description', content: homepage.SEO.meta_description },
+	// 		{ hid: 'description', name: 'description', content: homepage.data.SEO.meta_description },
 	// 		// Facebook & LinkedIn
-	// 		{ name: "og:title", content: homepage.SEO.meta_title },
-	// 		{ name: "og:description", content: homepage.SEO.meta_description },
+	// 		{ name: "og:title", content: homepage.data.SEO.meta_title },
+	// 		{ name: "og:description", content: homepage.data.SEO.meta_description },
 	// 		{ name: "og:type", content: "website" },
 	// 		{ name: "og:url", content: route.path },
-	// 		{ name: "og:image", content: homepage.cover.url },
+	// 		{ name: "og:image", content: homepage.data.cover.url },
 	// 		{ name: "og:site_name", content: 'Clairexplore' },
 	// 	]
 	// })
@@ -59,6 +59,4 @@ const { data, error } = await useAsyncData(async() => {
 			homepage: homepage.data,
 		}
 })
-
-
 </script>

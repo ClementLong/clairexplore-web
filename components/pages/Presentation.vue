@@ -34,6 +34,11 @@ const bg = ref()
 
 onMounted(() => {
 	bgHeight.value = bg.value.offsetHeight
+
+	if (process.browser){
+		window.addEventListener('scroll', scroll)
+		window.addEventListener('resize', resize)
+	}
 })
 
 onBeforeUpdate(() => {
@@ -52,67 +57,21 @@ const htmlText = computed(() =>
 	marked(props.introduction)
 )
 
+const	resize = () => {
+	bgHeight.value = bg.value.offsetHeight
+}
 
-// export default {
-// 	props: {
-// 		cover: {
-// 			type: String,
-// 			required: true
-// 		},
-// 		introduction: {
-// 			type: String,
-// 			required: true
-// 		},
-// 		introductionImage: {
-// 			type: String,
-// 			required: true
-// 		}
-// 	},
-// 	data() {
-// 		return {
-// 			bgPosition: 0,
-// 			bgHeight: 0
-// 		}
-// 	},
-// 	mounted() {
-// 		this.bgHeight = this.$refs.bg.offsetHeight
-// 	},
-// 	beforeUpdate() {
-// 		this.bgHeight = this.$refs.bg.offsetHeight
-// 	},
-// 	computed: {
-// 		imageScrolled() {
-// 			return this.bgPosition / (this.bgHeight - 50)
-// 		},
-// 		bgStyle() {
-// 			return `transform: translate3d(0, ${ this.imageScrolled * 35 }%, 0) scale(1.0, 1.0) scale(${ this.imageScrolled * 0.1 + 1}); opacity: ${ 1.5 - this.imageScrolled * 1.75};`
-// 		},
-// 		htmlText() {
-// 			return marked(this.introduction)
-// 		}
-// 	},
-// 	created () {
-// 		if (process.browser){
-// 			window.addEventListener('scroll', this.scroll)
-// 			window.addEventListener('resize', this.resize)
-// 		}
-// 	},
-// 	destroyed () {
-// 		window.removeEventListener('scroll', this.scroll)
-// 		window.removeEventListener('resize', this.resize)
-// 		this.bgPosition = 0
-// 	},
-// 	methods: {
-// 		resize() {
-// 			this.bgHeight = this.$refs.bg.offsetHeight
-// 		},
-// 		scroll (event) {
-// 			if(event.target.scrollingElement.scrollTop < 1000) {
-// 				this.bgPosition = event.target.scrollingElement.scrollTop
-// 			}
-// 		}
-// 	}
-// }
+const scroll = (event: any) => {
+	if(event.target.scrollingElement.scrollTop < 1000) {
+		bgPosition.value = event.target.scrollingElement.scrollTop
+	}
+}
+
+onUnmounted(() => {
+	window.removeEventListener('scroll', scroll)
+	window.removeEventListener('resize', resize)
+	bgPosition.value = 0
+})
 </script>
 
 <style scoped>

@@ -16,13 +16,13 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { articlesByCountryService, destinationService, optionsService } from '~/lib/service';
 
 export default {
 	async asyncData({ params }) {
-		const destination = await axios.get(`${process.env.API_URL}/destination`)
-		const options = await axios.get(`${process.env.API_URL}/options`)
-		const articles = await axios.get(`${process.env.API_URL}/articles?country=${ params.country }${process.env.STAGING ? '' : '&published=true'}`)
+		const destination = destinationService()
+		const options = optionsService()
+		const articles = articlesByCountryService(params.country)
 		return {
 			options: options.data,
 			articles: articles.data,

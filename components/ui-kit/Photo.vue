@@ -12,17 +12,12 @@ export default {
 			required: true
 		}
 	},
-	data() {
-		return {
-			MEDIA_URL: process.env.MEDIA_URL,
-		}
-	},
 	computed: {
 		imageUrl() {
 			if(this.image.formats && this.image.formats.large) {
-				return this.MEDIA_URL + this.image.formats.large.url
+				return this.image.formats.large.url
 			} else {
-				return this.MEDIA_URL + this.image.url
+				return this.image.url
 			}
 		}
 	}

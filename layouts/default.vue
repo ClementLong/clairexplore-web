@@ -9,12 +9,6 @@
 </template>
 
 
-<script>
-export default {
-	data() {
-		return {
-			stopScroll: false
-		}
-	}
-}
+<script lang="ts" setup>
+const stopScroll = ref(false)
 </script>

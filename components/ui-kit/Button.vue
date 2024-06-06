@@ -5,17 +5,9 @@
 	>{{ text }}</nuxt-link>
 </template>
 
-<script>
-export default {
-	props: {
-		to: {
-			type: String,
-			required: true
-		},
-		text: {
-			type: String,
-			required: true
-		}
-	}
-}
+<script lang="ts" setup>
+const props = defineProps<{
+  to: string;
+  text: string;
+}>()
 </script>

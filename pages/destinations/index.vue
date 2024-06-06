@@ -1,37 +1,25 @@
 <template>
-	<div>
-		<WorldMap
-			:countryFilter="countryFilter"
-			:visited="options.country"
-			@changeCountry="countryFilter = $event"
-		/>
-		<ArticleByCountry
-			@changeCountry="countryFilter = $event"
-			:countryFilter="countryFilter"
-			:articles="articles"
-			:options="options"
-			class="-mt-16 md:-mt-16" />
+	<div v-if="data">
+		<WorldMap :countryFilter="countryFilter" :visited="data.options.country" @changeCountry="countryFilter = $event" />
+		<ArticleByCountry @changeCountry="countryFilter = $event" :countryFilter="countryFilter" :articles="data.articles"
+			:options="data.options" class="-mt-16 md:-mt-16" />
 	</div>
 </template>
 
-<script lang="ts">
-import axios from 'axios'
+<script lang="ts" setup>
+import { articlesService, destinationService, optionsService } from '~/lib/service';
 
-export default {
-	async asyncData() {
-		const destination = await axios.get(`${process.env.API_URL}/destination`)
-		const options = await axios.get(`${process.env.API_URL}/options`)
-		const articles = await axios.get(`${process.env.API_URL}/articles${process.env.STAGING ? '' : '?published=true'}`)
-		return {
-			options: options.data,
-			articles: articles.data,
-			destination: destination.data,
-		}
-	},
-	data() {
-		return {
-			countryFilter: 'FR'
-		}
-	},
-}
+const countryFilter = ref('FR')
+
+const { data, error } = await useAsyncData(async () => {
+	const destination = await destinationService()
+	const options = await optionsService()
+	const articles = articlesService()
+
+	return {
+		options: options.data,
+		articles: articles.data,
+		destination: destination.data,
+	}
+})
 </script>
