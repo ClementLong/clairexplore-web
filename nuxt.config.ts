@@ -43,7 +43,7 @@ export default defineNuxtConfig({
 	/*
 	 ** Nuxt.js modules
 	 */
-	modules: ["@nuxtjs/tailwindcss"],
+	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/sitemap"],
 	/*
 	 ** Tailwindcss modules
 	 */
