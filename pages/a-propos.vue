@@ -25,21 +25,23 @@
 
 <script lang="ts" setup>
 import { aboutService } from '~/lib/service';
+const route = useRoute()
 
 const { data, error } = await useAsyncData(async() => {
 	const about: any = await aboutService()
+
+	useSeoMeta({
+		title: about.data.SEO.meta_title,
+		ogTitle: about.data.SEO.meta_title,
+		description: about.data.SEO.meta_description,
+		ogDescription: about.data.SEO.meta_description,
+		ogType: 'website',
+		ogUrl: route.path,
+		ogSiteName: 'Clairexplore'
+	})
 
 	return {
 		about: about.data
 	}
 })
-
-// head () {
-// 		return {
-// 			title: this.about.SEO.meta_title,
-// 			meta: [
-// 				{ hid: 'description', name: 'description', content: this.about.SEO.meta_description }
-// 			]
-// 		}
-// 	},
 </script>

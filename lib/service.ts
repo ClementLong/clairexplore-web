@@ -41,8 +41,5 @@ export const searchService: any = async (search: string) =>
 		`${env.API_URL}/articles?title_contains=${search}&published=true`
 	);
 
-export const destinationService: any = async (slug: string) =>
-	await axios.get(`${env.API_URL}/destination`);
-
 export const listingService: any = async (slug: string) =>
 	await axios.get(`${env.API_URL}/listing`);

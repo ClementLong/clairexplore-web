@@ -17,14 +17,14 @@
 			:visited="data.options.country"
 			@changeCountry="countryFilter = $event"
 		/>
-		<!-- <ArticleByCountry
+		<ArticleByCountry
 			@changeCountry="countryFilter = $event"
 			:countryFilter="countryFilter"
 			:articles="data.articles"
 			:options="data.options"
 			:max="true"
 			class="-mt-32"
-		/> -->
+		/>
 	</div>
 </template>
 
@@ -39,19 +39,16 @@ const { data, error } = await useAsyncData(async() => {
 	const options = await optionsService()
 	const articles = await articlesService()
 
-	// definePageMeta({
-	// 	title: homepage.data.SEO.meta_title,
-	// 	meta: [
-	// 		{ hid: 'description', name: 'description', content: homepage.data.SEO.meta_description },
-	// 		// Facebook & LinkedIn
-	// 		{ name: "og:title", content: homepage.data.SEO.meta_title },
-	// 		{ name: "og:description", content: homepage.data.SEO.meta_description },
-	// 		{ name: "og:type", content: "website" },
-	// 		{ name: "og:url", content: route.path },
-	// 		{ name: "og:image", content: homepage.data.cover.url },
-	// 		{ name: "og:site_name", content: 'Clairexplore' },
-	// 	]
-	// })
+	useSeoMeta({
+		title: homepage.data.SEO.meta_title,
+		ogTitle: homepage.data.SEO.meta_title,
+		description: homepage.data.SEO.meta_description,
+		ogDescription: homepage.data.SEO.meta_description,
+		ogType: 'website',
+		ogUrl: route.path,
+		ogImage: homepage.data.cover.url,
+		ogSiteName: 'Clairexplore'
+	})
 
 	return {
 			options: options.data,

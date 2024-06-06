@@ -7,19 +7,17 @@
 </template>
 
 <script lang="ts" setup>
-import { articlesService, destinationService, optionsService } from '~/lib/service';
+import { articlesService, optionsService } from '~/lib/service';
 
 const countryFilter = ref('FR')
 
 const { data, error } = await useAsyncData(async () => {
-	const destination = await destinationService()
 	const options = await optionsService()
 	const articles = articlesService()
 
 	return {
 		options: options.data,
 		articles: articles.data,
-		destination: destination.data,
 	}
 })
 </script>

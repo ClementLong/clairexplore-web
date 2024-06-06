@@ -109,11 +109,10 @@
 <script setup lang="ts">
 import { articleService, optionsService } from '~/lib/service';
 
-const { article } = useRoute().params
+const route = useRoute()
+const { article } = route.params
 
 const { data, error } = await useAsyncData(`user:${article}`, async() => {
-	console.log(useRoute().params.article)
-
 	const options = await optionsService()
 	const articles = await articleService(article)
 
@@ -121,28 +120,24 @@ const { data, error } = await useAsyncData(`user:${article}`, async() => {
 		navigateTo('/404')
 	}
 
+	const foundArticle = articles.data[0]
+
+	useSeoMeta({
+		title: foundArticle.SEO ? foundArticle.SEO.meta_title : 'Clairexplore',
+		ogTitle: foundArticle.SEO ? foundArticle.SEO.meta_title : 'Clairexplore',
+		author: 'Claire',
+		publisher: 'Clairexplore',
+		description: foundArticle.SEO.meta_description,
+		ogDescription: foundArticle.SEO.meta_description,
+		ogType: 'website',
+		ogUrl: route.path,
+		ogSiteName: 'Clairexplore',
+		ogImage: foundArticle.cover.url
+	})
+
 	return {
-		article: articles.data[0],
+		article: foundArticle,
 		options: options.data
 	}
 })
-
-// head () {
-// 		return {
-// 			title: this.article.SEO ? this.article.SEO.meta_title : 'Clairexplore',
-// 			meta: [
-// 				{ hid: 'description', name: 'description', content: this.article.SEO ? this.article.SEO.meta_description : 'Clairexplore' },
-// 				{ name: "author", content: 'Clairexplore' },
-// 				{ name: "publisher", content: 'Clairexplore' },
-
-// 				// Facebook & LinkedIn
-// 				{ name: "og:title", content: this.article.Social ? this.article.Social.title : 'Clairexplore' },
-// 				{ name: "og:description", content: this.article.Social ? this.article.Social.description : 'Clairexplore' },
-// 				{ name: "og:type", content: "website" },
-// 				{ name: "og:url", content: this.$route.path },
-// 				{ name: "og:image", content: this.article.cover.url },
-// 				{ name: "og:site_name", content: 'Clairexplore' },
-// 			]
-// 		}
-// 	}
 </script>

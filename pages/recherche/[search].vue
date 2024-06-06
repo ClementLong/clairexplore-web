@@ -21,6 +21,11 @@ export default {
 		try {
 			const articles = await searchService(params.search)
 			const options = optionsService()
+
+			useSeoMeta({
+				title: `Résultat : ${ params.search }`,
+			})
+
 			return {
 				articles: articles.data,
 				search: params.search,
@@ -30,10 +35,5 @@ export default {
 			return {}
 		}
 	},
-	head () {
-		return {
-			title: `Résultat : ${ this.search }`
-		}
-	}
 }
 </script>

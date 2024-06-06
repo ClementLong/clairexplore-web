@@ -13,11 +13,22 @@
 
 <script setup lang="ts">
 import { articlesService, listingService, optionsService } from '~/lib/service';
+const route = useRoute()
 
 const { data, error } = await useAsyncData(async () => {
 	const listing = await listingService()
 	const options = await optionsService()
 	const articles: any = await articlesService()
+
+	useSeoMeta({
+		title: listing.data.SEO.meta_title,
+		ogTitle: listing.data.SEO.meta_title,
+		description: listing.data.SEO.meta_description,
+		ogDescription: listing.data.SEO.meta_description,
+		ogType: 'website',
+		ogUrl: route.path,
+		ogSiteName: 'Clairexplore'
+	})
 
 	return {
 		articles: articles.data,
@@ -31,7 +42,7 @@ const filter = ref()
 const articlesFiltered = computed(() => {
 	if(!data.value) return []
 	const articlesSortByDate = data.value.articles.sort((a: any, b: any) => {
-		return new Date(b.date) - new Date(a.date)
+		return new Date(b.date).getTime() - new Date(a.date).getTime()
 	})
 
 	if (!filter.value) return articlesSortByDate
@@ -44,13 +55,4 @@ const articlesFiltered = computed(() => {
 const changeFilter = (newFilter: string) => {
 	filter.value = newFilter
 }
-
-// head () {
-// 		return {
-// 			title: this.listing.SEO.meta_title,
-// 			meta: [
-// 				{ hid: 'description', name: 'description', content: this.listing.SEO.meta_description }
-// 			]
-// 		}
-// 	},
 </script>

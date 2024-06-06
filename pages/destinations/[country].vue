@@ -16,17 +16,15 @@
 </template>
 
 <script>
-import { articlesByCountryService, destinationService, optionsService } from '~/lib/service';
+import { articlesByCountryService, optionsService } from '~/lib/service';
 
 export default {
 	async asyncData({ params }) {
-		const destination = destinationService()
 		const options = optionsService()
 		const articles = articlesByCountryService(params.country)
 		return {
 			options: options.data,
 			articles: articles.data,
-			destination: destination.data,
 			countryFilter: params.country
 		}
 	},
