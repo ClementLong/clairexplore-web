@@ -2,7 +2,7 @@
 	<div>
 		<Header @toggleStop="stopScroll = $event" />
 		<div class="md:pt-50px min-h-screen" :class="{ 'fixed': stopScroll }">
-			<nuxt />
+			<slot />
 		</div>
 		<Footer />
 	</div>

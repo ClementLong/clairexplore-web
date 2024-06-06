@@ -1,10 +1,13 @@
 <template>
 	<div class="w-full overflow-hidden">
 		<div ref="bg" :style="bgStyle" class="transition duration-75 relative h-75vh md:h-auto overflow-hidden will-change">
-			<img class="md:w-full h-75vh md:h-auto md:static absolute absolute-center transform -translate-x-1/2 md:translate-x-0 w-auto max-w-none" :src="cover" alt="Blog de voyage">
+			<img
+				class="md:w-full h-75vh md:h-auto md:static absolute absolute-center transform -translate-x-1/2 md:translate-x-0 w-auto max-w-none"
+				:src="cover" alt="Blog de voyage">
 		</div>
 		<div class="relative">
-			<h1 class="font-heading font-bold text-lightblack text-2xl md:text-3xl text-center px-3">Bienvenue sur mon blog de voyage&nbsp;!</h1>
+			<h1 class="font-heading font-bold text-lightblack text-2xl md:text-3xl text-center px-3">Bienvenue sur mon blog de
+				voyage&nbsp;!</h1>
 		</div>
 		<div class="relative z-10 container m-auto flex flex-col md:flex-row items-center pt-5 md:pt-12 pb-12">
 			<div class="text-center text-lightblack flex-1 px-8" v-html="htmlText">
@@ -16,69 +19,100 @@
 	</div>
 </template>
 
-<script>
-import marked from 'marked'
+<script lang="ts" setup>
+import { marked } from 'marked'
 
-export default {
-	props: {
-		cover: {
-			type: String,
-			required: true
-		},
-		introduction: {
-			type: String,
-			required: true
-		},
-		introductionImage: {
-			type: String,
-			required: true
-		}
-	},
-	data() {
-		return {
-			bgPosition: 0,
-			bgHeight: 0
-		}
-	},
-	mounted() {
-		this.bgHeight = this.$refs.bg.offsetHeight
-	},
-	beforeUpdate() {
-		this.bgHeight = this.$refs.bg.offsetHeight
-	},
-	computed: {
-		imageScrolled() {
-			return this.bgPosition / (this.bgHeight - 50)
-		},
-		bgStyle() {
-			return `transform: translate3d(0, ${ this.imageScrolled * 35 }%, 0) scale(1.0, 1.0) scale(${ this.imageScrolled * 0.1 + 1}); opacity: ${ 1.5 - this.imageScrolled * 1.75};`
-		},
-		htmlText() {
-			return marked(this.introduction)
-		}
-	},
-	created () {
-		if (process.browser){
-			window.addEventListener('scroll', this.scroll)
-			window.addEventListener('resize', this.resize)
-		}
-	},
-	destroyed () {
-		window.removeEventListener('scroll', this.scroll)
-		window.removeEventListener('resize', this.resize)
-		this.bgPosition = 0
-	},
-	methods: {
-		resize() {
-			this.bgHeight = this.$refs.bg.offsetHeight
-		},
-		scroll (event) {
-			if(event.target.scrollingElement.scrollTop < 1000) {
-				this.bgPosition = event.target.scrollingElement.scrollTop
-			}
-		}
-	}
-}
+const props = defineProps<{
+	cover: string
+	introduction: string
+	introductionImage: string
+}>()
+
+const bgPosition = ref(0)
+const bgHeight = ref(0)
+const bg = ref()
+
+onMounted(() => {
+	bgHeight.value = bg.value.offsetHeight
+})
+
+onBeforeUpdate(() => {
+	bgHeight.value = bg.value.offsetHeight
+})
+
+const imageScrolled = computed(() =>
+	bgPosition.value / (bgHeight.value - 50)
+)
+
+const bgStyle = computed(() =>
+	`transform: translate3d(0, ${imageScrolled.value * 35}%, 0) scale(1.0, 1.0) scale(${imageScrolled.value * 0.1 + 1}); opacity: ${1.5 - imageScrolled.value * 1.75};`
+)
+
+const htmlText = computed(() =>
+	marked(props.introduction)
+)
+
+
+// export default {
+// 	props: {
+// 		cover: {
+// 			type: String,
+// 			required: true
+// 		},
+// 		introduction: {
+// 			type: String,
+// 			required: true
+// 		},
+// 		introductionImage: {
+// 			type: String,
+// 			required: true
+// 		}
+// 	},
+// 	data() {
+// 		return {
+// 			bgPosition: 0,
+// 			bgHeight: 0
+// 		}
+// 	},
+// 	mounted() {
+// 		this.bgHeight = this.$refs.bg.offsetHeight
+// 	},
+// 	beforeUpdate() {
+// 		this.bgHeight = this.$refs.bg.offsetHeight
+// 	},
+// 	computed: {
+// 		imageScrolled() {
+// 			return this.bgPosition / (this.bgHeight - 50)
+// 		},
+// 		bgStyle() {
+// 			return `transform: translate3d(0, ${ this.imageScrolled * 35 }%, 0) scale(1.0, 1.0) scale(${ this.imageScrolled * 0.1 + 1}); opacity: ${ 1.5 - this.imageScrolled * 1.75};`
+// 		},
+// 		htmlText() {
+// 			return marked(this.introduction)
+// 		}
+// 	},
+// 	created () {
+// 		if (process.browser){
+// 			window.addEventListener('scroll', this.scroll)
+// 			window.addEventListener('resize', this.resize)
+// 		}
+// 	},
+// 	destroyed () {
+// 		window.removeEventListener('scroll', this.scroll)
+// 		window.removeEventListener('resize', this.resize)
+// 		this.bgPosition = 0
+// 	},
+// 	methods: {
+// 		resize() {
+// 			this.bgHeight = this.$refs.bg.offsetHeight
+// 		},
+// 		scroll (event) {
+// 			if(event.target.scrollingElement.scrollTop < 1000) {
+// 				this.bgPosition = event.target.scrollingElement.scrollTop
+// 			}
+// 		}
+// 	}
+// }
 </script>
 
 <style scoped>
@@ -86,7 +120,8 @@ h2 {
 	@apply font-heading font-bold text-3xl pb-5;
 }
 
-h3, p {
+h3,
+p {
 	@apply font-body;
 }
 
