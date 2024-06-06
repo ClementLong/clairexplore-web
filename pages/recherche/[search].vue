@@ -1,5 +1,5 @@
 <template>
-	<div class="text-center py-5 min-h-screen">
+	<div class="text-center py-5 min-h-screen" v-if="data">
 		<h3 class="font-heading font-bold text-2xl text-lightblack">
 			Résultat : {{ search }}
 		</h3>
@@ -7,33 +7,34 @@
 			<Search />
 		</div>
 		<SearchResult
-			:articles="articles"
-			:options="options"
+			v-if="data.articles.length"
+			:articles="data.articles"
+			:options="data.options"
 		/>
+		<div v-else>
+			Pas de résultat
+		</div>
 	</div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import { optionsService, searchService } from '~/lib/service';
 
-export default {
-	async asyncData({ params }) {
-		try {
-			const articles = await searchService(params.search)
-			const options = optionsService()
+const route = useRoute()
+const { search } = route.params
 
-			useSeoMeta({
-				title: `Résultat : ${ params.search }`,
-			})
 
-			return {
-				articles: articles.data,
-				search: params.search,
-				options: options.data
-			}
-		} catch {
-			return {}
-		}
-	},
-}
+const { data } = await useAsyncData(async() => {
+	const options = await optionsService()
+	const articles = await searchService(search)
+
+	useSeoMeta({
+		title: `Résultat : ${ search }`,
+	})
+
+	return {
+		articles: articles.data,
+		options: options.data
+	}
+})
 </script>

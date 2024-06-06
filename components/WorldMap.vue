@@ -229,14 +229,14 @@ path {
 }
 
 path:hover {
-	fill: #5C4B51;
+	fill: #4a5e96;
 }
 
 .visited {
 	fill: #4A9690;
 }
 
-.active {
+.active, .active:hover {
 	fill: #5C4B51;
 }
 </style>

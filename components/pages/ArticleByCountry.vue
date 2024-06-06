@@ -65,8 +65,6 @@ const changeCountry = (e: any) => {
 watch(() => props.countryFilter, () => {
 	slides.value.forEach((element: any) => {
 		if (element.$el.getAttribute('data-ref') === props.countryFilter) {
-			console.log(element.$el.getAttribute('data-ref'));
-
 			countrySwiper.value.slideTo(Number(element.$el.getAttribute('data-index')), 0, false)
 		}
 	})
