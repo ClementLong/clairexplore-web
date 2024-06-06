@@ -1,38 +1,38 @@
 @font-face {
 	font-family: 'CL';
-	src: url('/fonts/champagnelimousines-webfont.woff2') format('woff2'),
-		  url('/fonts/champagnelimousines-webfont.woff') format('woff');
+	src: url('~/public/fonts/champagnelimousines-webfont.woff2') format('woff2'),
+		  url('~/public/fonts/champagnelimousines-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'CL';
-	src: url('/fonts/champagnelimousines-bold-italic-webfont.woff2') format('woff2'),
-		  url('/fonts/champagnelimousines-bold-italic-webfont.woff') format('woff');
+	src: url('~/public/fonts/champagnelimousines-bold-italic-webfont.woff2') format('woff2'),
+		  url('~/public/fonts/champagnelimousines-bold-italic-webfont.woff') format('woff');
 	font-weight: bold;
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'CL';
-	src: url('/fonts/champagnelimousines-bold-webfont.woff2') format('woff2'),
-		  url('/fonts/champagnelimousines-bold-webfont.woff') format('woff');
+	src: url('~/public/fonts/champagnelimousines-bold-webfont.woff2') format('woff2'),
+		  url('~/public/fonts/champagnelimousines-bold-webfont.woff') format('woff');
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
 	font-family: 'CL';
-	src: url('/fonts/champagnelimousines-italic-webfont.woff2') format('woff2'),
-		  url('/fonts/champagnelimousines-italic-webfont.woff') format('woff');
+	src: url('~/public/fonts/champagnelimousines-italic-webfont.woff2') format('woff2'),
+		  url('~/public/fonts/champagnelimousines-italic-webfont.woff') format('woff');
 	font-weight: normal;
 	font-style: italic;
 }
 
 @font-face {
 	font-family: 'League';
-	src: url('/fonts/leaguescript.ttf') format('truetype');
+	src: url('~/public/fonts/leaguescript.ttf') format('truetype');
 	font-weight: normal;
 	font-style: normal;
 }

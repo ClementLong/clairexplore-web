@@ -19,7 +19,8 @@
     "swiper": "^11.1.4",
     "vue": "^3.4.27",
     "vue-awesome-swiper": "^5.0.1",
-    "vue-router": "^4.3.2"
+    "vue-router": "^4.3.2",
+    "vue3-carousel": "^0.3.3"
   },
   "devDependencies": {
     "@nuxtjs/svg": "^0.4.1",

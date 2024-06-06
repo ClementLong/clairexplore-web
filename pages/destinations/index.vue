@@ -13,11 +13,12 @@ const countryFilter = ref('FR')
 
 const { data, error } = await useAsyncData(async () => {
 	const options = await optionsService()
-	const articles = articlesService()
+	const articles = await articlesService()
 
 	return {
 		options: options.data,
 		articles: articles.data,
 	}
 })
+
 </script>

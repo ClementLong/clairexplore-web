@@ -5,16 +5,16 @@
 			Articles par pays
 		</p>
 		<h3 class="font-heading font-bold text-2xl text-lightblack relative w-64 m-auto">
-			<div @slideChangeTransitionEnd="changeCountry" ref="countrySwiper" class="swiper container relative py-5"
-				:options="swiperOption">
-				<div v-for="(c, index) in options.country" :key="index" :data-ref="c.slug" ref="slides">
+			<carousel @slide-end="changeCountry" ref="countrySwiper" class="container relative py-5" wrapAround>
+				<slide v-for="(c, index) in options.country" :key="index" :data-ref="c.slug" :data-index="index" ref="slides">
 					<div class="flex items-center justify-center w-full">
 						{{ c.name }}
 					</div>
-				</div>
-				<div class="swiper-button-prev text-lightblack-important h-8" slot="button-prev"></div>
-				<div class="swiper-button-next text-lightblack-important h-8" slot="button-next"></div>
-			</div>
+				</slide>
+				<template #addons>
+					<navigation />
+				</template>
+			</carousel>
 		</h3>
 		<div>
 			<div class="container m-auto flex flex-wrap pt-4 pb-8" :class="[max ? 'justify-center' : 'justify-left']">
@@ -27,6 +27,9 @@
 </template>
 
 <script lang="ts" setup>
+import 'vue3-carousel/dist/carousel.css'
+import { Carousel, Slide, Navigation } from 'vue3-carousel'
+
 const props = withDefaults(defineProps<{
 	articles: Array<any>
 	countryFilter: string
@@ -38,17 +41,11 @@ const props = withDefaults(defineProps<{
 
 const emits = defineEmits(['changeCountry'])
 
-const swiperOption = {
-	spaceBetween: 0,
-	loop: true,
-	navigation: {
-		nextEl: '.swiper-button-next',
-		prevEl: '.swiper-button-prev'
-	},
-}
+const countrySwiper = ref()
+const slides = ref()
 
 const articlesByCountry = computed(() => {
-	if(!props.articles) return []
+	if (!props.articles) return []
 	const articlesSortByDate = props.articles.sort((a, b) => {
 		return new Date(b.date).getTime() - new Date(a.date).getTime()
 	})
@@ -61,27 +58,19 @@ const articlesByCountry = computed(() => {
 	else return articleList
 })
 
-const categoriesBySlug = computed(() => {
-	const currentCountry = props.options.country.find((country: any) => {
-		return props.countryFilter == country.slug
-	})
-
-	return currentCountry.name
-})
-
-const changeCountry = () => {
-	emits('changeCountry', 1)
+const changeCountry = (e: any) => {
+	emits('changeCountry', countrySwiper.value.$el.querySelector('.carousel__slide--active').getAttribute('data-ref'))
 }
 
-// 	watch: {
-// 		countryFilter() {
-// 			this.$refs.slides.forEach(element => {
-// 				if(element.$el.getAttribute('data-ref') === this.countryFilter) {
-// 					this.swiper.slideTo(Number(element.$el.getAttribute('data-swiper-slide-index')) + 1, 0, false)
-// 				}
-// 			})
-// 		}
-// 	},
+watch(() => props.countryFilter, () => {
+	slides.value.forEach((element: any) => {
+		if (element.$el.getAttribute('data-ref') === props.countryFilter) {
+			console.log(element.$el.getAttribute('data-ref'));
+
+			countrySwiper.value.slideTo(Number(element.$el.getAttribute('data-index')), 0, false)
+		}
+	})
+})
 </script>
 
 <style>
