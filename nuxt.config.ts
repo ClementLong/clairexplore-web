@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	devtools: { enabled: true },
+	ssr: false,
 	/*
 	 ** Headers of the page
 	 */
@@ -50,5 +51,8 @@ export default defineNuxtConfig({
 	tailwindcss: {
 		exposeConfig: true,
 		viewer: true,
+	},
+	site: {
+		url: "https://www.clairexplore.com",
 	},
 });
