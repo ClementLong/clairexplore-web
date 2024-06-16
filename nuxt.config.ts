@@ -44,7 +44,12 @@ export default defineNuxtConfig({
 	/*
 	 ** Nuxt.js modules
 	 */
-	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/sitemap", "nuxt-simple-robots"],
+	modules: [
+		"@nuxtjs/tailwindcss",
+		"@nuxtjs/sitemap",
+		"nuxt-simple-robots",
+		"nuxt-basic-auth",
+	],
 	/*
 	 ** Tailwindcss modules
 	 */
@@ -52,7 +57,16 @@ export default defineNuxtConfig({
 		exposeConfig: true,
 		viewer: true,
 	},
+	/*
+	 ** Lock staging modules
+	 */
+	basicAuth: {
+		name: "admin",
+		pass: "evreux",
+		enabled: Boolean(process.env.STAGING),
+	},
 	site: {
 		url: "https://www.clairexplore.com",
+		indexable: !process.env.STAGING,
 	},
 });
