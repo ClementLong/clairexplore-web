@@ -48,7 +48,7 @@ export default defineNuxtConfig({
 		"@nuxtjs/tailwindcss",
 		"@nuxtjs/sitemap",
 		"nuxt-simple-robots",
-		"nuxt-basic-auth",
+		"nuxt-gtag",
 	],
 	/*
 	 ** Tailwindcss modules
@@ -58,13 +58,14 @@ export default defineNuxtConfig({
 		viewer: true,
 	},
 	/*
-	 ** Lock staging modules
+	 ** Analytics
 	 */
-	basicAuth: {
-		name: "admin",
-		pass: "evreux",
-		enabled: Boolean(process.env.STAGING),
+	gtag: {
+		id: "G-XPKYLQXFSN",
 	},
+	/*
+	 ** Robot & Sitemap
+	 */
 	site: {
 		url: "https://www.clairexplore.com",
 		indexable: !process.env.STAGING,
