@@ -44,7 +44,7 @@ export default defineNuxtConfig({
 	/*
 	 ** Nuxt.js modules
 	 */
-	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/sitemap"],
+	modules: ["@nuxtjs/tailwindcss", "@nuxtjs/sitemap", "nuxt-simple-robots"],
 	/*
 	 ** Tailwindcss modules
 	 */

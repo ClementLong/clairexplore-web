@@ -23,7 +23,6 @@ import { optionsService, searchService } from '~/lib/service';
 const route = useRoute()
 const { search } = route.params
 
-
 const { data } = await useAsyncData(async() => {
 	const options = await optionsService()
 	const articles = await searchService(search)
