@@ -84,6 +84,11 @@
 				:images="component.images"
 			/>
 
+			<Trio
+				v-else-if="component.__component == 'article.trio'"
+				:images="component.images"
+			/>
+
 			<Scotch
 				v-if="component.__component == 'article.scotch'"
 				:image="component.image"
