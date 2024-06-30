@@ -15,7 +15,7 @@
 				:image="component.image"
 			/>
 
-			<Title
+			<CustomTitle
 				v-else-if="component.__component == 'article.title'"
 				:size="component.size"
 				:text="component.title"

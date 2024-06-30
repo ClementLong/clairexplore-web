@@ -1,7 +1,7 @@
 <template>
 	<div class="pt-12" v-if="data">
 		<Tips :text="data.about.intro" />
-		<Title
+		<CustomTitle
 			size="Big"
 			text="Trois choses à savoir sur moi : "
 		/>
@@ -11,7 +11,7 @@
 		<Paragraph
 			:text="data.about.discover"
 		/>
-		<Title
+		<CustomTitle
 			size="Big"
 			:text="data.about.title"
 		/>
