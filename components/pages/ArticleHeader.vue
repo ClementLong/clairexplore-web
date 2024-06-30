@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from 'moment/min/moment-with-locales'
 
 export default {
 	props: {

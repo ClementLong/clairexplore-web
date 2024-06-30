@@ -1,5 +1,5 @@
 <template>
-	<div class="container m-auto pt-12 md:pt-0">
+	<div ref="container" class="container m-auto pt-12 md:pt-0">
 		<svg class="m20_svgMap" viewBox="0 170 1178 591" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 			<g id="V1.0" fill="none" fill-rule="evenodd">
 				<g id="MAP" stroke-width="0.5" stroke="#E9E8E3" fill="#F6F5F1" @click="changeActive($event)">
@@ -184,49 +184,43 @@
 	</div>
 </template>
 
-<script>
-export default {
-	props: {
-		countryFilter: {
-			type: String,
-			required: true
-		},
-		visited: {
-			type: Array,
-			required: true
-		}
-	},
-	mounted() {
-		this.$nextTick(() => {
-			this.visited.forEach((element) => {
-				this.$el.querySelector('#' + element.slug).classList.add('visited')
+<script lang="ts" setup>
+const props = defineProps<{
+	countryFilter: string
+	visited: Array<any>
+}>()
+
+const emits = defineEmits(['changeCountry'])
+
+const container = ref()
+
+onMounted(() => {
+	nextTick(() => {
+			props.visited.forEach((element) => {
+				container.value.querySelector('#' + element.slug).classList.add('visited')
 			})
 		})
 
-		this.active()
-	},
-	watch: {
-		countryFilter() {
-			this.active()
-		}
-	},
-	methods: {
-		changeActive(e) {
-			if(e.target.classList.contains('visited')) {
-				this.$emit('changeCountry', e.target.id)
-				this.$nextTick(() => {
-					this.active()
-				})
-			}
-		},
-		active() {
-			this.$el.querySelectorAll('path').forEach((el) => {
-				el.classList.remove('active')
-			})
-			this.$el.querySelector('#' + this.countryFilter).classList.add('active')
-		}
+		active()
+})
+
+const changeActive = (e: any) => {
+	if(e.target.classList.contains('visited')) {
+		emits('changeCountry', e.target.id)
+		nextTick(() => {
+			active()
+		})
 	}
 }
+
+const active = () => {
+	container.value.querySelectorAll('path').forEach((el: any) => {
+		el.classList.remove('active')
+	})
+	container.value.querySelector('#' + props.countryFilter).classList.add('active')
+}
+
+watch(() => props.countryFilter, active)
 </script>
 
 <style scoped>
@@ -235,14 +229,14 @@ path {
 }
 
 path:hover {
-	fill: #5C4B51;
+	fill: #4a5e96;
 }
 
 .visited {
 	fill: #4A9690;
 }
 
-.active {
+.active, .active:hover {
 	fill: #5C4B51;
 }
 </style>

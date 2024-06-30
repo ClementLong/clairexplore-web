@@ -1,7 +1,7 @@
 <template>
 	<div class="md:fixed w-full z-30 md:border-b-2 md:border-darkwhite md:bg-white">
 		<header class="hidden md:flex justify-between h-12 items-center container m-auto">
-			<nuxt-link class="flex justify-center mt-1" to="/">
+			<nuxt-link class="flex justify-center mt-1" :to="{ name: 'index' }">
 				<h2 class="h-10">
 					<Logo color="black" />
 				</h2>
@@ -13,7 +13,7 @@
 				<nuxt-link class="hover:text-important" to="/destinations">
 					Destinations
 				</nuxt-link>
-				<nuxt-link class="hover:text-important" to="/a-propos">
+				<nuxt-link class="hover:text-important" :to="{ name: 'a-propos' }">
 					A propos
 				</nuxt-link>
 			</nav>

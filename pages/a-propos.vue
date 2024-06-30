@@ -1,51 +1,47 @@
 <template>
-	<div class="pt-12">
-		<Tips :text="about.intro" />
+	<div class="pt-12" v-if="data">
+		<Tips :text="data.about.intro" />
 		<Title
 			size="Big"
 			text="Trois choses à savoir sur moi : "
 		/>
 		<Pola
-			:images="about.photos"
+			:images="data.about.photos"
 		/>
 		<Paragraph
-			:text="about.discover"
+			:text="data.about.discover"
 		/>
 		<Title
 			size="Big"
-			:text="about.title"
+			:text="data.about.title"
 		/>
 		<Single
 			size="big"
-			:image="about.presentation"
+			:image="data.about.presentation"
 		/>
-		<Tips :text="about.follow" />
+		<Tips :text="data.about.follow" />
 	</div>
 </template>
 
-<script>
-import axios from 'axios'
+<script lang="ts" setup>
+import { aboutService } from '~/lib/service';
+const route = useRoute()
 
-export default {
-	async asyncData() {
-		try {
-			const about = await axios.get(`${process.env.API_URL}/about`)
-			return {
-				about: about.data,
-			}
-		} catch {
-			return {
-				about: null,
-			}
-		}
-	},
-	head () {
-		return {
-			title: this.about.SEO.meta_title,
-			meta: [
-				{ hid: 'description', name: 'description', content: this.about.SEO.meta_description }
-			]
-		}
-	},
-}
+const { data, error } = await useAsyncData(async() => {
+	const about: any = await aboutService()
+
+	useSeoMeta({
+		title: about.data.SEO.meta_title,
+		ogTitle: about.data.SEO.meta_title,
+		description: about.data.SEO.meta_description,
+		ogDescription: about.data.SEO.meta_description,
+		ogType: 'website',
+		ogUrl: route.path,
+		ogSiteName: 'Clairexplore'
+	})
+
+	return {
+		about: about.data
+	}
+})
 </script>
