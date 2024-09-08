@@ -99,7 +99,7 @@
 
 <script>
 import arrow from "~/assets/icons/arrow.svg?raw";
-import axios from 'axios';
+import { optionsService } from '~/lib/service';
 
 export default {
 	data() {
@@ -131,7 +131,7 @@ export default {
 			if(this.isOpenDestinations) {
 				this.isOpenDestinations = false
 			} else {
-				const options = await axios.get(`${process.env.API_URL}/options`)
+				const options = await optionsService()
 				this.countries = options.data.country
 				this.isOpenDestinations = true
 			}

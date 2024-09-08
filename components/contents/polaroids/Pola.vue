@@ -3,8 +3,8 @@
 		<div
 			v-for="(image, index) in images"
 			:key="index"
-			class="pola"
-			:class="polaStyle(index)"
+			class="bg-darkwhite lg:p-6 p-2 lg:pb-16 pb-10 shadow relative flex-1 max-h-500px"
+			:style="polaStyle(index)"
 		>
 			<img :src="polaSrc(image)" :alt="image.alternativeText" loading="lazy" class="h-full w-full object-cover">
 			<h5
@@ -29,8 +29,6 @@ export default {
 		containerStyle() {
 			if(this.images.length === 1) {
 				return 'small-container'
-			}else if(this.images.length === 3) {
-				return 'container flex-wrap lg:flex-no-wrap justify-center overflow-x-hidden lg:overflow-visible'
 			} else {
 				return 'container'
 			}
@@ -49,17 +47,17 @@ export default {
 		polaStyle(index) {
 			if(this.images.length > 2) {
 				if(index === 0) {
-					return 'pola-3-first'
+					return 'transform: rotate(-5deg) translate(20px, 25px);'
 				} else if (index === 1) {
-					return 'pola-3-second'
+					return 'transform: rotate(0deg); z-index: 2;'
 				} else {
-					return 'pola-3-third'
+					return 'transform: rotate(5deg) translate(-25px, 20px);'
 				}
 			} else if(this.images.length > 1) {
 				if(index === 0) {
-					return 'pola-2-first'
+					return 'transform: rotate(-4deg) translate(15px, 0px);'
 				} else {
-					return 'pola-2-second'
+					return 'transform: rotate(2deg) translate(-15px, 0px);'
 				}
 			} else {
 				return ''
@@ -70,9 +68,12 @@ export default {
 </script>
 
 <style scoped>
+.max-h-500px {
+	max-height: 500px;
+}
+/*
 	.pola {
 		@apply bg-darkwhite p-2 pb-8 shadow relative;
-		max-height: 500px;
 
 		@screen lg {
 			@apply p-6 pb-16;
@@ -124,5 +125,5 @@ export default {
 		@screen lg {
 
 		}
-	}
+	} */
 </style>
