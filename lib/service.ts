@@ -17,7 +17,9 @@ export const optionsService: any = async () =>
 
 export const articlesService: any = async () =>
 	await axios.get(
-		`${env.API_URL}/articles${env.STAGING ? "" : "?published=true"}`
+		`${env.API_URL}/articles${
+			env.STAGING ? "?_limit=10" : "?published=true&_limit=10"
+		}`
 	);
 
 export const articlesByCountryService: any = async (country: string) =>
