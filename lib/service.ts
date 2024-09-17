@@ -25,7 +25,9 @@ export const articlesService: any = async ({
 	const categoryParams = category ? `&categorie=${category}` : "";
 	const startParams = start > 0 ? `&_start=${start}` : "";
 	return await axios.get(
-		`${env.API_URL}/articles?_limit=9${startParams}${categoryParams}${
+		`${
+			env.API_URL
+		}/articles?_sort=id:DESC&_limit=9${startParams}${categoryParams}${
 			env.STAGING ? "" : "&published=true"
 		}`
 	);
@@ -33,7 +35,9 @@ export const articlesService: any = async ({
 
 export const homeArticlesService: any = async () =>
 	await axios.get(
-		`${env.API_URL}/articles?_limit=3${env.STAGING ? "" : "&published=true"}`
+		`${env.API_URL}/articles?_sort=id:DESC&_limit=3${
+			env.STAGING ? "" : "&published=true"
+		}`
 	);
 
 export const articlesByCountryService: any = async (
@@ -42,7 +46,7 @@ export const articlesByCountryService: any = async (
 ) => {
 	const limitParams = limit ? `&_limit=${limit}` : "";
 	return await await axios.get(
-		`${env.API_URL}/articles?country=${country}${limitParams}${
+		`${env.API_URL}/articles?_sort=id:DESC&country=${country}${limitParams}${
 			env.STAGING ? "" : "&published=true"
 		}`
 	);
