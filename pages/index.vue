@@ -5,24 +5,23 @@
 		<ArticleLast :articles="data.articles" :options="data.options" />
 		<ArticleByCategory :categories="data.options.categories" />
 		<WorldMap :countryFilter="countryFilter" :visited="data.options.country" @changeCountry="countryFilter = $event" />
-		<ArticleByCountry @changeCountry="countryFilter = $event" :countryFilter="countryFilter" :articles="data.articles"
-			:options="data.options" :max="true" class="-mt-32" />
+		<ArticleByCountry @changeCountry="countryFilter = $event" :countryFilter="countryFilter" :options="data.options" :limit="3" class="-mt-32" />
 	</div>
 </template>
 
 <script setup lang="ts">
-import { articlesService, homepageService, optionsService } from '~/lib/service';
+import { homeArticlesService, homepageService, optionsService } from '~/lib/service';
 
 const countryFilter = ref('FR')
 const route = useRoute()
 
 const { data, error } = await useAsyncData(async () => {
 	const [
-		homepage, options, articles
+		homepage, options, articles,
 	] = await Promise.all([
 		homepageService(),
 		optionsService(),
-		articlesService(),
+		homeArticlesService()
 	])
 
 	useSeoMeta({

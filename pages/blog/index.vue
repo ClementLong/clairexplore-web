@@ -5,9 +5,13 @@
 		</h3>
 		<ArticleFilter @newFilter="changeFilter($event)" :categories="data.options.categories" />
 		<div class="container m-auto flex flex-wrap">
-			<ArticlePreview v-for="article in articlesFiltered" :key="article.id" :article="article" :options="data.options"
+			<ArticlePreview v-for="article in displayedArticles" :key="article.id" :article="article" :options="data.options"
 				class="lg:w-1/3 md:w-1/2 lg:p-4 p-2 lg:pb-0 pb-0" />
 		</div>
+		<button
+			class="transition duration-200 text-body font-semibold text-sm text-important border-2 border-important rounded px-4 py-2 hover:text-white hover:bg-important"
+			v-if="!allArticlesLoaded && displayedArticles.length > 0" @click="loadMoreArticles">Voir plus
+			d'articles</button>
 	</div>
 </template>
 
@@ -15,10 +19,18 @@
 import { articlesService, listingService, optionsService } from '~/lib/service';
 const route = useRoute()
 
+const start = ref(0)
+const isLoading = ref(false)
+const allArticlesLoaded = ref(false)
+const displayedArticles = ref<any[]>([]);
+
+onMounted(() => {
+	loadMoreArticles()
+})
+
 const { data, error } = await useAsyncData(async () => {
 	const listing = await listingService()
 	const options = await optionsService()
-	const articles: any = await articlesService()
 
 	useSeoMeta({
 		title: listing.data.SEO.meta_title,
@@ -31,7 +43,6 @@ const { data, error } = await useAsyncData(async () => {
 	})
 
 	return {
-		articles: articles.data,
 		listing: listing.data,
 		options: options.data,
 	}
@@ -39,20 +50,26 @@ const { data, error } = await useAsyncData(async () => {
 
 const filter = ref()
 
-const articlesFiltered = computed(() => {
-	if(!data.value) return []
-	const articlesSortByDate = data.value.articles.sort((a: any, b: any) => {
-		return new Date(b.date).getTime() - new Date(a.date).getTime()
-	})
-
-	if (!filter.value) return articlesSortByDate
-
-	return articlesSortByDate.filter((article: any) => {
-		return article.categorie == filter.value
-	})
-})
-
 const changeFilter = (newFilter: string) => {
-	filter.value = newFilter
+	if (newFilter === filter.value) return;
+	filter.value = newFilter;
+	displayedArticles.value = [];
+	allArticlesLoaded.value = false;
+	start.value = 0;
+	loadMoreArticles()
+}
+
+const loadMoreArticles = async () => {
+	if (isLoading.value === true) {
+		return
+	}
+	isLoading.value = true;
+	const { data: newArticles } = await articlesService({ start: start.value, category: filter.value });
+	if (newArticles.length < 9) {
+		allArticlesLoaded.value = true;
+	}
+	displayedArticles.value = [...displayedArticles.value, ...newArticles];
+	start.value = start.value + 9;
+	isLoading.value = false;
 }
 </script>

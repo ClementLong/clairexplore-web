@@ -15,19 +15,38 @@ export const homepageService: any = async () =>
 export const optionsService: any = async () =>
 	await axios.get(`${env.API_URL}/options`);
 
-export const articlesService: any = async () =>
-	await axios.get(
-		`${env.API_URL}/articles${
-			env.STAGING ? "?_limit=10" : "?published=true&_limit=10"
-		}`
-	);
-
-export const articlesByCountryService: any = async (country: string) =>
-	await await axios.get(
-		`${process.env.API_URL}/articles?country=${country}${
+export const articlesService: any = async ({
+	start = 0,
+	category,
+}: {
+	start?: number;
+	category?: string;
+}) => {
+	const categoryParams = category ? `&categorie=${category}` : "";
+	const startParams = start > 0 ? `&_start=${start}` : "";
+	return await axios.get(
+		`${env.API_URL}/articles?_limit=9${startParams}${categoryParams}${
 			env.STAGING ? "" : "&published=true"
 		}`
 	);
+};
+
+export const homeArticlesService: any = async () =>
+	await axios.get(
+		`${env.API_URL}/articles?_limit=3${env.STAGING ? "" : "&published=true"}`
+	);
+
+export const articlesByCountryService: any = async (
+	country: string,
+	limit?: number
+) => {
+	const limitParams = limit ? `&_limit=${limit}` : "";
+	return await await axios.get(
+		`${env.API_URL}/articles?country=${country}${limitParams}${
+			env.STAGING ? "" : "&published=true"
+		}`
+	);
+};
 
 export const contactService: any = async () =>
 	await axios.get(`${env.API_URL}/contact`);

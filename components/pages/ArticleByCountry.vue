@@ -16,47 +16,42 @@
 				</template>
 			</carousel>
 		</h3>
-		<div>
-			<div class="container m-auto flex flex-wrap pt-4 pb-8" :class="[max ? 'justify-center' : 'justify-left']">
-				<ArticlePreview v-for="article in articlesByCountry" :key="article.id" :article="article" :options="options"
-					:small="true" class="w-full lg:w-1/3" />
+		<div v-if="data">
+			<div class="container m-auto flex flex-wrap pt-4 pb-8" :class="[limit ? 'justify-center' : 'justify-left']">
+				<ArticlePreview v-for="article in data.articlesByCountry" :key="article.id" :article="article"
+					:options="options" :small="true" class="w-full lg:w-1/3" />
 			</div>
 		</div>
-		<Button v-if="max" :to="`/destinations/${countryFilter}`" text="Voir plus d'articles" />
+		<Button v-if="limit" :to="`/destinations/${countryFilter}`" text="Voir plus d'articles" />
 	</div>
 </template>
 
 <script lang="ts" setup>
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
+import { articlesByCountryService } from '~/lib/service';
 
-const props = withDefaults(defineProps<{
-	articles: Array<any>
+const props = defineProps<{
 	countryFilter: string
 	options: any
-	max?: boolean
-}>(), {
-	max: false
-})
+	limit?: number
+}>()
 
 const emits = defineEmits(['changeCountry'])
 
 const countrySwiper = ref()
 const slides = ref()
 
-const articlesByCountry = computed(() => {
-	if (!props.articles) return []
-	const articlesSortByDate = props.articles.sort((a, b) => {
+
+const { data } = await useAsyncData(async () => {
+	const articles = await articlesByCountryService(props.countryFilter, props.limit)
+	const articlesSortByDate = articles.data.sort((a: any, b: any) => {
 		return new Date(b.date).getTime() - new Date(a.date).getTime()
-	})
-
-	const articleList = articlesSortByDate.filter((article) => {
-		return props.countryFilter == article.country
-	})
-
-	if (props.max) return articleList.slice(0, 3)
-	else return articleList
-})
+	});
+	return {
+		articlesByCountry: articlesSortByDate,
+	}
+}, { watch: [() => props.countryFilter] })
 
 const changeCountry = (e: any) => {
 	emits('changeCountry', countrySwiper.value.$el.querySelector('.carousel__slide--active').getAttribute('data-ref'))
