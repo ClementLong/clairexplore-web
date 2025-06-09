@@ -5,7 +5,7 @@
 				class="flex flex-col md:flex-row md:p-2 text-lightblack bg-white md:border-darkwhite md:border-2 rounded-lg md:mt-8">
 				<div class="flex flex-col">
 					<a v-for="tips in allTips" :href="tips.url" class="flex p-2 md:pr-4 rounded-lg hover:bg-darkwhite"
-						target="_blank">
+						@click="pushEvent(tips.url)" target="_blank">
 						<div v-html="tips.icon" class="w-14"></div>
 						<div class="ml-4">
 							<div class="text-xl font-bold font-heading">{{ tips.title }}</div>
@@ -130,6 +130,14 @@ const allArticles: Array<TipsArticle> = [
 		url: 'equipement-materiel-bivouac-randonnee',
 	},
 ]
+
+const pushEvent = (url: string) => {
+	const { gtag } = useGtag()
+
+	gtag('event', 'affiliate_link', {
+		url: url
+	});
+}
 </script>
 
 <style>
