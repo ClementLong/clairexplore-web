@@ -6,6 +6,7 @@
 			:location="data.article.country"
 			:cover="data.article.cover"
 			:options="data.options"
+			:summary="data.summary"
 		/>
 
 		<div v-for="(component, index) in data.article.content" :key="index">
@@ -99,6 +100,11 @@
 				:url="component.url"
 			/>
 
+			<CustomButton
+				v-if="component.__component == 'article.button'"
+				:text="component.text"
+				:to="component.to"
+			/>
 		</div>
 
 		<Share :mediaUrl="data.article.preview.url" />
@@ -126,6 +132,7 @@ const { data, error } = await useAsyncData(`user:${article}`, async() => {
 	}
 
 	const foundArticle = articles.data[0]
+	const summary = foundArticle.content.filter((c: any) => c.__component === 'article.title' && c.size === 'Big').map((c: any) => c.title)
 
 	useSeoMeta({
 		title: foundArticle.SEO ? foundArticle.SEO.meta_title : 'Clairexplore',
@@ -142,7 +149,8 @@ const { data, error } = await useAsyncData(`user:${article}`, async() => {
 
 	return {
 		article: foundArticle,
-		options: options.data
+		options: options.data,
+		summary
 	}
 })
 </script>
