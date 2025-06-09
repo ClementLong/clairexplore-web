@@ -20,6 +20,8 @@
 
 			<Divider v-else-if="component.__component == 'article.divider'" />
 
+			<DividerSmall v-else-if="component.__component == 'article.divider-small'" />
+
 			<Duo v-else-if="component.__component == 'article.duo'" :left="component.left" :right="component.right" />
 
 			<Double v-else-if="component.__component == 'article.double'" :left="component.left" :right="component.right" />
