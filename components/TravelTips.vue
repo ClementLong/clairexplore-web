@@ -1,8 +1,9 @@
 <template>
-	<div class="relative">
-		<div class="absolute p-4 -left-4 -top-8">
-			<div class="flex flex-col p-2 text-lightblack bg-white border-darkwhite border-2 rounded-lg mt-8">
-				<a v-for="tips in allTips" :href="tips.url" class="flex p-2 pr-4 rounded-lg hover:bg-darkwhite" target="_blank">
+	<div class="md:relative">
+		<div class="md:absolute md:p-4 py-4 -left-4 -top-8 normal-case">
+			<div class="flex flex-col md:p-2 text-lightblack bg-white md:border-darkwhite md:border-2 rounded-lg md:mt-8">
+				<a v-for="tips in allTips" :href="tips.url" class="flex p-2 md:pr-4 rounded-lg hover:bg-darkwhite"
+					target="_blank">
 					<div v-html="tips.icon" class="w-14"></div>
 					<div class="ml-4">
 						<div class="text-xl font-bold font-heading">{{ tips.title }}</div>

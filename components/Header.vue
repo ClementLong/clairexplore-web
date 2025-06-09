@@ -14,7 +14,7 @@
 					Destinations
 				</nuxt-link>
 				<div class="hover:text-important text-ellipsis whitespace-nowrap select-none" role="button"
-					@mouseenter="isOpenTips = true" @mouseleave="isOpenTips = false">
+					@mouseenter="isOpenTips = true" @mouseleave="isOpenTips = false" @click="isOpenTips = !isOpenTips">
 					<div class="flex items-center">
 						Organiser son voyage
 						<div v-html="icon.arrow" class="w-6 ml-1 arrow-black pr-1" :class="{ 'arrow-green': isOpenTips }"></div>
@@ -43,7 +43,7 @@
 				<div class="bar-1" style="position: absolute; right: 10px; top: 25px; transform: rotate(45deg)"></div>
 				<div class="bar-3" style="position: absolute; right: 10px; top: 25px; transform: rotate(-45deg)"></div>
 			</div>
-			<nav class="fixed top-0 w-full bg-white h-screen overflow-scroll p-8 z-40 flex flex-col justify-between"
+			<nav class="fixed top-0 w-full bg-white h-screen overflow-scroll pt-8 z-40 flex flex-col justify-between"
 				v-if="isOpen">
 				<div class="fixed top-0 w-full bg-white h-12"></div>
 				<div class="flex flex-col">
@@ -92,6 +92,16 @@
 								A la découverte de...
 							</nuxt-link>
 						</div>
+						<div class="flex justify-between border-b">
+							<nuxt-link class="p-4 hover:text-important" to="/destinations">
+								Organiser son voyage
+							</nuxt-link>
+							<div class="border-l w-16 p-3" @click="isOpenTips = !isOpenTips">
+								<div v-html="icon.arrow" class="arrow-black" :style="!isOpenTips ? 'transform: rotate(-90deg)' : ''">
+								</div>
+							</div>
+						</div>
+						<TravelTips v-if="isOpenTips" />
 						<nuxt-link class="p-4 border-b hover:text-important" to="/a-propos">
 							A propos
 						</nuxt-link>
