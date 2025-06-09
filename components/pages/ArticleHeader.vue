@@ -13,16 +13,6 @@
 			<h3 class="px-2">{{ countryBySlug }}</h3>
 		</div>
 	</div>
-	<div class="small-container m-auto bg-darkwhite rounded my-5 p-4">
-        <div class="paragraph text-base md:text-lg text-lightblack font-body p-4 border border-lightblack rounded">
-            <p class="text-center text-2xl font-bold font-heading pb-4">Au sommaire de cet article :</p>
-            <ol role="list">
-                <li v-for="(title, index) in summary" :key="index">
-                    <nuxt-link :to="`#${title}`">{{ title }}</nuxt-link>
-                </li>
-            </ol>
-        </div>
-    </div>
 </template>
 
 <script>
@@ -50,10 +40,6 @@ export default {
 			type: Object,
 			required: true
 		},
-		summary: {
-			type: Array,
-			required: true,
-		}
 	},
 	data() {
 		return {
@@ -65,32 +51,31 @@ export default {
 			return moment(this.date).locale('fr').format('Do MMMM YYYY')
 		},
 		bgStyle() {
-			return `transform: translate3d(0, ${this.bgPosition / 2 }px, 0) scale(1.0, 1.0);`
+			return `transform: translate3d(0, ${this.bgPosition / 2}px, 0) scale(1.0, 1.0);`
 		},
 		countryBySlug() {
 			const currentCountry = this.options.country.find((country) => {
 				return this.location == country.slug
 			})
 
-			if(currentCountry) return currentCountry.name
+			if (currentCountry) return currentCountry.name
 			return ''
 		}
 	},
-	created () {
-		if (process.browser){
+	created() {
+		if (process.browser) {
 			window.addEventListener('scroll', this.scroll)
 		}
 	},
-	destroyed () {
+	destroyed() {
 		window.removeEventListener('scroll', this.scroll)
 	},
 	methods: {
-		scroll (event) {
-			if(event.target.scrollingElement.scrollTop < 1000) {
+		scroll(event) {
+			if (event.target.scrollingElement.scrollTop < 1000) {
 				this.bgPosition = event.target.scrollingElement.scrollTop
 			}
 		}
 	}
 }
 </script>
-

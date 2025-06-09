@@ -1,10 +1,12 @@
 <template>
 	<div class="text-lg lg:text-base xl:text-lg" v-if="data && data.article">
 		<ArticleHeader :title="data.article.title" :date="data.article.date" :location="data.article.country"
-			:cover="data.article.cover" :options="data.options" :summary="data.summary" />
+			:cover="data.article.cover" :options="data.options" />
 
 		<div v-for="(component, index) in data.article.content" :key="index">
 			<Single v-if="component.__component == 'article.single'" :size="component.size" :image="component.image" />
+
+			<Summary v-else-if="component.__component == 'article.summary'" :summary="data.summary" />
 
 			<CustomTitle v-else-if="component.__component == 'article.title'" :size="component.size"
 				:text="component.title" />
