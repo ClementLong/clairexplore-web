@@ -39,7 +39,7 @@ export default {
 		options: {
 			type: Object,
 			required: true
-		}
+		},
 	},
 	data() {
 		return {
@@ -51,32 +51,31 @@ export default {
 			return moment(this.date).locale('fr').format('Do MMMM YYYY')
 		},
 		bgStyle() {
-			return `transform: translate3d(0, ${this.bgPosition / 2 }px, 0) scale(1.0, 1.0);`
+			return `transform: translate3d(0, ${this.bgPosition / 2}px, 0) scale(1.0, 1.0);`
 		},
 		countryBySlug() {
 			const currentCountry = this.options.country.find((country) => {
 				return this.location == country.slug
 			})
 
-			if(currentCountry) return currentCountry.name
+			if (currentCountry) return currentCountry.name
 			return ''
 		}
 	},
-	created () {
-		if (process.browser){
+	created() {
+		if (process.browser) {
 			window.addEventListener('scroll', this.scroll)
 		}
 	},
-	destroyed () {
+	destroyed() {
 		window.removeEventListener('scroll', this.scroll)
 	},
 	methods: {
-		scroll (event) {
-			if(event.target.scrollingElement.scrollTop < 1000) {
+		scroll(event) {
+			if (event.target.scrollingElement.scrollTop < 1000) {
 				this.bgPosition = event.target.scrollingElement.scrollTop
 			}
 		}
 	}
 }
 </script>
-

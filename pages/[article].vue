@@ -1,113 +1,56 @@
 <template>
 	<div class="text-lg lg:text-base xl:text-lg" v-if="data && data.article">
-		<ArticleHeader
-			:title="data.article.title"
-			:date="data.article.date"
-			:location="data.article.country"
-			:cover="data.article.cover"
-			:options="data.options"
-		/>
+		<ArticleHeader :title="data.article.title" :date="data.article.date" :location="data.article.country"
+			:cover="data.article.cover" :options="data.options" />
 
 		<div v-for="(component, index) in data.article.content" :key="index">
-			<Single
-				v-if="component.__component == 'article.single'"
-				:size="component.size"
-				:image="component.image"
-			/>
+			<Single v-if="component.__component == 'article.single'" :size="component.size" :image="component.image" />
 
-			<CustomTitle
-				v-else-if="component.__component == 'article.title'"
-				:size="component.size"
-				:text="component.title"
-			/>
+			<Summary v-else-if="component.__component == 'article.summary'" :summary="data.summary" />
 
-			<Paragraph
-				v-else-if="component.__component == 'article.paragraph'"
-				:text="component.paragraph"
-			/>
+			<CustomTitle v-else-if="component.__component == 'article.title'" :size="component.size"
+				:text="component.title" />
 
-			<Collapsible
-				v-else-if="component.__component == 'article.collapsible'"
-				:title="component.title"
-				:text="component.text"
-			/>
+			<Paragraph v-else-if="component.__component == 'article.paragraph'" :text="component.paragraph" />
 
-			<Tips
-				v-else-if="component.__component == 'article.tips'"
-				:text="component.text"
-			/>
+			<Collapsible v-else-if="component.__component == 'article.collapsible'" :title="component.title"
+				:text="component.text" />
 
-			<Divider
-				v-else-if="component.__component == 'article.divider'"
-			/>
+			<Tips v-else-if="component.__component == 'article.tips'" :text="component.text" />
 
-			<Duo
-				v-else-if="component.__component == 'article.duo'"
-				:left="component.left"
-				:right="component.right"
-			/>
+			<Divider v-else-if="component.__component == 'article.divider'" />
 
-			<Double
-				v-else-if="component.__component == 'article.double'"
-				:left="component.left"
-				:right="component.right"
-			/>
+			<DividerSmall v-else-if="component.__component == 'article.divider-small'" />
 
-			<MixedTextImage
-				v-else-if="component.__component == 'article.mixed'"
-				:mobile-reverse="component.mobile_reverse"
-				:reverse="component.reverse"
-				:image="component.image"
-				:text="component.text"
-			/>
+			<Duo v-else-if="component.__component == 'article.duo'" :left="component.left" :right="component.right" />
 
-			<MixedTextPolaroid
-				v-else-if="component.__component == 'article.mixed-pola'"
-				:mobile-reverse="component.mobile_reverse"
-				:reverse="component.reverse"
-				:image="component.image"
-				:text="component.text"
-			/>
+			<Double v-else-if="component.__component == 'article.double'" :left="component.left" :right="component.right" />
 
-			<Map
-				v-else-if="component.__component == 'article.maps'"
-				:url="component.url"
-			/>
+			<MixedTextImage v-else-if="component.__component == 'article.mixed'" :mobile-reverse="component.mobile_reverse"
+				:reverse="component.reverse" :image="component.image" :text="component.text" />
 
-			<Slider
-				v-else-if="component.__component == 'article.slider'"
-				:images="component.images"
-			/>
+			<MixedTextPolaroid v-else-if="component.__component == 'article.mixed-pola'"
+				:mobile-reverse="component.mobile_reverse" :reverse="component.reverse" :image="component.image"
+				:text="component.text" />
 
-			<Pola
-				v-else-if="component.__component == 'article.pola'"
-				:images="component.images"
-			/>
+			<Map v-else-if="component.__component == 'article.maps'" :url="component.url" />
 
-			<Trio
-				v-else-if="component.__component == 'article.trio'"
-				:images="component.images"
-			/>
+			<Slider v-else-if="component.__component == 'article.slider'" :images="component.images" />
 
-			<Scotch
-				v-if="component.__component == 'article.scotch'"
-				:image="component.image"
-			/>
+			<Pola v-else-if="component.__component == 'article.pola'" :images="component.images" />
 
-			<Video
-				v-if="component.__component == 'article.video'"
-				:url="component.url"
-			/>
+			<Trio v-else-if="component.__component == 'article.trio'" :images="component.images" />
 
+			<Scotch v-if="component.__component == 'article.scotch'" :image="component.image" />
+
+			<Video v-if="component.__component == 'article.video'" :url="component.url" />
+
+			<CustomButton v-if="component.__component == 'article.button'" :text="component.text" :to="component.to" />
 		</div>
 
 		<Share :mediaUrl="data.article.preview.url" />
 
-		<ArticleFooter
-			class="mt-8"
-			:articles="data.article.linked_articles"
-			:options="data.options"
-		/>
+		<ArticleFooter class="mt-8" :articles="data.article.linked_articles" :options="data.options" />
 	</div>
 </template>
 
@@ -117,15 +60,29 @@ import { articleService, optionsService } from '~/lib/service';
 const route = useRoute()
 const { article } = route.params
 
-const { data, error } = await useAsyncData(`user:${article}`, async() => {
+useSeoMeta({
+	title: 'Clairexplore',
+	ogTitle: 'Clairexplore',
+	author: 'Claire',
+	publisher: 'Clairexplore',
+	description: 'Blog de voyage',
+	ogDescription: 'Blog de voyage',
+	ogType: 'website',
+	ogUrl: route.path,
+	ogSiteName: 'Clairexplore',
+	ogImage: 'https://clairexplore.s3.eu-west-3.amazonaws.com/home_f68b613250.jpeg'
+})
+
+const { data, error } = await useAsyncData(`user:${article}`, async () => {
 	const options = await optionsService()
 	const articles = await articleService(article)
 
-	if(!articles.data.length) {
+	if (!articles.data.length) {
 		navigateTo('/404')
 	}
 
 	const foundArticle = articles.data[0]
+	const summary = foundArticle.content.filter((c: any) => c.__component === 'article.title' && c.size === 'Big').map((c: any) => c.title)
 
 	useSeoMeta({
 		title: foundArticle.SEO ? foundArticle.SEO.meta_title : 'Clairexplore',
@@ -142,7 +99,8 @@ const { data, error } = await useAsyncData(`user:${article}`, async() => {
 
 	return {
 		article: foundArticle,
-		options: options.data
+		options: options.data,
+		summary
 	}
 })
 </script>

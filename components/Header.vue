@@ -13,7 +13,15 @@
 				<nuxt-link class="hover:text-important" to="/destinations">
 					Destinations
 				</nuxt-link>
-				<nuxt-link class="hover:text-important" :to="{ name: 'a-propos' }">
+				<div class="hover:text-important text-ellipsis whitespace-nowrap select-none" role="button"
+					@mouseenter="isOpenTips = true" @mouseleave="isOpenTips = false" @click="isOpenTips = !isOpenTips">
+					<div class="flex items-center">
+						Organiser son voyage
+						<div v-html="icon.arrow" class="w-6 ml-1 arrow-black pr-1" :class="{ 'arrow-green': isOpenTips }"></div>
+					</div>
+					<TravelTips v-if="isOpenTips" />
+				</div>
+				<nuxt-link class="hover:text-important whitespace-nowrap" :to="{ name: 'a-propos' }">
 					A propos
 				</nuxt-link>
 			</nav>
@@ -35,7 +43,8 @@
 				<div class="bar-1" style="position: absolute; right: 10px; top: 25px; transform: rotate(45deg)"></div>
 				<div class="bar-3" style="position: absolute; right: 10px; top: 25px; transform: rotate(-45deg)"></div>
 			</div>
-			<nav class="fixed top-0 w-full bg-white h-screen overflow-scroll p-8 z-40 flex flex-col justify-between" v-if="isOpen">
+			<nav class="fixed top-0 w-full bg-white h-screen overflow-scroll pt-8 z-40 flex flex-col justify-between"
+				v-if="isOpen">
 				<div class="fixed top-0 w-full bg-white h-12"></div>
 				<div class="flex flex-col">
 					<div class="flex flex-col mt-8 font-body uppercase text-lg">
@@ -47,11 +56,13 @@
 								Destinations
 							</nuxt-link>
 							<div class="border-l w-16 p-3" @click="openDestination()">
-								<div v-html="icon.arrow" :style="!isOpenDestinations ? 'transform: rotate(-90deg)' : ''"></div>
+								<div v-html="icon.arrow" class="arrow-black"
+									:style="!isOpenDestinations ? 'transform: rotate(-90deg)' : ''"></div>
 							</div>
 						</div>
 						<div v-if="isOpenDestinations" class="w-full flex flex-col normal-case">
-							<nuxt-link class="p-4 py-2 border-b bg-fakewhite hover:text-important" :to="`/destinations/${ country.slug }`" v-for="country in countries" :key="country.id">
+							<nuxt-link class="p-4 py-2 border-b bg-fakewhite hover:text-important"
+								:to="`/destinations/${country.slug}`" v-for="country in countries" :key="country.id">
 								{{ country.name }}
 							</nuxt-link>
 						</div>
@@ -60,7 +71,8 @@
 								Catégories
 							</nuxt-link>
 							<div class="border-l w-16 p-3" @click="isOpenCategories = !isOpenCategories">
-								<div v-html="icon.arrow" :style="!isOpenCategories ? 'transform: rotate(-90deg)' : ''"></div>
+								<div v-html="icon.arrow" class="arrow-black"
+									:style="!isOpenCategories ? 'transform: rotate(-90deg)' : ''"></div>
 							</div>
 						</div>
 						<div v-if="isOpenCategories" class="w-full flex flex-col normal-case">
@@ -80,6 +92,16 @@
 								A la découverte de...
 							</nuxt-link>
 						</div>
+						<div class="flex justify-between border-b">
+							<nuxt-link class="p-4 hover:text-important" to="/destinations">
+								Organiser son voyage
+							</nuxt-link>
+							<div class="border-l w-16 p-3" @click="isOpenTips = !isOpenTips">
+								<div v-html="icon.arrow" class="arrow-black" :style="!isOpenTips ? 'transform: rotate(-90deg)' : ''">
+								</div>
+							</div>
+						</div>
+						<TravelTips v-if="isOpenTips" />
 						<nuxt-link class="p-4 border-b hover:text-important" to="/a-propos">
 							A propos
 						</nuxt-link>
@@ -108,27 +130,28 @@ export default {
 				arrow,
 			},
 			isOpen: false,
+			isOpenTips: false,
 			isOpenCategories: false,
 			isOpenDestinations: false,
 			countries: null,
 		}
 	},
 	watch: {
-		$route () {
+		$route() {
 			this.isOpen = false
 			this.$emit('toggleStop', false)
 		}
 	},
 	computed: {
 		logoColor() {
-			if(this.isOpen) return 'black'
-			else if(this.$route.name == 'index' || this.$route.name == 'article') return 'white'
+			if (this.isOpen) return 'black'
+			else if (this.$route.name == 'index' || this.$route.name == 'article') return 'white'
 			return 'black'
 		}
 	},
 	methods: {
 		async openDestination() {
-			if(this.isOpenDestinations) {
+			if (this.isOpenDestinations) {
 				this.isOpenDestinations = false
 			} else {
 				const options = await optionsService()
@@ -145,23 +168,31 @@ export default {
 </script>
 
 <style scoped>
-	.fill-focus {
-		fill: #5C4B51;
-	}
+.fill-focus {
+	fill: #5C4B51;
+}
 
-	.fill-default {
-		fill: #E9E8E3;
-	}
+.fill-default {
+	fill: #E9E8E3;
+}
 
-	.bar-1 {
-		@apply h-1 w-8 mb-2 bg-lightblack rounded;
-	}
+.bar-1 {
+	@apply h-1 w-8 mb-2 bg-lightblack rounded;
+}
 
-	.bar-2 {
-		@apply h-1 w-8 mb-2 bg-lightblack rounded;
-	}
+.bar-2 {
+	@apply h-1 w-8 mb-2 bg-lightblack rounded;
+}
 
-	.bar-3 {
-		@apply h-1 w-8 bg-lightblack rounded;
-	}
+.bar-3 {
+	@apply h-1 w-8 bg-lightblack rounded;
+}
+
+.arrow-black {
+	stroke: #535358;
+}
+
+.arrow-green {
+	stroke: #4A9690;
+}
 </style>
